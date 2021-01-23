@@ -10,6 +10,11 @@ const routes: Array<RouteConfig> = [
     name: 'Home',
     component: Home,
   },
+  // {
+  //   path: '/register',
+  //   name: 'Register',
+  //   component: Register,
+  // },
   {
     path: '/about',
     name: 'About',

@@ -1,0 +1,36 @@
+.register-page {
+  display: grid; 
+  grid-template-columns: 30% auto 30%;
+  background-color: #6f68ed;
+  height: 100vh;
+} 
+.register-bloc {
+  margin-top: 2em;
+  grid-column-start: 2;
+  border: 1px solid #6f68ed;
+  border-radius: 10px;
+  padding: 2em;
+  background-color: #fff;
+  height: 75%;
+}
+.register-title {
+  justify-self: center;
+  padding: 2em;
+  color: #262a3e;
+}
+.user-infos {
+}
+.buttons {
+  display: grid; 
+  grid-template-columns: 20% 20%;
+  grid-gap: 2em;
+  grid-template-rows: 1fr;
+}
+.button-cancel {
+
+}
+.button-submit {
+  justify-self: flex-end !important;
+  background-color: #6f68ed !important;
+  color: #fff !important;
+}
