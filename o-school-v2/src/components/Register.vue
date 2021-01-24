@@ -2,43 +2,59 @@
   <div class="register-page">
     <div class="register-bloc">
       <div class="register-title">
-        <h2>Register</h2>
+        <h2 class="register-title-h2">Register</h2>
       </div>
       <div class="user-infos">
         <v-text-field
-        label="first name"
-        append-icon="fa-pen"
+          v-model="userBis.firstname"
+          label="first name"
+          append-icon="fa-pen"
+          class="user-input"
         ></v-text-field>
         <v-text-field
-        label="last name"
-        append-icon="fa-pen"
+          v-model="userBis.lastname"
+          label="last name"
+          append-icon="fa-pen"
+          class="user-input"
         ></v-text-field>
         <v-text-field
-        type="email"
-        label="email"
-        append-icon="fa-pen"
+          v-model="userBis.email"
+          type="email"
+          label="email"
+          append-icon="fa-pen"
+          class="user-input"
         ></v-text-field>
         <v-text-field
-        label="password"
-        append-icon="fa-pen"
+          v-model="userBis.password"
+          :type="hideNewPassword ? 'password' : 'type'"
+          label="password"
+          :append-icon="hideNewPassword ? 'fa-eye-slash' : 'fa-eye'"
+          class="user-input"
+          @click:append="hideNewPassword = !hideNewPassword"
         ></v-text-field>
         <v-text-field
-        type="password"
-        label="confirmation password"
-        append-icon="fa-pen"
+          v-model="userBis.confirmPpassword"
+          :type="hideNewConfirmPassword ? 'password' : 'type'"
+          label="confirmation"
+          :append-icon="hideNewConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"
+          class="user-input"
+          @click:append="hideNewConfirmPassword = !hideNewConfirmPassword"
         ></v-text-field>
         <v-select
-        label="roles"
-        v-model="roles"
-        :items="roles"
+          label="roles"
+          v-model="userBis.role"
+          :items="items"
+          :readonly="false"
         ></v-select>
       </div>
       <div class="buttons">
         <v-btn
-        class="button-cancel"
+          class="button-cancel"
+          @click="cancel()"
         >Cancel</v-btn>
         <v-btn
-        class="button-submit"
+          class="button-submit"
+          :disabled="!inputHasChanged"
         >Submit</v-btn>
       </div>
     </div>
@@ -53,19 +69,55 @@ import { Component, Vue } from 'vue-property-decorator';
 })
 
 export default class Register extends Vue {
-  public roles = [
-    {
-      id: 1,
-      role: 'Parent',
-    },
-    {
-      id: 2,
-      role: 'Teacher',
-    },
-  ];
-  // get roles() {
-  //   return roles;
+  public userBis = {
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
+    confirmPpassword: '',
+    role: '',
+  }
+  // public userBis = {
+  //   firstname: 'Thib',
+  //   lastname: 'Dec',
+  //   email: 'thib@gmail.com',
+  //   password: '123456789',
+  //   confirmPpassword: '123456789',
+  //   role: 'parent',
   // }
+
+  public hideNewPassword = false
+
+  public hideNewConfirmPassword = false
+
+  public ableSubmitBtn = true
+
+  public items = ['Parent', 'Teacher'];
+
+  get inputHasChanged(): boolean {
+    let data = false;
+    if (this.userBis.firstname !== ''
+        && this.userBis.lastname !== ''
+        && this.userBis.email !== ''
+        && this.userBis.password !== ''
+        && this.userBis.confirmPpassword !== ''
+        // && this.userBis.role !== ''
+    ) {
+      data = true;
+    }
+    return data;
+  }
+
+  cancel() {
+    this.userBis = {
+      firstname: '',
+      lastname: '',
+      email: '',
+      password: '',
+      confirmPpassword: '',
+      role: '',
+    };
+  }
 }
 </script>
 <style>

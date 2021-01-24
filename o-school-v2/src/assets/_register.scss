@@ -12,11 +12,16 @@
   padding: 2em;
   background-color: #fff;
   height: 75%;
+  box-shadow: 0 0 4px 0 rgba(116, 40, 23, 0.15);
 }
 .register-title {
-  justify-self: center;
+  display: grid;
   padding: 2em;
   color: #262a3e;
+  border-bottom :1px solid #6f68ed;
+}
+.register-title-h2 {
+  justify-self: center;
 }
 .user-infos {
 }
@@ -33,4 +38,11 @@
   justify-self: flex-end !important;
   background-color: #6f68ed !important;
   color: #fff !important;
+}
+.v-label {
+  
+}
+
+.v-icon {
+  font-size: 1rem;
 }
