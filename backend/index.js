@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const user = require('./api/routes/user');
+const auth = require('./api/routes/auth');
 const express = require('express');
 const app = express();
 
@@ -13,6 +14,7 @@ mongoose.connect('mongodb://localhost/o-school', {
 
 app.use(express.json())
 app.use('/api/user', user)
+app.use('/api/auth', auth)
 
 const port = process.env.PORT || 3000; 
 app.listen(port, () => console.log(`Listening on port ${port}`))
