@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const users = require('./routes/users');
+const users = require('./api/routes/users');
 const express = require('express');
 const app = express();
 
