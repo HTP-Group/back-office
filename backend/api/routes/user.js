@@ -1,25 +1,23 @@
-const { Users, validate } = require('../models/user');
+const { User, validate } = require('../models/user');
+const bcrypt = require('bcrypt');
+const _ = require('lodash');
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 
-router.post('/', async (req, res) => {
+router.post('/register', async (req, res) => {
   const { error } = validate(req.body); 
   if (error) return res.status(400).send(error.details[0].message);
   
   let user =  await User.findOne({ email: req.body.email })
   if (user) return res.status(400).send('user already registered')
   
-  user =  await new User({
-    firstname: req.body.firstname, 
-    lastname: req.body.lastname, 
-    email: req.body.email, 
-    password: req.body.password
-  })
-
+  user =  await new User(_.pick(req.body, ['firstname', 'lastname', 'email', 'password']));
+  const salt = await bcrypt.genSalt(10);
+  user.password = await bcrypt.hash(user.password, salt)
   await user.save();
 
-  return res.send(users);
+  return res.send(user);
 })
 
 module.exports = router;

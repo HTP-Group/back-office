@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const users = require('./api/routes/users');
+const user = require('./api/routes/user');
 const express = require('express');
 const app = express();
 
@@ -9,10 +9,10 @@ mongoose.connect('mongodb://localhost/o-school', {
     useUnifiedTopology: true 
 } )
   .then(() => console.log('connected to mongoDb'))
-  .catch((err) => console.error('could nod connect to mongoDb..', err)); 
+  .catch((err) => console.error('could not connect to mongoDb..', err)); 
 
 app.use(express.json())
-app.use('/api/users', users)
+app.use('/api/user', user)
 
 const port = process.env.PORT || 3000; 
 app.listen(port, () => console.log(`Listening on port ${port}`))
