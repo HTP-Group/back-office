@@ -1,5 +1,5 @@
-const Joi = require('joi');
-const mongoose = require('mongoose');
+import Joi from 'joi';
+import mongoose from 'mongoose';
 
 const User = mongoose.model('User', new mongoose.Schema({
   firstname: {
@@ -28,7 +28,7 @@ const User = mongoose.model('User', new mongoose.Schema({
     maxlength: 1050,
   },
   // parent = true vs teacher = false
-  statut: {
+  isParent: {
     type: Boolean,
     required: true,
   }
@@ -40,7 +40,7 @@ function validateUser(user) {
     lastname: Joi.string().min(3).max(50).required(),
     email: Joi.string().min(8).max(150).required().email(),
     password: Joi.string().min(3).max(1050).required(),
-    statut: Joi.boolean().required(),
+    isParent: Joi.boolean().required(),
   })
   return schema.validate(user);
 }

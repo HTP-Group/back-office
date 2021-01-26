@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const user = require('./api/routes/user');
-const auth = require('./api/routes/auth');
-const express = require('express');
+import mongoose from 'mongoose';
+import user from './api/routes/user';
+import auth from './api/routes/auth';
+import express from 'express';
 const app = express();
 
 
