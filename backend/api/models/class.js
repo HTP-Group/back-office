@@ -1,5 +1,4 @@
-const Joi = require('joi');
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const Classe = mongoose.model('Classe', new mongoose.Schema({
   teacher_id: {

@@ -1,9 +1,9 @@
-const jwt = require('jsonwebtoken');
-const { User } = require('../models/user');
-const Joi = require('joi');
-const bcrypt = require('bcrypt');
-const _ = require('lodash');
-const express = require('express');
+import jwt from 'jsonwebtoken';
+import{ User } from '../mdels/user';
+import Joi from 'joi';
+import bcrypt from 'bcrypt';
+import _ from 'lodash';
+import express from 'express';
 const router = express.Router();
 
 router.post('/', async (req, res) => {
