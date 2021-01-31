@@ -1,22 +1,29 @@
 <template>
   <div>
-    <Register />
+    <!-- A conditionner selon si l'utilisateur est un prof ou un parent -->
+    <NavBar />
+    <ParentProfile />
+    <!-- <Login /> -->
+    <!-- <Register /> -->
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import Register from './components/Register.vue';
+import { Vue, Component } from 'vue-property-decorator';
+import NavBar from './components/NavBar.vue';
+import ParentProfile from './components/ParentProfile.vue';
+// import Register from './components/Register.vue';
+// import Login from './components/Login.vue';
 
-export default Vue.extend({
-  name: 'App',
-
+@Component({
   components: {
-    Register,
+    // Register,
+    NavBar,
+    ParentProfile,
+    // Login,
   },
+})
+export default class App extends Vue {
 
-  data: () => ({
-    //
-  }),
-});
+}
 </script>

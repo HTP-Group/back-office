@@ -33,7 +33,7 @@
           @click:append="hideNewPassword = !hideNewPassword"
         ></v-text-field>
         <v-text-field
-          v-model="userBis.confirmPpassword"
+          v-model="userBis.confirmPassword"
           :type="hideNewConfirmPassword ? 'password' : 'type'"
           label="confirmation"
           :append-icon="hideNewConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"
@@ -46,6 +46,22 @@
           :items="items"
           :readonly="false"
         ></v-select>
+        <v-container fluid>
+          <v-radio-group
+            v-model="isParent"
+            row
+          >
+            <v-radio
+              :label="roles[0]"
+              :value="roles[0]"
+              active-class
+            ></v-radio>
+            <v-radio
+              :label="roles[1]"
+              :value="roles[1]"
+            ></v-radio>
+          </v-radio-group>
+        </v-container>
       </div>
       <div class="buttons">
         <v-btn
@@ -74,16 +90,16 @@ export default class Register extends Vue {
     lastname: '',
     email: '',
     password: '',
-    confirmPpassword: '',
-    role: '',
+    confirmPassword: '',
+    isParent: false,
   }
   // public userBis = {
   //   firstname: 'Thib',
   //   lastname: 'Dec',
   //   email: 'thib@gmail.com',
   //   password: '123456789',
-  //   confirmPpassword: '123456789',
-  //   role: 'parent',
+  //   confirmPassword: '123456789',
+  //   isParent: 'parent',
   // }
 
   public hideNewPassword = false
@@ -92,7 +108,9 @@ export default class Register extends Vue {
 
   public ableSubmitBtn = true
 
-  public items = ['Parent', 'Teacher'];
+  public roles = ['Parent', 'Teacher'];
+
+  public isParent = true;
 
   get inputHasChanged(): boolean {
     let data = false;
@@ -100,8 +118,8 @@ export default class Register extends Vue {
         && this.userBis.lastname !== ''
         && this.userBis.email !== ''
         && this.userBis.password !== ''
-        && this.userBis.confirmPpassword !== ''
-        // && this.userBis.role !== ''
+        && this.userBis.confirmPassword !== ''
+        && this.userBis.isParent !== false
     ) {
       data = true;
     }
@@ -114,12 +132,12 @@ export default class Register extends Vue {
       lastname: '',
       email: '',
       password: '',
-      confirmPpassword: '',
-      role: '',
+      confirmPassword: '',
+      isParent: false,
     };
   }
 }
 </script>
-<style>
-@import '../assets/_register.scss';
+<style lang="scss">
+// @import '@/src/assets/_register.scss';
 </style>

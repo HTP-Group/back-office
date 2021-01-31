@@ -1,0 +1,59 @@
+.login-page {
+  display: grid; 
+  grid-template-columns: 35% auto 35%;
+  background-color: #6f68ed;
+  height: 100vh;
+}
+.login-bloc {
+  margin-top: 7em;
+  grid-column-start: 2;
+  border: 1px solid #6f68ed;
+  border-radius: 10px;
+  padding: 2em;
+  background-color: #fff;
+  height: 40%;
+  box-shadow: 0 0 4px 0 rgba(116, 40, 23, 0.15);
+}
+.login-title {
+  display: grid;
+  padding: 2em;
+  color: #262a3e;
+  border-bottom :1px solid #6f68ed;
+  margin-bottom: 1em;
+}
+.login-title-h2 {
+  justify-self: center;
+}
+.buttons {
+  margin-top: 2em;
+  display: grid; 
+  grid-template-columns: 20% auto 20%;
+  grid-gap: 2em;
+  grid-template-rows: 1fr;
+}
+.v-btn {
+ color: #6f68ed !important;
+}
+
+.v-btn:hover {
+  background-color: #6f68ed !important;
+  color: #fff !important;
+}
+.btn-cancel {
+  grid-column-start: 1;
+}
+.btn-submit {
+  grid-column-start: 3;
+}
+.fa-key, .fa-eye, .fa-eye-slash, .fa-envelope:before  {
+  font-size: medium !important;
+  margin: 1em;
+}
+
+.b-link {
+  font-size: small;
+  color: rgb(111, 104, 237, 0.5);
+}
+.v-input__slot {
+  margin-left: 1em;
+}
