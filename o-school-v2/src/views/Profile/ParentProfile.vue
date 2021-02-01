@@ -175,34 +175,39 @@ import { Component, Vue } from 'vue-property-decorator';
   components: {},
 })
 export default class Profile extends Vue {
-  public userBis = {
-    firstname: 'Marc',
-    lastname: 'Obrien',
-    job: 'Farmer',
-    email: 'j.obrien@outlook.com',
-    childrenNumber: 2,
-    children: [
-      {
-        firstname: 'Karl',
-        lastname: 'Obrien',
-        level: '8',
-        healthIndications: '',
-      },
-      {
-        firstname: 'Betty',
-        lastname: 'Obrien',
-        level: '10',
-        healthIndications: 'do not drink milk',
-      },
-    ],
-    statut: 'Married',
-    adress: '25 Avenue Victor Hugo',
-    city: 'Paris',
-    state: 'France',
-    zipcode: '75116',
-    phone: '+63344556677',
-    password: '123456789',
-  }
+ public userBis = {
+   firstname: 'Marc',
+   lastname: 'Obrien',
+   job: 'Farmer',
+   email: 'j.obrien@outlook.com',
+   childrenNumber: 2,
+   children: [
+     {
+       firstname: 'Karl',
+       lastname: 'Obrien',
+       level: '8',
+       healthIndications: '',
+     },
+     {
+       firstname: 'Betty',
+       lastname: 'Obrien',
+       level: '10',
+       healthIndications: 'do not drink milk',
+     },
+   ],
+   statut: 'Married',
+   partner: {
+     profileId: '..',
+     firstname: 'Sam',
+     lastname: 'Obrien',
+   },
+   adress: '25 Avenue Victor Hugo',
+   city: 'Paris',
+   state: 'France',
+   zipcode: '75116',
+   phone: '+63344556677',
+   password: '123456789',
+ }
 
   public newPassword = '';
 

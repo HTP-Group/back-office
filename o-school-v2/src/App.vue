@@ -2,7 +2,8 @@
   <div>
     <!-- A conditionner selon si l'utilisateur est un prof ou un parent -->
     <NavBar />
-    <ParentProfile />
+    <ChildrenProfile />
+    <!-- <ParentProfile /> -->
     <!-- <Login /> -->
     <!-- <Register /> -->
   </div>
@@ -11,7 +12,8 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import NavBar from './components/NavBar.vue';
-import ParentProfile from './components/ParentProfile.vue';
+import ChildrenProfile from './components/ChildrenProfile.vue';
+// import ParentProfile from './components/ParentProfile.vue';
 // import Register from './components/Register.vue';
 // import Login from './components/Login.vue';
 
@@ -19,7 +21,8 @@ import ParentProfile from './components/ParentProfile.vue';
   components: {
     // Register,
     NavBar,
-    ParentProfile,
+    ChildrenProfile,
+    // ParentProfile,
     // Login,
   },
 })

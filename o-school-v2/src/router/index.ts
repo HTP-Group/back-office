@@ -3,6 +3,7 @@ import VueRouter, { RouteConfig } from 'vue-router';
 import Register from '../views/Auth/Register.vue';
 import Login from '../views/Auth/Login.vue';
 import ParentProfile from '../views/Profile/ParentProfile.vue';
+import ChildrenProfile from '../views/Profile/ChildrenProfile.vue';
 import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
@@ -32,9 +33,14 @@ const routes: Array<RouteConfig> = [
     component: Login,
   },
   {
-    path: '/profile',
+    path: '/profile/:id',
     name: 'ParentProfile',
     component: ParentProfile,
+  },
+  {
+    path: '/profile/:id/children/:id',
+    name: 'ChildrenProfile',
+    component: ChildrenProfile,
   },
 ];
 
