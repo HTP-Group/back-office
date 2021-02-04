@@ -1,16 +1,17 @@
 import jwt from 'jsonwebtoken';
-import{ User } from '../mdels/user';
+import { UserModel } from '../models/user.js';
 import Joi from 'joi';
 import bcrypt from 'bcrypt';
 import _ from 'lodash';
 import express from 'express';
 const router = express.Router();
+const user = new UserModel();
 
 router.post('/', async (req, res) => {
   const { error } = validate(req.body); 
   if (error) return res.status(400).send(error.details[0].message);
   
-  let user =  await User.findOne({ email: req.body.email })
+  let user =  user.findUserByEmail(req.body.email)
   if (!user) return res.status(400).send('Invalid email or password')
   
   const validPAssword = await bcrypt.compare(req.body.password, user.password);
@@ -30,4 +31,4 @@ function validate(req) {
   return schema.validate(req);
 }
 
-module.exports = router;
+export default router;

@@ -1,5 +1,6 @@
 import Joi from 'joi';
 import mongoose from 'mongoose';
+import _ from 'lodash';
 
 const User = mongoose.model('User', new mongoose.Schema({
   firstname: {
@@ -34,15 +35,23 @@ const User = mongoose.model('User', new mongoose.Schema({
   }
 }));
 
-function validateUser(user) {
-  const schema = Joi.object({
-    firstname: Joi.string().min(3).max(50).required(),
-    lastname: Joi.string().min(3).max(50).required(),
-    email: Joi.string().min(8).max(150).required().email(),
-    password: Joi.string().min(3).max(1050).required(),
-    isParent: Joi.boolean().required(),
-  })
-  return schema.validate(user);
+export class UserModel {
+  constructor() {
+  }
+  validateUser(user) {
+    const schema = Joi.object({
+      firstname: Joi.string().min(3).max(50).required(),
+      lastname: Joi.string().min(3).max(50).required(),
+      email: Joi.string().min(8).max(150).required().email(),
+      password: Joi.string().min(3).max(1050).required(),
+      isParent: Joi.boolean().required(),
+    })
+    return schema.validate(user);
+  }
+  async newUser(body) {
+    await new User(_.pick(body, ['firstname', 'lastname', 'email', 'password', 'isParent']));
+  }
+  async findUserByEmail(email) {
+    await User.findOne({ email: email })
+  }
 }
-exports.User = User;
-exports.validate = validateUser;

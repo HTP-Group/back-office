@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import user from './api/routes/user';
-import auth from './api/routes/auth';
+import user from './api/routes/user.js';
+import auth from './api/routes/auth.js';
 import express from 'express';
 const app = express();
 
