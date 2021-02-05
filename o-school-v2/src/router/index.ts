@@ -2,8 +2,9 @@ import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import Register from '../views/Auth/Register.vue';
 import Login from '../views/Auth/Login.vue';
-import ParentProfile from '../views/Profile/ParentProfile.vue';
-import ChildrenProfile from '../views/Profile/ChildrenProfile.vue';
+import ParentProfile from '../views/parent/Profile/ParentProfile.vue';
+import ChildrenProfile from '../components/ChildrenProfile.vue';
+import TeacherProfile from '../views/teacher/TeacherProfile.vue';
 import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
@@ -33,7 +34,7 @@ const routes: Array<RouteConfig> = [
     component: Login,
   },
   {
-    path: '/profile/:id',
+    path: '/parent/:id',
     name: 'ParentProfile',
     component: ParentProfile,
   },
@@ -41,6 +42,11 @@ const routes: Array<RouteConfig> = [
     path: '/profile/:id/children/:id',
     name: 'ChildrenProfile',
     component: ChildrenProfile,
+  },
+  {
+    path: '/teacher/:id',
+    name: 'TeacherProfile',
+    component: TeacherProfile,
   },
 ];
 

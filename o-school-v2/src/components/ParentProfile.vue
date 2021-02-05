@@ -89,37 +89,37 @@
           ></v-text-field>
           <v-text-field
           v-model="userBis.statut"
-          label="statut"
+          label="Statut"
           prepend-icon='fa-users'
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
           v-model="userBis.adress"
-          label="statut"
+          label="Address"
           prepend-icon='fa-map-marker-alt'
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
           v-model="userBis.city"
-          label="statut"
+          label="City"
           prepend-icon='fa-map-marker-alt'
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
           v-model="userBis.state"
-          label="statut"
+          label="State"
           prepend-icon='fa-map-marker-alt'
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
           v-model="userBis.zipcode"
-          label="statut"
+          label="Zip code"
           prepend-icon='fa-map-marker-alt'
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
           v-model="userBis.phone"
-          label="statut"
+          label="Phone"
           prepend-icon='fa-mobile'
           append-icon="fa-pen"
           ></v-text-field>

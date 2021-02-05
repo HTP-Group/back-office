@@ -9,6 +9,6 @@ export interface IChildren {
   healthIndications: number;
   birthday: string;
   marks: IMarks;
-  comments: string[]
-  graph: IGraph
+  comments: string[];
+  graph: IGraph;
 }

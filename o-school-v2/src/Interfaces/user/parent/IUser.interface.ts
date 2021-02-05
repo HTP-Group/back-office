@@ -1,5 +1,5 @@
 import { IPartner } from './IPartner.interface';
-import { IChildren } from './IChildren.interface'
+import { IChildren } from './IChildren.interface';
 
 export interface IUser {
   firstname: string;
@@ -15,5 +15,5 @@ export interface IUser {
   state: string;
   zipcode: string;
   phone: string;
-  password: string; 
+  password: string;
 }

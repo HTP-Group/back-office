@@ -2,11 +2,9 @@
   <div class="profile-page">
     <div class="profile-page-title">
       <h2 class="profile-page-title-h2">
-        {{userBis.firstname}}
-        {{userBis.lastname}}
-      </h2>
+        {{ userBis.firstname }} - {{ userBis.lastname }}</h2>
     </div>
-    <div class="profile-left-bloc children-profile">
+    <div class="profile-left-bloc">
       <div class="avatar">
         <v-avatar
           class="profile"
@@ -14,42 +12,45 @@
           size="164"
           tile
         >
-        <v-img src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"></v-img>
+        <v-img src=""></v-img>
         </v-avatar>
       </div>
-        <v-list-item-content class="parent-infos">
-          <v-list-item-title class="title">
-            <h2 class="name">
-              {{userBis.firstname}}
-              {{userBis.lastname}}
-            </h2>
-          </v-list-item-title>
+      <v-list-item-content class="teacher-infos">
+        <v-list-item-title class="title">
+          <h2 class="name">
+          {{ userBis.firstname }} - {{ userBis.lastname }}
+          </h2>
+        </v-list-item-title>
+        <v-list-item-subtitle>
+          <v-label>Job: </v-label>
+          {{userBis.job}}
+        </v-list-item-subtitle>
+        <v-list-item-subtitle>
+          <v-label>Level: </v-label>
+          {{userBis.class.level}}
+        </v-list-item-subtitle>
+        <v-list-item-subtitle>
+          <v-label>Class name: </v-label>
+          {{userBis.class.name}}
+        </v-list-item-subtitle>
+        <v-list-item-subtitle>
+          <v-label>Number of Children: </v-label>
+          {{userBis.class.childrenNumber}}
+        </v-list-item-subtitle>
           <v-list-item-subtitle>
-            <v-label>Job: </v-label>{{userBis.job}}
-          </v-list-item-subtitle>
-          <v-list-item-subtitle>
-            <v-label>Number of Children: </v-label>{{userBis.childrenNumber}}
-          </v-list-item-subtitle>
-           <v-list-item-subtitle>
-            <v-label>Children: </v-label>
-             <router-link to="/profile/:id" class="b-link">
-              {{userBis.children[0].firstname}} {{userBis.children[0].lastname}},
-             </router-link>
-             <router-link to="/profile/:id" class="b-link">
-               {{userBis.children[1].firstname}} {{userBis.children[1].lastname}}
-             </router-link>
-          </v-list-item-subtitle>
-           <v-list-item-subtitle>
-            <v-label>Statut: </v-label>{{userBis.statut}}
-          </v-list-item-subtitle>
-          <v-list-item-subtitle>
-            <v-label>Adress: </v-label>
-            {{userBis.adress}} - {{userBis.city}} - {{userBis.zipcode}} - {{userBis.state}}
-          </v-list-item-subtitle>
-          <v-list-item-subtitle>
-            <v-label>Phone: </v-label>{{userBis.phone}}
-          </v-list-item-subtitle>
-        </v-list-item-content>
+          <v-label>Children: </v-label>
+            <router-link to="/trombinoscope/" class="b-link">
+            Trombinoscop link
+            </router-link>
+        </v-list-item-subtitle>
+        <v-list-item-subtitle>
+          <v-label>Adress: </v-label>
+        {{ userBis.city }} - {{ userBis.zipcode }}
+        </v-list-item-subtitle>
+        <v-list-item-subtitle>
+          <v-label>Email: </v-label>{{ userBis.email }}
+        </v-list-item-subtitle>
+      </v-list-item-content>
     </div>
     <div class="profile-right-bloc">
       <div class="user-infos">
@@ -70,7 +71,7 @@
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="userBis.job"
+          v-model="userBis.level"
           label="Job"
           prepend-icon='fa-user-tie'
           append-icon="fa-pen"
@@ -82,44 +83,44 @@
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="userBis.childrenNumber"
+          v-model="userBis.class.childrenNumber"
           label="Number of Children"
           prepend-icon='fa-users'
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="userBis.statut"
-          label="statut"
+          v-model="userBis.class.name"
+          label="Class name"
           prepend-icon='fa-users'
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
           v-model="userBis.adress"
-          label="statut"
+          label="Address"
           prepend-icon='fa-map-marker-alt'
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
           v-model="userBis.city"
-          label="statut"
+          label="City"
           prepend-icon='fa-map-marker-alt'
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
           v-model="userBis.state"
-          label="statut"
+          label="State"
           prepend-icon='fa-map-marker-alt'
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
           v-model="userBis.zipcode"
-          label="statut"
+          label="Zip code"
           prepend-icon='fa-map-marker-alt'
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
           v-model="userBis.phone"
-          label="statut"
+          label="Phone"
           prepend-icon='fa-mobile'
           append-icon="fa-pen"
           ></v-text-field>
@@ -178,13 +179,16 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   components: {},
 })
-export default class Profile extends Vue {
-  public userBis = {
-    firstname: 'Marc',
-    lastname: 'Obrien',
-    job: 'Farmer',
-    email: 'j.obrien@outlook.com',
-    childrenNumber: 2,
+export default class TeacherProfil extends Vue {
+public userBis = {
+  firstname: 'katy',
+  lastname: 'Smith',
+  job: 'Teacher',
+  email: 'k.smith@outlook.com',
+  class: {
+    level: '3rd grade',
+    name: '3rd grade A',
+    childrenNumber: 25,
     children: [
       {
         firstname: 'Karl',
@@ -199,25 +203,21 @@ export default class Profile extends Vue {
         healthIndications: 'do not drink milk',
       },
     ],
-    statut: 'Married',
-    adress: '25 Avenue Victor Hugo',
-    city: 'Paris',
-    state: 'France',
-    zipcode: '75116',
-    phone: '+63344556677',
-    password: '123456789',
-  }
-
-  public newPassword = '';
-
-  public confirmNewPassword = '';
-
-  public showPassword = false;
-
-  public showConfirmPassword = false;
+  },
+  adress: '25 Avenue Victor Hugo',
+  city: 'Paris',
+  state: 'France',
+  zipcode: '75116',
+  phone: '+63344556677',
+  password: '123456789',
+  hobbies: [
+    'Diving',
+    'Hiking',
+  ],
+}
 }
 </script>
 
 <style lang="scss">
-@import '@/assets/_profile.scss';
+@import './src/assets/_profile.scss';
 </style>
