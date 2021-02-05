@@ -73,9 +73,9 @@
       <div class="dashbord-student">
         <div class="disciplines">
             <v-select
-            v-model="disciplines"
-            :items="disciplines"
-            label="Disciplines"
+              v-model="disciplines"
+              :items="disciplines"
+              label="Disciplines"
             ></v-select>
         </div>
         <div class="sections">
@@ -90,19 +90,25 @@
           </div>
         </div>
       </div>
-      <div class="components"></div>
+      <div class="components">
+        <Marks />
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import Marks from './ChildrenProfile/Marks.vue';
 
 @Component({
-  components: {},
+  components: {
+    Marks,
+  },
 })
 export default class Profile extends Vue {
-  public userBis = {
+  // renommé le typage de l'objet avec le nom de l'interface créé IUser
+  public userBis: object = {
     firstname: 'Marc',
     lastname: 'Obrien',
     job: 'Farmer',
@@ -138,14 +144,35 @@ export default class Profile extends Vue {
     password: '123456789',
   }
 
-  public disciplines = [
-    'French',
-    'Maths',
-    'Other Languages',
-    'Sport Education',
-    'Art',
-    'Civic Education',
-    'World Questionning',
+  public disciplines: object = [
+    {
+      id: 0,
+      name: 'French',
+    },
+    {
+      id: 1,
+      name: 'Maths',
+    },
+    {
+      id: 2,
+      name: 'Other Languages',
+    },
+    {
+      id: 3,
+      name: 'Sport Education',
+    },
+    {
+      id: 4,
+      name: 'Art',
+    },
+    {
+      id: 5,
+      name: 'Civic Education',
+    },
+    {
+      id: 6,
+      name: 'World Questionning',
+    },
   ]
 
   public newPassword = '';
