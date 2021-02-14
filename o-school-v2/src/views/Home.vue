@@ -1,15 +1,17 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
+    <Home />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+import Home from '../components/Home.vue';
 
 export default Vue.extend({
   name: 'Home',
   components: {
+    Home,
   },
 });
 </script>

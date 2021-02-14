@@ -12,7 +12,7 @@
       <v-toolbar-title>O'school</v-toolbar-title>
       <!-- ParentCase connexion -->
       <v-tabs v-if="currentUser.isParent === true" align-with-title>
-          <v-tab><router-link class="route" to="/">{{sections[0]}}</router-link></v-tab>
+          <v-tab><router-link class="route" to="/home">{{sections[0]}}</router-link></v-tab>
           <v-tab><router-link class="route" to="/events">{{sections[1]}}</router-link></v-tab>
           <v-tab>
             <router-link class="route" to="/parent-profile">
@@ -29,7 +29,7 @@
         </v-tabs>
       <!-- teacherCase connexion -->
       <v-tabs v-if="currentUser.isParent === false" align-with-title>
-          <v-tab><router-link class="route" to="/">{{sections[0]}}</router-link></v-tab>
+          <v-tab><router-link class="route" to="/home">{{sections[0]}}</router-link></v-tab>
           <v-tab><router-link class="route" to="/events">{{sections[1]}}</router-link></v-tab>
           <v-tab>
             <router-link class="route" to="/teacher-profile">
@@ -42,7 +42,11 @@
               {{sections[3]}}
             </router-link>
           </v-tab>
-          <v-tab><router-link class="route" to="/logout">{{sections[4]}}</router-link></v-tab>
+          <v-tab>
+            <router-link class="route" to="/logout">
+              {{sections[4]}}
+            </router-link>
+          </v-tab>
         </v-tabs>
       </v-app-bar>
     <v-navigation-drawer

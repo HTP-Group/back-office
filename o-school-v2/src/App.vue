@@ -1,9 +1,17 @@
 <template>
   <div>
-    <!-- A conditionner selon si l'utilisateur est un prof ou un parent -->
-    <NavBar />
+    <!-- A conditionner selon si l'utilisateur est logIn ou logOut -->
+    <v-container v-if="isSigned">
+      <h1>Log out</h1>
+      <NavBar />
+      <Register />
+      <Login />
+    </v-container>
+    <v-container v-if="!isSigned">
+      <NavBar />
+      <router-view />
+    </v-container>
     <!-- <Trombinoscope /> -->
-    <Profile />
     <!-- <Login /> -->
     <!-- <Register /> -->
   </div>
@@ -20,14 +28,19 @@ import Profile from './views/profile/Profile.vue';
 @Component({
   components: {
     Profile,
-    // Register,
     NavBar,
+    // Register,
     // Trombinoscope,
     // Login,
   },
 })
 export default class App extends Vue {
+  public isSigned = false;
 
+  // private async created() {
+  // conditions
+  //  this.isSigned = LocalStorageService.get(IS_SIGNED) === 'true'
+  // }
 }
 </script>
 <style scoped>
