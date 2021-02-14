@@ -125,48 +125,47 @@
           append-icon="fa-pen"
           ></v-text-field>
         </div>
-         <div class="buttons btn-user-infos">
-          <v-btn class="btn-cancel">cancel</v-btn>
-          <v-btn class="btn-submit">Save</v-btn>
+         <div class="btn-user-infos">
+          <v-btn class="btn btn-cancel">cancel</v-btn>
+          <v-btn class="btn btn-submit save-btn">Save</v-btn>
         </div>
       </div>
-      <div class="password-infos">
+       <div class="password-infos">
         <div class="password-title">
           <h2 class="password-title-h2">Password settings</h2>
         </div>
         <div class="user-password">
-          <v-text-field
-            v-model="newPassword"
+        <v-text-field
+            v-model="userBis.password"
             label="current password"
-            :append-icon="showPassword ? 'fa-eye' : 'fa-eye-slash'"
+            :append-icon="hideCurrentPassword ? 'fa-eye-slash' : 'fa-eye-slash'"
             prepend-icon="fa-key"
             :readonly="true"
-            :type="showPassword ? 'password' : 'type'"
-            @click:append="showPassword = !showPassword"
-            @keyup.enter="logIn"
+            type="password"
+            @click:append="hideCurrentPassword = !hideCurrentPassword"
           ></v-text-field>
           <v-text-field
             v-model="newPassword"
             label="new password"
-            :append-icon="showPassword ? 'fa-eye' : 'fa-eye-slash'"
+            :append-icon="hidePassword ? 'fa-eye' : 'fa-eye-slash'"
             prepend-icon="fa-key"
-            :type="showPassword ? 'password' : 'type'"
-            @click:append="showPassword = !showPassword"
+            :type="hidePassword ? 'password' : 'type'"
+            @click:append="hidePassword = !hidePassword"
             @keyup.enter="logIn"
           ></v-text-field>
           <v-text-field
-            v-model="confirmNewPassword"
+            v-model="confirmPassword"
             label="new password"
-            :append-icon="showPassword ? 'fa-eye' : 'fa-eye-slash'"
+            :append-icon="confirmPassword ? 'fa-eye-slash' : 'fa-eye'"
             prepend-icon="fa-key"
-            :type="showPassword ? 'password' : 'type'"
-            @click:append="showPassword = !showPassword"
+            :type="hideConfirmPassword ? 'type' : 'password'"
+            @click:append="hideConfirmPassword = !hideConfirmPassword"
             @keyup.enter="logIn"
           ></v-text-field>
-        </div>
-        <div class="buttons btn-password">
-          <v-btn class="btn-cancel">cancel</v-btn>
-          <v-btn class="btn-submit">Save</v-btn>
+          <div class="btn-user-infos-password">
+            <v-btn class="btn-cancel">cancel</v-btn>
+            <v-btn class="btn-submit save-btn">Save</v-btn>
+          </div>
         </div>
       </div>
     </div>
@@ -180,44 +179,58 @@ import { Component, Vue } from 'vue-property-decorator';
   components: {},
 })
 export default class TeacherProfil extends Vue {
-public userBis = {
-  firstname: 'katy',
-  lastname: 'Smith',
-  job: 'Teacher',
-  email: 'k.smith@outlook.com',
-  class: {
-    level: '3rd grade',
-    name: '3rd grade A',
-    childrenNumber: 25,
-    children: [
-      {
-        firstname: 'Karl',
-        lastname: 'Obrien',
-        level: '8',
-        healthIndications: '',
-      },
-      {
-        firstname: 'Betty',
-        lastname: 'Obrien',
-        level: '10',
-        healthIndications: 'do not drink milk',
-      },
+  public userBis = {
+    firstname: 'katy',
+    lastname: 'Smith',
+    job: 'Teacher',
+    email: 'k.smith@outlook.com',
+    class: {
+      level: '3rd grade',
+      name: '3rd grade A',
+      childrenNumber: 25,
+      children: [
+        {
+          firstname: 'Karl',
+          lastname: 'Obrien',
+          level: '8',
+          healthIndications: '',
+        },
+        {
+          firstname: 'Betty',
+          lastname: 'Obrien',
+          level: '10',
+          healthIndications: 'do not drink milk',
+        },
+      ],
+    },
+    adress: '25 Avenue Victor Hugo',
+    city: 'Paris',
+    state: 'France',
+    zipcode: '75116',
+    phone: '+63344556677',
+    password: '123456789',
+    hobbies: [
+      'Diving',
+      'Hiking',
     ],
-  },
-  adress: '25 Avenue Victor Hugo',
-  city: 'Paris',
-  state: 'France',
-  zipcode: '75116',
-  phone: '+63344556677',
-  password: '123456789',
-  hobbies: [
-    'Diving',
-    'Hiking',
-  ],
-}
+  }
+
+  public newPassword = '';
+
+  public confirmPassword = '';
+
+  public hideCurrentPassword = true;
+
+  public hidePassword = true;
+
+  public hideConfirmPassword = true;
 }
 </script>
 
 <style lang="scss">
 @import './src/assets/_profile.scss';
+.save-btn {
+  justify-self: end;
+  width: 85%;
+}
 </style>

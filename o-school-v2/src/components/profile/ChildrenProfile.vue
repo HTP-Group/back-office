@@ -99,7 +99,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Marks from './ChildrenProfile/Marks.vue';
+import Marks from './childrenProfile/Marks.vue';
 
 @Component({
   components: {

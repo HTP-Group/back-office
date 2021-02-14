@@ -1,10 +1,11 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import Register from '../views/Auth/Register.vue';
-import Login from '../views/Auth/Login.vue';
-import ParentProfile from '../views/parent/Profile/ParentProfile.vue';
-import ChildrenProfile from '../components/ChildrenProfile.vue';
-import TeacherProfile from '../views/teacher/TeacherProfile.vue';
+import Register from '../views/auth/Register.vue';
+import Login from '../views/auth/Login.vue';
+import ParentProfile from '../components/profile/ParentProfile.vue';
+import ChildrenProfile from '../components/profile/ChildrenProfile.vue';
+import TeacherProfile from '../components/profile/TeacherProfile.vue';
+import StudentProfile from '../components/profile/StudentProfile.vue';
 import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
@@ -21,30 +22,27 @@ const routes: Array<RouteConfig> = [
     component: Register,
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-  },
-  {
     path: '/',
     name: 'Login',
     component: Login,
   },
   {
-    path: '/parent/:id',
+    path: '/parent-profile',
     name: 'ParentProfile',
     component: ParentProfile,
   },
   {
-    path: '/profile/:id/children/:id',
+    path: '/student-profile',
+    name: 'StudentProfile',
+    component: StudentProfile,
+  },
+  {
+    path: '/parent-profile/:id/children/:id',
     name: 'ChildrenProfile',
     component: ChildrenProfile,
   },
   {
-    path: '/teacher/:id',
+    path: '/teacher-profile',
     name: 'TeacherProfile',
     component: TeacherProfile,
   },

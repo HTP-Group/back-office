@@ -43,7 +43,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import ProfileStudent from './StudentProfile.vue';
+import ProfileStudent from './profile/StudentProfile.vue';
 
 @Component({
   components: {

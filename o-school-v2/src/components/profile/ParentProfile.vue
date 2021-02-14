@@ -2,7 +2,9 @@
   <div class="profile-page">
     <div class="profile-page-title">
       <h2 class="profile-page-title-h2">
-        {{ userBis.firstname }} - {{ userBis.lastname }}</h2>
+        {{userBis.firstname}}
+        {{userBis.lastname}}
+      </h2>
     </div>
     <div class="profile-left-bloc">
       <div class="avatar">
@@ -12,45 +14,42 @@
           size="164"
           tile
         >
-        <v-img src=""></v-img>
+        <v-img src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"></v-img>
         </v-avatar>
       </div>
-      <v-list-item-content class="teacher-infos">
-        <v-list-item-title class="title">
-          <h2 class="name">
-          {{ userBis.firstname }} - {{ userBis.lastname }}
-          </h2>
-        </v-list-item-title>
-        <v-list-item-subtitle>
-          <v-label>Job: </v-label>
-          {{userBis.job}}
-        </v-list-item-subtitle>
-        <v-list-item-subtitle>
-          <v-label>Level: </v-label>
-          {{userBis.class.level}}
-        </v-list-item-subtitle>
-        <v-list-item-subtitle>
-          <v-label>Class name: </v-label>
-          {{userBis.class.name}}
-        </v-list-item-subtitle>
-        <v-list-item-subtitle>
-          <v-label>Number of Children: </v-label>
-          {{userBis.class.childrenNumber}}
-        </v-list-item-subtitle>
+        <v-list-item-content class="parent-infos">
+          <v-list-item-title class="title">
+            <h2 class="name">
+              {{userBis.firstname}}
+              {{userBis.lastname}}
+            </h2>
+          </v-list-item-title>
           <v-list-item-subtitle>
-          <v-label>Children: </v-label>
-            <router-link to="/trombinoscope/" class="b-link">
-            Trombinoscop link
-            </router-link>
-        </v-list-item-subtitle>
-        <v-list-item-subtitle>
-          <v-label>Adress: </v-label>
-        {{ userBis.city }} - {{ userBis.zipcode }}
-        </v-list-item-subtitle>
-        <v-list-item-subtitle>
-          <v-label>Email: </v-label>{{ userBis.email }}
-        </v-list-item-subtitle>
-      </v-list-item-content>
+            <v-label>Job: </v-label>{{userBis.job}}
+          </v-list-item-subtitle>
+          <v-list-item-subtitle>
+            <v-label>Number of Children: </v-label>{{userBis.childrenNumber}}
+          </v-list-item-subtitle>
+           <v-list-item-subtitle>
+            <v-label>Children: </v-label>
+             <router-link to="/profile/:id" class="b-link">
+              {{userBis.children[0].firstname}} {{userBis.children[0].lastname}},
+             </router-link>
+             <router-link to="/profile/:id" class="b-link">
+               {{userBis.children[1].firstname}} {{userBis.children[1].lastname}}
+             </router-link>
+          </v-list-item-subtitle>
+           <v-list-item-subtitle>
+            <v-label>Statut: </v-label>{{userBis.statut}}
+          </v-list-item-subtitle>
+          <v-list-item-subtitle>
+            <v-label>Adress: </v-label>
+            {{userBis.adress}} - {{userBis.city}} - {{userBis.zipcode}} - {{userBis.state}}
+          </v-list-item-subtitle>
+          <v-list-item-subtitle>
+            <v-label>Phone: </v-label>{{userBis.phone}}
+          </v-list-item-subtitle>
+        </v-list-item-content>
     </div>
     <div class="profile-right-bloc">
       <div class="user-infos">
@@ -71,7 +70,7 @@
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="userBis.level"
+          v-model="userBis.job"
           label="Job"
           prepend-icon='fa-user-tie'
           append-icon="fa-pen"
@@ -83,14 +82,14 @@
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="userBis.class.childrenNumber"
+          v-model="userBis.childrenNumber"
           label="Number of Children"
           prepend-icon='fa-users'
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="userBis.class.name"
-          label="Class name"
+          v-model="userBis.statut"
+          label="Statut"
           prepend-icon='fa-users'
           append-icon="fa-pen"
           ></v-text-field>
@@ -125,9 +124,9 @@
           append-icon="fa-pen"
           ></v-text-field>
         </div>
-         <div class="buttons btn-user-infos">
-          <v-btn class="btn-cancel">cancel</v-btn>
-          <v-btn class="btn-submit">Save</v-btn>
+         <div class="btn-user-infos">
+          <v-btn class="btn btn-cancel">cancel</v-btn>
+          <v-btn class="btn btn-submit save-btn">Save</v-btn>
         </div>
       </div>
       <div class="password-infos">
@@ -136,37 +135,35 @@
         </div>
         <div class="user-password">
           <v-text-field
-            v-model="newPassword"
+            v-model="userBis.password"
             label="current password"
-            :append-icon="showPassword ? 'fa-eye' : 'fa-eye-slash'"
             prepend-icon="fa-key"
             :readonly="true"
-            :type="showPassword ? 'password' : 'type'"
-            @click:append="showPassword = !showPassword"
-            @keyup.enter="logIn"
+            type="password"
+            @click:append="hideCurrentPassword = !hideCurrentPassword"
           ></v-text-field>
           <v-text-field
             v-model="newPassword"
             label="new password"
-            :append-icon="showPassword ? 'fa-eye' : 'fa-eye-slash'"
+            :append-icon="hidePassword ? 'fa-eye' : 'fa-eye-slash'"
             prepend-icon="fa-key"
-            :type="showPassword ? 'password' : 'type'"
-            @click:append="showPassword = !showPassword"
+            :type="hidePassword ? 'password' : 'type'"
+            @click:append="hidePassword = !hidePassword"
             @keyup.enter="logIn"
           ></v-text-field>
           <v-text-field
-            v-model="confirmNewPassword"
-            label="new password"
-            :append-icon="showPassword ? 'fa-eye' : 'fa-eye-slash'"
+            v-model="confirmPassword"
+            label="confirm password"
+            :append-icon="hideConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"
             prepend-icon="fa-key"
-            :type="showPassword ? 'password' : 'type'"
-            @click:append="showPassword = !showPassword"
+            :type="hideConfirmPassword ? 'type' : 'password'"
+            @click:append="hideConfirmPassword = !hideConfirmPassword"
             @keyup.enter="logIn"
           ></v-text-field>
-        </div>
-        <div class="buttons btn-password">
-          <v-btn class="btn-cancel">cancel</v-btn>
-          <v-btn class="btn-submit">Save</v-btn>
+          <div class="btn-user-infos-password">
+            <v-btn class="btn-cancel">cancel</v-btn>
+            <v-btn class="btn-submit save-btn">Save</v-btn>
+          </div>
         </div>
       </div>
     </div>
@@ -179,16 +176,13 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   components: {},
 })
-export default class TeacherProfil extends Vue {
-public userBis = {
-  firstname: 'katy',
-  lastname: 'Smith',
-  job: 'Teacher',
-  email: 'k.smith@outlook.com',
-  class: {
-    level: '3rd grade',
-    name: '3rd grade A',
-    childrenNumber: 25,
+export default class Profile extends Vue {
+  public userBis = {
+    firstname: 'Marc',
+    lastname: 'Obrien',
+    job: 'Farmer',
+    email: 'j.obrien@outlook.com',
+    childrenNumber: 2,
     children: [
       {
         firstname: 'Karl',
@@ -203,21 +197,31 @@ public userBis = {
         healthIndications: 'do not drink milk',
       },
     ],
-  },
-  adress: '25 Avenue Victor Hugo',
-  city: 'Paris',
-  state: 'France',
-  zipcode: '75116',
-  phone: '+63344556677',
-  password: '123456789',
-  hobbies: [
-    'Diving',
-    'Hiking',
-  ],
-}
+    statut: 'Married',
+    adress: '25 Avenue Victor Hugo',
+    city: 'Paris',
+    state: 'France',
+    zipcode: '75116',
+    phone: '+63344556677',
+    password: '123456789',
+  }
+
+  public newPassword = '';
+
+  public confirmPassword = '';
+
+  public hideCurrentPassword = true;
+
+  public hidePassword = true;
+
+  public hideConfirmPassword = true;
 }
 </script>
 
 <style lang="scss">
-@import './src/assets/_profile.scss';
+@import '@/assets/_profile.scss';
+.save-btn {
+  justify-self: end;
+  width: 85%;
+}
 </style>

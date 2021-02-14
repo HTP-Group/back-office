@@ -1,3 +1,1 @@
-export interface IGraph {
-
-}
+export interface IGraph {}

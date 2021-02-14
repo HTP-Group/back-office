@@ -3,9 +3,7 @@
     <!-- A conditionner selon si l'utilisateur est un prof ou un parent -->
     <NavBar />
     <!-- <Trombinoscope /> -->
-    <!-- <TeacherProfile /> -->
-    <ChildrenProfile />
-    <!-- <ParentProfile /> -->
+    <Profile />
     <!-- <Login /> -->
     <!-- <Register /> -->
   </div>
@@ -15,20 +13,16 @@
 import { Vue, Component } from 'vue-property-decorator';
 import NavBar from './components/NavBar.vue';
 // import Trombinoscope from './components/Trombinoscope.vue';
-// import TeacherProfile from './components/TeacherProfile.vue';
-import ChildrenProfile from './components/ChildrenProfile.vue';
-// import ParentProfile from './components/ParentProfile.vue';
 // import Register from './components/Register.vue';
 // import Login from './components/Login.vue';
+import Profile from './views/profile/Profile.vue';
 
 @Component({
   components: {
+    Profile,
     // Register,
     NavBar,
     // Trombinoscope,
-    // TeacherProfile,
-    ChildrenProfile,
-    // ParentProfile,
     // Login,
   },
 })
@@ -36,3 +30,5 @@ export default class App extends Vue {
 
 }
 </script>
+<style scoped>
+</style>
