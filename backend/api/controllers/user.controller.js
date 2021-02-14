@@ -1,7 +1,9 @@
 import { UserModel } from '../models/user.js';
-import config from 'config';
 import bcrypt from 'bcrypt';
 import _ from 'lodash';
+import config from 'config';
+import jwt from 'jsonwebtoken';
+
 const user = new UserModel()
 
 async function register(req, res) {
@@ -17,10 +19,13 @@ async function register(req, res) {
 
   await user.save();
 
+  // const token = jwt.sign({_id: user._id }, config.get('jwtPrivateKey'));
+  // res.header('x-auth-token', token).send(user)
+
   return res.send(user);
 }
 
-async function signIn() {
+async function signIn(req, res) {
   const { error } = validateSignIn(req.body); 
   if (error) return res.status(400).send(error.details[0].message);
   
@@ -32,7 +37,8 @@ async function signIn() {
 
   // I have to make my private key in second argument
   const token = jwt.sign({_id: user._id }, config.get('jwtPrivateKey'));
-  return res.send(token);
+  res.header('x-auth-token', token).send(user)
+  // return res.send(token);
 }
 
 const userController = {

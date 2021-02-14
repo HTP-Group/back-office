@@ -1,7 +1,46 @@
 import Joi from 'joi';
 import mongoose from 'mongoose';
 import _ from 'lodash';
+// import config from 'config';
+// import jwt from 'jsonwebtoken'
 
+// const userSchema = new mongoose.Schema({
+//   firstname: {
+//     type: String,
+//     required: true,
+//     minlength: 3, 
+//     maxlength: 50,
+//   }, 
+//   lastname: {
+//     type: String,
+//     required: true,
+//     minlength: 3, 
+//     maxlength: 50,
+//   } , 
+//   email: {
+//     type: String,
+//     required: true,
+//     minlength: 8, 
+//     maxlength: 150,
+//     unique: true
+//   } ,
+//   password: {
+//     type: String,
+//     required: true,
+//     minlength: 3, 
+//     maxlength: 1050,
+//   },
+//   // parent = true vs teacher = false
+//   isParent: {
+//     type: Boolean,
+//     required: true,
+//   }
+// })
+// const User = mongoose.model('User', userSchema)
+// userSchema.methods.generateAuthToken = function() {
+  // const token = jwt.sign({_id: this._id})
+  // return token;
+// }
 const User = mongoose.model('User', new mongoose.Schema({
   firstname: {
     type: String,
