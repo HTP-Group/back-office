@@ -88,10 +88,12 @@ export class UserModel {
     return schema.validate(user);
   }
   async newUser(body) {
-    await new User(_.pick(body, ['firstname', 'lastname', 'email', 'password', 'isParent']));
+    const user = await new User(_.pick(body, ['firstname', 'lastname', 'email', 'password', 'isParent']));
+    return user
   }
   async findUserByEmail(email) {
-    await User.findOne({ email: email })
+    const user = await User.findOne({ email: email })
+    return user
   }
   validateSignIn(req) {
     const schema = Joi.object({

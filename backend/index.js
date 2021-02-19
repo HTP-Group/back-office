@@ -1,13 +1,15 @@
-import config from 'config';
 import mongoose from 'mongoose';
 import user from './api/routes/user.js';
 import express from 'express';
+import dotenv from 'dotenv';
+dotenv.config();
+
 const app = express();
 
-if (!config.get('jwtPrivateKey')) {
-  console.error('FATAL ERROR: JwtPrivateKey is not defined.')
-  process.exit(1);
-}
+// if (!config.get('jwtPrivateKey')) {
+//   console.error('FATAL ERROR: JwtPrivateKey is not defined.')
+//   process.exit(1);
+// }
 
 
 mongoose.connect('mongodb://localhost/o-school', { 
