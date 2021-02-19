@@ -40,12 +40,6 @@
           class="user-input"
           @click:append="hideNewConfirmPassword = !hideNewConfirmPassword"
         ></v-text-field>
-        <v-select
-          label="roles"
-          v-model="userBis.role"
-          :items="items"
-          :readonly="false"
-        ></v-select>
         <v-container fluid>
           <v-radio-group
             v-model="isParent"
@@ -70,7 +64,6 @@
         >Cancel</v-btn>
         <v-btn
           class="button-submit"
-          :disabled="!inputHasChanged"
           @click="submit()"
         >Submit</v-btn>
       </div>
@@ -80,6 +73,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import registerApi from '../../api/register.api';
 
 @Component({
   components: {},
@@ -137,8 +131,69 @@ export default class Register extends Vue {
       isParent: false,
     };
   }
+
+  private async submit() {
+    const response = await registerApi.register(this.userBis);
+    localStorage.setItem('JWT_ACCESS', response);
+    localStorage.setItem('IS_SIGNED', 'true');
+  }
+  // logout
+  // dans le router, beforeEnter, grâce IS_SIGNED je vas pouvoir savoir s'il faut être connecté
+  // (ex: profile) sur tel ou tel page à l'inverse login pas besoin.
+  // localStorage.removeItem('IS_SIGNED');
+  // localstorage.removeItem('JWT_ACCESS'');
 }
 </script>
 <style lang="scss">
-// @import '@/src/assets/_register.scss';
+// @import '../src/assets/_register.scss';
+.register-page {
+  display: grid;
+  grid-template-columns: 30% auto 30%;
+  background-color: #6f68ed;
+  height: 100vh;
+}
+.register-bloc {
+  margin-top: 2em;
+  grid-column-start: 2;
+  border: 1px solid #6f68ed;
+  border-radius: 10px;
+  padding: 2em;
+  background-color: #fff;
+  height: 75%;
+  box-shadow: 0 0 4px 0 rgba(116, 40, 23, 0.15);
+}
+.register-title {
+  display: grid;
+  padding: 2em;
+  color: #262a3e;
+  border-bottom :1px solid #6f68ed;
+  margin-bottom: 1em;
+}
+.register-title-h2 {
+  justify-self: center;
+}
+.user-infos {
+}
+.buttons {
+  display: grid;
+  grid-template-columns: 20% 20%;
+  grid-gap: 2em;
+  grid-template-rows: 1fr;
+}
+.button-cancel {
+
+}
+.button-submit {
+  justify-self: flex-end !important;
+  background-color: #6f68ed !important;
+  color: #fff !important;
+}
+.v-label {
+
+}
+
+.v-icon {
+  font-size: 1rem;
+}
+
 </style>

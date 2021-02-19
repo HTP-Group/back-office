@@ -1,16 +1,16 @@
 <template>
   <div>
     <!-- A conditionner selon si l'utilisateur est logIn ou logOut -->
-    <v-container v-if="isSigned">
+    <div v-if="isSigned">
       <h1>Log out</h1>
       <NavBar />
       <Register />
       <Login />
-    </v-container>
-    <v-container v-if="!isSigned">
+    </div>
+    <div v-if="!isSigned">
       <NavBar />
       <router-view />
-    </v-container>
+    </div>
     <!-- <Trombinoscope /> -->
     <!-- <Login /> -->
     <!-- <Register /> -->
