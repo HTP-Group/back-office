@@ -2,15 +2,17 @@ import mongoose from 'mongoose';
 import user from './api/routes/user.js';
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 dotenv.config();
 
-const app = express();
+const app = express()
+app.options('*', cors())
 
-// if (!config.get('jwtPrivateKey')) {
-//   console.error('FATAL ERROR: JwtPrivateKey is not defined.')
-//   process.exit(1);
-// }
-
+const corsOptions = {
+  origin: 'http://localhost:8080/',
+  optionsSuccessStatus: 200,
+  methods: "GET, PUT, POST, DELETE"
+}
 
 mongoose.connect('mongodb://localhost/o-school', { 
     useNewUrlParser: true, 
@@ -21,8 +23,9 @@ mongoose.connect('mongodb://localhost/o-school', {
 
 app.use(express.json())
 app.use('/api/user', user)
+app.use(cors(corsOptions));
 
-const port = process.env.PORT || 3000; 
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}`))
 
 // module.exports.absolute = function(number) {
