@@ -71,6 +71,7 @@
         <v-btn
           class="button-submit"
           :disabled="!inputHasChanged"
+          @click="submit()"
         >Submit</v-btn>
       </div>
     </div>
