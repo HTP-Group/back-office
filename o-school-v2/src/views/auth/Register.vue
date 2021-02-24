@@ -133,9 +133,13 @@ export default class Register extends Vue {
   }
 
   private async submit() {
-    const response = await registerApi.register(this.userBis);
-    localStorage.setItem('JWT_ACCESS', response);
-    localStorage.setItem('IS_SIGNED', 'true');
+    try {
+      const response = await registerApi.register(this.userBis);
+      localStorage.setItem('JWT_ACCESS', response);
+      localStorage.setItem('IS_SIGNED', 'true');
+    } catch (err) {
+      console.error(err);
+    }
   }
   // logout
   // dans le router, beforeEnter, grâce IS_SIGNED je vas pouvoir savoir s'il faut être connecté
