@@ -88,14 +88,6 @@ export default class Register extends Vue {
     confirmPassword: '',
     isParent: false,
   }
-  // public userBis = {
-  //   firstname: 'Thib',
-  //   lastname: 'Dec',
-  //   email: 'thib@gmail.com',
-  //   password: '123456789',
-  //   confirmPassword: '123456789',
-  //   isParent: 'parent',
-  // }
 
   public hideNewPassword = false
 
