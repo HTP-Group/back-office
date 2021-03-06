@@ -2,7 +2,7 @@
   <div class="login-page">
     <div class="login-bloc">
       <div class="login-title">
-        <h2 class="login-title-h2">Login</h2>
+        <h3 class="login-title-h2">Login</h3>
       </div>
       <div class="login-inputs">
         <v-text-field
@@ -20,8 +20,8 @@
           @keyup.enter="logIn"
         ></v-text-field>
       </div>
-      <div>
-        <router-link class="b-link reset-password" to="/reset-password">Reset password</router-link>
+      <div class="reset-password">
+        <router-link class="b-link" to="/reset-password">Reset password</router-link>
       </div>
       <div class="buttons">
         <v-btn class="btn-cancel" @click="cancel()">Cancel</v-btn>

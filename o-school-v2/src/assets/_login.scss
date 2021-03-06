@@ -13,16 +13,32 @@
   background-color: #fff;
   height: 40%;
   box-shadow: 0 0 4px 0 rgba(116, 40, 23, 0.15);
+  display: grid;
+  grid-template-rows: 15% 60% 10% 15%;
 }
 .login-title {
   display: grid;
-  padding: 2em;
   color: #262a3e;
   border-bottom :1px solid #6f68ed;
-  margin-bottom: 1em;
+  grid-row-start: 1;
+  align-self: flex-start;
 }
 .login-title-h2 {
+  padding: 1em;
   justify-self: center;
+}
+.login-inputs {
+  grid-row-start: 2;
+  align-self: center;
+}
+.reset-password {
+  grid-row-start: 3;
+  text-align: end;
+  .b-link {
+    font-size: small;
+    color: rgb(111, 104, 237, 0.5);
+    margin-top: 5em;
+  }
 }
 .buttons {
   margin-top: 2em;
@@ -30,6 +46,7 @@
   grid-template-columns: 20% auto 20%;
   grid-gap: 2em;
   grid-template-rows: 1fr;
+  grid-row-start: 4;
 }
 .v-btn {
  color: #6f68ed !important;
@@ -50,10 +67,7 @@
   margin: 1em;
 }
 
-.b-link {
-  font-size: small;
-  color: rgb(111, 104, 237, 0.5);
-}
+
 .v-input__slot {
   margin-left: 1em;
 }
