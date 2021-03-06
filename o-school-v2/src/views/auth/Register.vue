@@ -40,22 +40,23 @@
           class="user-input"
           @click:append="hideNewConfirmPassword = !hideNewConfirmPassword"
         ></v-text-field>
-        <v-container fluid>
-          <v-radio-group
-            v-model="isParent"
-            row
-          >
-            <v-radio
-              :label="roles[0]"
-              :value="roles[0]"
-              active-class
-            ></v-radio>
-            <v-radio
-              :label="roles[1]"
-              :value="roles[1]"
-            ></v-radio>
-          </v-radio-group>
-        </v-container>
+        <v-radio-group
+          v-model="isParent"
+          row
+          class="radios-buttons"
+        >
+          <v-radio
+            :label="roles[0]"
+            :value="roles[0]"
+            active-class
+            class="radio-parent"
+          ></v-radio>
+          <v-radio
+            :label="roles[1]"
+            :value="roles[1]"
+            class="radio-teacher"
+          ></v-radio>
+        </v-radio-group>
       </div>
       <div class="buttons">
         <v-btn
@@ -145,7 +146,7 @@ export default class Register extends Vue {
 .register-page {
   display: grid;
   grid-template-columns: 30% auto 30%;
-  background-color: #6f68ed;
+  background-color: #fff;
   height: 100vh;
 }
 .register-bloc {
@@ -157,39 +158,59 @@ export default class Register extends Vue {
   background-color: #fff;
   height: 75%;
   box-shadow: 0 0 4px 0 rgba(116, 40, 23, 0.15);
-}
-.register-title {
   display: grid;
-  padding: 2em;
-  color: #262a3e;
-  border-bottom :1px solid #6f68ed;
-  margin-bottom: 1em;
-}
-.register-title-h2 {
-  justify-self: center;
-}
-.user-infos {
-}
-.buttons {
-  display: grid;
-  grid-template-columns: 20% 20%;
-  grid-gap: 2em;
-  grid-template-rows: 1fr;
-}
-.button-cancel {
+  grid-template-rows: 20% 60% 20%;
+  grid-template-columns: 1fr;
+  box-shadow:  0 0 6px 0 rgb(111, 104, 237, 0.25);
+  .register-title {
+    grid-row-start: 1;
+    display: grid;
+    padding: 2em;
+    color: #262a3e;
+    border-bottom :1px solid #6f68ed;
+    margin-bottom: 1em;
+  }
+  .register-title-h2 {
+    justify-self: center;
+  }
+  .user-infos {
+    grid-row-start: 2;
+    grid-template-rows: repeat(6, 16.6%);
+    padding: 0 1em;
+    .radios-buttons {
+      padding-left: -10px;
+      .v-input__control {
+        display: start;
+        .v-input--radio-group {
+          display: inline-grid !important;
+        }
+        .v-label {
+          padding-left: 1em;
+        }
+      }
+    }
+  }
 
-}
-.button-submit {
-  justify-self: flex-end !important;
-  background-color: #6f68ed !important;
-  color: #fff !important;
-}
-.v-label {
+  .buttons {
+    display: grid;
+    grid-row-start: 3;
+    grid-template-columns: 20% auto 20%;
+    grid-gap: 2em;
+    grid-template-rows: 1fr;
+    margin: 2em 0;
+  }
+  .button-cancel {
 
-}
+  }
+  .button-submit {
+    justify-self: flex-end !important;
+    background-color: #6f68ed !important;
+    color: #fff !important;
+  }
+  .v-label {}
 
-.v-icon {
-  font-size: 1rem;
+  .v-icon {
+    font-size: 1rem;
+  }
 }
-
 </style>
