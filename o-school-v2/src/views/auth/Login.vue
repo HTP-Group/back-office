@@ -20,8 +20,13 @@
           @keyup.enter="logIn"
         ></v-text-field>
       </div>
-      <div class="reset-password">
-        <router-link class="b-link" to="/reset-password">Reset password</router-link>
+      <div class="redirection-links">
+        <div class="register-redirect">
+          <router-link class="b-link" to="/register">I don't have an account</router-link>
+        </div>
+        <div class="reset-password">
+          <router-link class="b-link" to="/reset-password">Reset password</router-link>
+        </div>
       </div>
       <div class="buttons">
         <v-btn class="btn-cancel" @click="cancel()">Cancel</v-btn>

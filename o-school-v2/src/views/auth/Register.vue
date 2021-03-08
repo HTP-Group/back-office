@@ -58,6 +58,14 @@
           ></v-radio>
         </v-radio-group>
       </div>
+      <div class="redirection-links">
+        <div class="register-redirect">
+          <router-link class="b-link" to="/">I already have an account</router-link>
+        </div>
+        <div class="reset-password">
+          <router-link class="b-link" to="/reset-password">Reset password</router-link>
+        </div>
+      </div>
       <div class="buttons">
         <v-btn
           class="button-cancel"
@@ -159,7 +167,7 @@ export default class Register extends Vue {
   height: 75%;
   box-shadow: 0 0 4px 0 rgba(116, 40, 23, 0.15);
   display: grid;
-  grid-template-rows: 20% 60% 20%;
+  grid-template-rows: 15% 60% 10% 15%;
   grid-template-columns: 1fr;
   box-shadow:  0 0 6px 0 rgb(111, 104, 237, 0.25);
   .register-title {
@@ -177,6 +185,7 @@ export default class Register extends Vue {
     grid-row-start: 2;
     grid-template-rows: repeat(6, 16.6%);
     padding: 0 1em;
+    border-bottom: none !important;
     .radios-buttons {
       padding-left: -10px;
       .v-input__control {
@@ -190,10 +199,30 @@ export default class Register extends Vue {
       }
     }
   }
+  .redirection-links {
+    grid-row-start: 3;
+    text-align: end;
+    display: grid;
+    grid-template-columns: 30% auto 15%;
+    .register-redirect {
+      .b-link {
+        font-size: small;
+        color: rgb(111, 104, 237, 0.7);
+        margin-top: 5em;
+      }
+    }
+    .reset-password {
+      .b-link {
+        font-size: small;
+        color: rgb(111, 104, 237, 0.7);
+        margin-top: 5em;
+      }
+    }
+  }
 
   .buttons {
     display: grid;
-    grid-row-start: 3;
+    grid-row-start: 4;
     grid-template-columns: 20% auto 20%;
     grid-gap: 2em;
     grid-template-rows: 1fr;

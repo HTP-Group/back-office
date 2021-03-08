@@ -31,15 +31,27 @@
   grid-row-start: 2;
   align-self: center;
 }
-.reset-password {
+.redirection-links {
   grid-row-start: 3;
   text-align: end;
-  .b-link {
-    font-size: small;
-    color: rgb(111, 104, 237, 0.5);
-    margin-top: 5em;
+  display: grid;
+  grid-template-columns: 30% auto 15%;
+  .register-redirect {
+    .b-link {
+      font-size: small;
+      color: rgb(111, 104, 237, 0.7);
+      margin-top: 5em;
+    }
+  }
+  .reset-password {
+    .b-link {
+      font-size: small;
+      color: rgb(111, 104, 237, 0.7);
+      margin-top: 5em;
+    }
   }
 }
+
 .buttons {
   margin-top: 2em;
   display: grid; 
