@@ -6,6 +6,7 @@ import ParentProfile from '../components/profile/ParentProfile.vue';
 import ChildrenProfile from '../components/profile/ChildrenProfile.vue';
 import TeacherProfile from '../components/profile/TeacherProfile.vue';
 import StudentProfile from '../components/profile/StudentProfile.vue';
+import Trombinoscope from '../components/Trombinoscope.vue';
 import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
@@ -45,6 +46,11 @@ const routes: Array<RouteConfig> = [
     path: '/teacher-profile',
     name: 'TeacherProfile',
     component: TeacherProfile,
+  },
+  {
+    path: '/trombinoscope',
+    name: 'Trombinoscope',
+    component: Trombinoscope,
   },
 ];
 

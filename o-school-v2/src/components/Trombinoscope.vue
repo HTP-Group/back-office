@@ -5,39 +5,39 @@
         Trombinoscope
       </h2>
       <!-- créer un profil student sous forme de Card -->
-      <v-container class="trombi">
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-      </v-container>
     </div>
+    <div class="trombi">
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+         <ProfileStudent />
+      </div>
   </div>
 </template>
 

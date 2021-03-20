@@ -74,6 +74,7 @@
         <v-btn
           class="button-submit"
           @click="submit()"
+          @keyup.enter="submit"
         >Submit</v-btn>
       </div>
     </div>
@@ -82,7 +83,15 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+// import jwt_decode from 'jwt_decode';
 import registerApi from '../../api/register.api';
+import LocalStorageHelper from '../../helper/localstorage.service';
+import {
+  CSRF,
+  IS_SIGNED,
+  JWT_ACCESS,
+} from '../../constants';
+import { IAuthResponse } from '../../Interfaces/auth/IAuthResponse.interface';
 
 @Component({
   components: {},
@@ -138,10 +147,26 @@ export default class Register extends Vue {
       const response = await registerApi.register(this.userBis);
       localStorage.setItem('JWT_ACCESS', response);
       localStorage.setItem('IS_SIGNED', 'true');
+
+      this.signinSuccess(response);
     } catch (err) {
-      console.error(err);
+      this.signinFailed();
     }
   }
+
+  public signinSuccess(response: IAuthResponse) {
+    console.log('signinSuccess');
+    LocalStorageHelper.set(CSRF, response.csrf);
+    LocalStorageHelper.set(IS_SIGNED, 'true');
+    LocalStorageHelper.set(JWT_ACCESS, response.jwt_access);
+
+    // const data = jwt_decode(response.jwt_access);
+
+    // this.$store.commit('toggleLoader')
+
+    return this.$router.replace('/login');
+  }
+
   // logout
   // dans le router, beforeEnter, grâce IS_SIGNED je vas pouvoir savoir s'il faut être connecté
   // (ex: profile) sur tel ou tel page à l'inverse login pas besoin.

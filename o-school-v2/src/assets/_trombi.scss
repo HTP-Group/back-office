@@ -1,10 +1,25 @@
 .trombi-page {
   display: grid; 
   grid-template-rows: 25px auto;
-}
-.trombi {
-  margin-top: 1.5em;
-  display: grid;
-  grid-gap: 1em;
-  grid-template-columns:repeat(auto-fill, minmax(350px, 1fr));
+  height: 78vh;
+  grid-template-columns: 1fr;
+  margin: 1em 2em;
+  grid-template-rows: 5% 95%;
+  padding-bottom: 2em;
+  .profile-page-title {
+    width: 80% !important;
+    justify-self: center;
+    display: grid;
+  }
+  .trombi {
+    width: 80%;
+    margin-top: 3.5em;
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns:repeat(auto-fill, minmax(350px, 1fr));
+    justify-self: center;
+    box-shadow: 0 0 4px 0 rgba(116, 40, 23, 0.15);
+    padding: 1em;
+    overflow-y: scroll;
+  }
 }

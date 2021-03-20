@@ -38,7 +38,7 @@
           </v-tab>
           <!-- a conditionner si login / log out -->
           <v-tab>
-            <router-link class="route" to="/dashboard">
+            <router-link class="route" to="/trombinoscope">
               {{sections[3]}}
             </router-link>
           </v-tab>
@@ -107,7 +107,7 @@ export default class NavBar extends Vue {
     'Home',
     'School life',
     'Profile',
-    'Dashboard',
+    'Trombinoscope',
     'Logout',
   ]
 
