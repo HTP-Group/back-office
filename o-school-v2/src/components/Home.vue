@@ -1,5 +1,14 @@
 <template>
-  <h1>Home</h1>
+  <div class="calendar">
+    <v-calendar
+      ref="calendar"
+      :now="today"
+      :value="today"
+      :events="events"
+      color="primary"
+      type="week"
+    ></v-calendar>
+  </div>
 </template>
 
 <script lang="ts">

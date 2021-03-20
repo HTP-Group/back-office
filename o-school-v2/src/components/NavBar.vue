@@ -13,7 +13,7 @@
       <!-- ParentCase connexion -->
       <v-tabs v-if="currentUser.isParent === true" align-with-title>
           <v-tab><router-link class="route" to="/home">{{sections[0]}}</router-link></v-tab>
-          <v-tab><router-link class="route" to="/events">{{sections[1]}}</router-link></v-tab>
+          <v-tab><router-link class="route" to="/school_life">{{sections[1]}}</router-link></v-tab>
           <v-tab>
             <router-link class="route" to="/parent-profile">
               {{sections[2]}}
@@ -30,7 +30,7 @@
       <!-- teacherCase connexion -->
       <v-tabs v-if="currentUser.isParent === false" align-with-title>
           <v-tab><router-link class="route" to="/home">{{sections[0]}}</router-link></v-tab>
-          <v-tab><router-link class="route" to="/events">{{sections[1]}}</router-link></v-tab>
+          <v-tab><router-link class="route" to="/school_life">{{sections[1]}}</router-link></v-tab>
           <v-tab>
             <router-link class="route" to="/teacher-profile">
               {{sections[2]}}
@@ -38,7 +38,7 @@
           </v-tab>
           <!-- a conditionner si login / log out -->
           <v-tab>
-            <router-link class="route" to="/trombinoscope">
+            <router-link class="route" to="/dashboard">
               {{sections[3]}}
             </router-link>
           </v-tab>
@@ -107,7 +107,7 @@ export default class NavBar extends Vue {
     'Home',
     'School life',
     'Profile',
-    'Trombinoscope',
+    'Dashboard',
     'Logout',
   ]
 

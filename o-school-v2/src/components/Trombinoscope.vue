@@ -1,7 +1,7 @@
 <template>
   <div class="trombi-page">
-    <div class="profile-page-title">
-      <h2 class="profile-page-title-h2">
+    <div class="trombi-page-title">
+      <h2 class="trombi-page-title-h2">
         Trombinoscope
       </h2>
       <!-- créer un profil student sous forme de Card -->

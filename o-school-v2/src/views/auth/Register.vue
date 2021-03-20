@@ -180,7 +180,8 @@ export default class Register extends Vue {
   display: grid;
   grid-template-columns: 30% auto 30%;
   background-color: #fff;
-  height: 100vh;
+  height: 95vh;
+  overflow-y: hidden;
 }
 .register-bloc {
   margin-top: 2em;

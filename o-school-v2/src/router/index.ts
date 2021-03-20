@@ -8,6 +8,8 @@ import TeacherProfile from '../components/profile/TeacherProfile.vue';
 import StudentProfile from '../components/profile/StudentProfile.vue';
 import Trombinoscope from '../components/Trombinoscope.vue';
 import Home from '../views/Home.vue';
+import SchoolLife from '../components/SchoolLife.vue';
+import TeacherDashboard from '../components/dashboard/TeacherDashboard.vue';
 
 Vue.use(VueRouter);
 
@@ -46,6 +48,16 @@ const routes: Array<RouteConfig> = [
     path: '/teacher-profile',
     name: 'TeacherProfile',
     component: TeacherProfile,
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: TeacherDashboard,
+  },
+  {
+    path: '/school_life',
+    name: 'SchoolLife',
+    component: SchoolLife,
   },
   {
     path: '/trombinoscope',

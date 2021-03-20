@@ -31,7 +31,7 @@ export default class ProfileStudent extends Vue {
 <style lang="scss" scoped>
 .v-card {
   width: 100%;
-  border: 1px solid rgb(111, 104, 237, 0.4);
+  border-left: 4px solid rgb(111, 104, 237, 0.8);
 }
 .b-link {
   font-size: medium;

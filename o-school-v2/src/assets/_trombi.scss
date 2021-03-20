@@ -4,12 +4,21 @@
   height: 78vh;
   grid-template-columns: 1fr;
   margin: 1em 2em;
-  grid-template-rows: 5% 95%;
   padding-bottom: 2em;
-  .profile-page-title {
+  .trombi-page-title {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    color: #262a3e;
+    padding: 2em;
+    border-bottom :1px solid #6f68ed;
+    box-shadow: 0 0 4px 0 rgba(116, 40, 23, 0.15);
+    margin-bottom: 1em;
     width: 80% !important;
     justify-self: center;
-    display: grid;
+    .trombi-page-title-h2 {
+      grid-column-start: 2;
+      text-align: center;
+    }
   }
   .trombi {
     width: 80%;
