@@ -20,7 +20,7 @@
         <Classroom />
       </div>
       <div class="class-tests-list">
-        <TestsList />
+        <TestList />
       </div>
     </div>
       <!-- the classList is display on the left and the testsList on the right with add test btn-->
@@ -35,12 +35,12 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Classroom from '../classes/Classroom.vue';
-import TestsList from '../tests/TestsList.vue';
+import TestList from '../tests/TestList.vue';
 
 @Component({
   components: {
     Classroom,
-    TestsList,
+    TestList,
   },
 })
 

@@ -18,10 +18,13 @@
 </template>
 
 <script la,g="ts">
-import { Vue } from 'vue-property-decorator';
+import { Vue, Component } from 'vue-property-decorator';
 
-export default class TestCard extends Vue {
+@Component({
+  components: {},
+})
 
+export default class Card extends Vue {
 }
 </script>
 

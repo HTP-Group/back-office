@@ -3,19 +3,19 @@
     <div class="title">
       <h2 class="title-h2">Tests list</h2>
     </div>
-    <TestCard />
-    <TestCard />
-    <TestCard />
+    <Card />
+    <Card />
+    <Card />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import TestCard from './test/TestCard.vue';
+import Card from './test/Card.vue';
 
 @Component({
   components: {
-    TestCard,
+    Card,
   },
 })
 export default class TestsList extends Vue {
