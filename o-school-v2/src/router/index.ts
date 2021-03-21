@@ -10,6 +10,7 @@ import Trombinoscope from '../components/Trombinoscope.vue';
 import Home from '../views/Home.vue';
 import SchoolLife from '../components/SchoolLife.vue';
 import TeacherDashboard from '../components/dashboard/TeacherDashboard.vue';
+import TeacherSchedule from '../components/scheduled/TeacherScheduled.vue';
 
 Vue.use(VueRouter);
 
@@ -55,7 +56,7 @@ const routes: Array<RouteConfig> = [
     component: TeacherDashboard,
   },
   {
-    path: '/school_life',
+    path: '/school-life',
     name: 'SchoolLife',
     component: SchoolLife,
   },
@@ -63,6 +64,16 @@ const routes: Array<RouteConfig> = [
     path: '/trombinoscope',
     name: 'Trombinoscope',
     component: Trombinoscope,
+  },
+  {
+    path: '/children-profile',
+    name: 'ChildrenProfile',
+    component: ChildrenProfile,
+  },
+  {
+    path: '/teacher-schedule',
+    name: 'TeacherSchedule',
+    component: TeacherSchedule,
   },
 ];
 

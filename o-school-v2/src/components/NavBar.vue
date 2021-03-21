@@ -12,16 +12,24 @@
       <v-toolbar-title>O'school</v-toolbar-title>
       <!-- ParentCase connexion -->
       <v-tabs v-if="currentUser.isParent === true" align-with-title>
-          <v-tab><router-link class="route" to="/home">{{sections[0]}}</router-link></v-tab>
-          <v-tab><router-link class="route" to="/school_life">{{sections[1]}}</router-link></v-tab>
+          <v-tab>
+            <router-link class="route" to="/school-life">
+              {{sections[0]}}
+            </router-link>
+          </v-tab>
           <v-tab>
             <router-link class="route" to="/parent-profile">
-              {{sections[2]}}
+              {{sections[1]}}
             </router-link>
           </v-tab>
           <!-- a conditionner si login / log out -->
           <v-tab>
             <router-link class="route" to="/dashboard">
+              {{sections[2]}}
+            </router-link>
+          </v-tab>
+          <v-tab>
+            <router-link class="route" to="/scheduled">
               {{sections[3]}}
             </router-link>
           </v-tab>
@@ -29,16 +37,24 @@
         </v-tabs>
       <!-- teacherCase connexion -->
       <v-tabs v-if="currentUser.isParent === false" align-with-title>
-          <v-tab><router-link class="route" to="/home">{{sections[0]}}</router-link></v-tab>
-          <v-tab><router-link class="route" to="/school_life">{{sections[1]}}</router-link></v-tab>
+          <v-tab>
+            <router-link class="route" to="/school-life">
+              {{sections[0]}}
+            </router-link>
+          </v-tab>
           <v-tab>
             <router-link class="route" to="/teacher-profile">
-              {{sections[2]}}
+              {{sections[1]}}
             </router-link>
           </v-tab>
           <!-- a conditionner si login / log out -->
           <v-tab>
             <router-link class="route" to="/dashboard">
+              {{sections[2]}}
+            </router-link>
+          </v-tab>
+          <v-tab>
+            <router-link class="route" to="/scheduled">
               {{sections[3]}}
             </router-link>
           </v-tab>
@@ -64,7 +80,7 @@
         >
         <v-list-item>
             <v-list-item-icon>
-              <v-icon size="small">mdi-home</v-icon>
+              <!-- <v-icon size="small">mdi-home</v-icon> -->
             </v-list-item-icon>
             <v-list-item-title>{{sections[0]}}</v-list-item-title>
           </v-list-item>
@@ -104,10 +120,10 @@ export default class NavBar extends Vue {
   public drawer = false;
 
   public sections = [
-    'Home',
     'School life',
     'Profile',
     'Dashboard',
+    'Scheduled',
     'Logout',
   ]
 

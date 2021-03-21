@@ -1,5 +1,5 @@
 <template>
-  <div class="class-page">
+  <div class="class-page" @click="$emit('display-class')">
     <div class="class-infos">
       <div class="class-title">
       <h2 class="class-title-h2">Class Name : Lilipus</h2>
@@ -7,10 +7,13 @@
     </div>
     <div class="class-infos-content">
       <p class="class-content">
-        <span>Last comments: Agitated class</span>
+        <span class="comment">Lorem Ipsum is simply text of the printing and typesetting industry.
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+        </span>
       </p>
       <v-card-text>
-        <router-link to="/profilchildren/:id" class="b-link">Trombinoscope</router-link>
+        <router-link to="/trombinoscope/:id" class="b-link">Trombinoscope</router-link>
     </v-card-text>
     </div>
     </div>
@@ -35,13 +38,13 @@ export default class Classroom extends Vue {}
   width: 100%;
   justify-self: center;
   margin: 1.5em;
-  // padding: 1.5em;
+  padding: 1em;
   border-radius: 10px;
   border-left: 4px solid #6f68ed;
   display: grid;
   grid-template-columns: 75% 25%;
-  box-shadow: 0 0 4px 0 rgba(116, 40, 23, 0.5);
-  height: 17vh;
+  box-shadow: 0 0 4px 0 rgba(111, 104, 237, 0.4);
+  height: 20vh;
   .class-infos {
     .class-title {
       grid-column-start: 1;
@@ -51,6 +54,19 @@ export default class Classroom extends Vue {}
   }
     .class-infos-content {
       padding: 1em;
+      .class-content {
+        text-align: justify;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 300px;
+        white-space: nowrap;
+        max-height: 3em;
+        padding-right: 0.5em;
+        .comment {
+          width: 50%;
+          text-align: justify;
+        }
+      }
     }
   }
   .class-settings {

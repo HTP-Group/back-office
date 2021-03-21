@@ -7,47 +7,47 @@
       <!-- créer un profil student sous forme de Card -->
     </div>
     <div class="trombi">
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
-         <ProfileStudent />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
+         <StudentProfile />
       </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import ProfileStudent from './profile/StudentProfile.vue';
+import StudentProfile from './profile/StudentProfile.vue';
 
 @Component({
   components: {
-    ProfileStudent,
+    StudentProfile,
   },
 })
 export default class Trombinoscope extends Vue {

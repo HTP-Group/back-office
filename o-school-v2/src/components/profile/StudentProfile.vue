@@ -10,7 +10,7 @@
       3rd grade A
     </v-card-subtitle>
     <v-card-text>
-      <router-link to="/profilchildren/:id" class="b-link">
+      <router-link to="/student-profile/:id" class="b-link">
       Profile
     </router-link>
     </v-card-text>
