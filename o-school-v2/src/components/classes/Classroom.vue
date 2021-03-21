@@ -1,24 +1,59 @@
 <template>
-  <div class="class-page" @click="$emit('display-class')">
-    <div class="class-infos">
-      <div class="class-title">
-      <h2 class="class-title-h2">Class Name : Lilipus</h2>
-      <span>Level: 3rd Grade</span>
+  <div class="classroom-page" @click="$emit('display-class')">
+    <div class="classroom-infos">
+      <div class="headers">
+        <div class="header-lastname">
+          <p class="lastname">Last Name</p>
+        </div>
+        <div class="header-firstname">
+          <p class="firstname">First Name</p>
+        </div>
+        <div class="header-mark">
+          <p class="mark">Mark</p>
+        </div>
+        <div class="header-comments">
+          <p class="comments">Comments</p>
+        </div>
+        <div class="header-suggestions">
+          <p class="suggestions">Suggestions</p>
+        </div>
+        <!-- <div class="header-edit"></div> -->
+      </div>
+      <div class="classroom-infos-student-content">
+        <div class="student">
+          <div class="student-lastname">
+            <p>Decousus</p>
+          </div>
+          <div class="student-firstname">
+            <p>Thibault</p>
+          </div>
+            <v-text-field class="student-mark"></v-text-field>
+            <v-text-field class="student-comment"></v-text-field>
+            <v-text-field class="student-suggestion"></v-text-field>
+        </div>
+        <div class="student">
+          <div class="student-lastname">
+            <p>Decousus</p>
+          </div>
+          <div class="student-firstname">
+            <p>Kea</p>
+          </div>
+            <v-text-field class="student-mark"></v-text-field>
+            <v-text-field class="student-comment"></v-text-field>
+            <v-text-field class="student-suggestion"></v-text-field>
+        </div>
+      </div>
     </div>
-    <div class="class-infos-content">
-      <p class="class-content">
-        <span class="comment">Lorem Ipsum is simply text of the printing and typesetting industry.
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-        </span>
-      </p>
-      <v-card-text>
-        <router-link to="/trombinoscope/:id" class="b-link">Trombinoscope</router-link>
-    </v-card-text>
-    </div>
-    </div>
-    <div class="class-settings">
+    <!-- before edit -->
+    <div v-if="!edit" class="classroom-settings">
       <v-btn>Edit</v-btn>
+      <div></div>
+      <v-btn>Delete</v-btn>
+    </div>
+    <!-- after edit -->
+    <div v-else class="classroom-settings">
+      <v-btn>Save</v-btn>
+      <div></div>
       <v-btn>Delete</v-btn>
     </div>
   </div>
@@ -26,57 +61,149 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { IChildren } from '@/Interfaces/user/parent/IChildren.interface';
 
 @Component({
   components: {},
 })
 
-export default class Classroom extends Vue {}
+export default class Classroom extends Vue {
+  public search = '';
+
+  public edit = false;
+
+  public students: IChildren[] = [
+    {
+      id: 0,
+      lastname: 'Thib',
+      firstname: 'Do',
+      level: '',
+    },
+    {
+      id: 1,
+      lastname: 'Karl',
+      firstname: 'uyu',
+      level: '',
+    },
+  ]
+
+  public headers = [
+    {
+      id: 1,
+      name: 'Present',
+      discipline: 'French',
+      date: '12-02-21',
+    },
+  ]
+}
 </script>
 <style lang="scss">
-.class-page {
-  width: 100%;
-  justify-self: center;
-  margin: 1.5em;
-  padding: 1em;
-  border-radius: 10px;
-  border-left: 4px solid #6f68ed;
+.classroom-page {
   display: grid;
-  grid-template-columns: 75% 25%;
-  box-shadow: 0 0 4px 0 rgba(111, 104, 237, 0.4);
-  height: 20vh;
-  .class-infos {
-    .class-title {
-      grid-column-start: 1;
-      border-bottom: 1px solid #6f68ed;
-      width: 85%;
-      padding: 0.5em 0 0.5em 1em;
-  }
-    .class-infos-content {
-      padding: 1em;
-      .class-content {
-        text-align: justify;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        width: 300px;
-        white-space: nowrap;
-        max-height: 3em;
-        padding-right: 0.5em;
-        .comment {
-          width: 50%;
-          text-align: justify;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 4px 0 rgba(111, 104, 237, 0.1);
+  padding: 1em;
+  .classroom-infos {
+    display: grid;
+    grid-gap: 1em;
+    .headers {
+      display: grid;
+      grid-template-columns: 12% 16% 15% 27% 25%!important;
+      grid-template-rows: 1fr;
+      border-bottom: 2px solid rgb(111, 104, 237, 0.1);
+      padding-bottom: 1em;
+      .header-lastname {
+        display: grid;
+        .lastname {
+          font-weight: 700;
+          justify-self: flex-start;
+        }
+      }
+      .header-firstname {
+        display: grid;
+        .firstname {
+          font-weight: 700;
+          align-self: center;
+          justify-self: center;
+        }
+      }
+      .header-mark {
+        display: grid;
+        .mark {
+          font-weight: 700;
+          align-self: center;
+          justify-self: center;
+        }
+      }
+      .header-comments {
+        display: grid;
+        .comments {
+          font-weight: 700;
+          align-self: center;
+          justify-self: center;
+        }
+      }
+      .header-suggestions {
+        display: grid;
+        .suggestions {
+          font-weight: 700;
+          align-self: center;
+          justify-self: center;
+        }
+      }
+    }
+    .classroom-infos-student-content {
+      display: grid;
+      grid-gap: 1em;
+      .student {
+        display: grid;
+        grid-template-columns: 15% 15% 15% 27% 25% !important;
+        box-shadow: 0 0 4px 0 rgba(111, 104, 237, 0.1);
+        height: 3.5em;
+        .student-lastname {
+            display: grid;
+            font-weight: 500;
+            align-self: center;
+            justify-self: flex-start;
+            padding-left: 0.5em;
+        }
+        .student-firstname {
+          display: grid;
+          font-weight: 500;
+          align-self: center;
+          justify-self: flex-start;
+        }
+      .student-mark {
+        display: grid;
+        font-weight: 500;
+        align-self: start;
+        justify-self: flex-start;
+      }
+      .student-comments {
+          display: grid;
+          font-weight: 500;
+          align-self: start;
+          justify-self: center;
+        }
+      .student-suggestions {
+          display: grid;
+          font-weight: 500;
+          align-self: start;
+          justify-self: center;
         }
       }
     }
   }
-  .class-settings {
-    margin-top: 1em;
+  .classroom-settings {
     display: grid;
-    grid-gap: 1em;
-    padding-right: 1em;
+    grid-template-columns: 20% auto 20%;
+    margin-top: 2em;
+    grid-gap: 1.5em;
+  }
+  .v-btn {
+    border: none;
   }
 }
-.v-btn {
-  border: none;
-}
+
 </style>

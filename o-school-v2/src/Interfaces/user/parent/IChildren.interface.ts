@@ -6,9 +6,9 @@ export interface IChildren {
   firstname: string;
   lastname: string;
   level: string;
-  healthIndications: number;
-  birthday: string;
-  marks: IMarks;
-  comments: string[];
-  graph: IGraph;
+  healthIndications?: number;
+  birthday?: string;
+  marks?: IMarks;
+  comments?: string[];
+  graph?: IGraph;
 }

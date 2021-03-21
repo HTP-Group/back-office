@@ -1,23 +1,23 @@
 <template>
-  <div class="test-page">
-    <div class="test-date">
+  <div class="card-page" @click="$emit('open-test')">
+    <div class="card-date">
       <span>02/15/21</span>
     </div>
-    <div class="test-disciplines">
-      <p class="test-disciplines-name">Maths</p>
+    <div class="card-disciplines">
+      <p class="card-disciplines-name">Maths</p>
     </div>
-    <div class="test-title">
-      <h4 class="test-title-h2">
+    <div class="card-title">
+      <h4 class="card-title-h2">
         Lorem Ipsum is simply dummy text of the printing and typesetting industrys
       </h4>
     </div>
-    <div class="icons">
+    <div class="icons" @click="edit()">
       <v-icon>fa-pen</v-icon>
     </div>
   </div>
 </template>
 
-<script la,g="ts">
+<script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 
 @Component({
@@ -25,11 +25,15 @@ import { Vue, Component } from 'vue-property-decorator';
 })
 
 export default class Card extends Vue {
+// public
+  // public edit(id: number) {
+  //   console.log("j'edit", id);
+  // }
 }
 </script>
 
 <style lang="scss">
-.test-page {
+.card-page {
   background-color: #fff;
   border: 2px solid rgb(111, 104, 237, 0.1);
   display: grid;
@@ -38,12 +42,12 @@ export default class Card extends Vue {
   padding: 0.5em;
   border-radius: 10px;
   box-shadow: 0 0 4px 0 rgba(111, 104, 237, 0.1);
-  .test-date {
+  .card-date {
     grid-column-start: 1;
   }
-  .test-title {
+  .card-title {
     grid-column-start: 3;
-    .test-title-h2 {
+    .card-title-h2 {
       text-align: justify;
       text-overflow: ellipsis;
       overflow: hidden;
@@ -52,7 +56,7 @@ export default class Card extends Vue {
       font-weight: 400;
     }
   }
-  .test-disciplines {
+  .card-disciplines {
     grid-column-start: 2;
   }
   &:hover {

@@ -7,17 +7,17 @@
     <div v-if="!classSelected" class="dashboard-classes-first">
       <!-- first screen: I display classes in the middle and take all the page -->
       <div class="classes-list">
-        <Classroom @display-class="displayClass()"/>
-        <Classroom />
-        <Classroom />
+        <ClassCard @display-class="displayClass()"/>
+        <ClassCard />
+        <ClassCard />
       </div>
     </div>
       <!-- second screen: I select a class, -->
     <div v-else-if="classSelected" class="dashboard-classes-second">
       <div class="classes-list">
-        <Classroom @display-class="displayClass()"/>
-        <Classroom />
-        <Classroom />
+        <ClassCard @display-class="displayClass()"/>
+        <ClassCard />
+        <ClassCard />
       </div>
       <div class="class-tests-list">
         <TestList />
@@ -34,12 +34,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Classroom from '../classes/Classroom.vue';
+import ClassCard from '../classes/ClassCard.vue';
 import TestList from '../tests/TestList.vue';
 
 @Component({
   components: {
-    Classroom,
+    ClassCard,
     TestList,
   },
 })
@@ -48,7 +48,6 @@ export default class TeacherDashboard extends Vue {
   public classSelected = false;
 
   displayClass() {
-    console.log('je passe');
     this.classSelected = !this.classSelected;
   }
 }
@@ -102,7 +101,7 @@ export default class TeacherDashboard extends Vue {
     margin-top: 3.5em;
     display: grid;
     grid-gap: 2em;
-    grid-template-columns: 35% 65%;
+    grid-template-columns: 30% 70%;
     // grid-template-columns:repeat(auto-fill, minmax(450px, 1fr));
     justify-self: center;
     box-shadow: 0 0 4px 0 rgba(116, 40, 23, 0.15);
@@ -116,9 +115,9 @@ export default class TeacherDashboard extends Vue {
     }
     .class-tests-list {
       background-color: rgba(211, 209, 250, 0.1);
-      width: 80%;
+      width: 95%;
       grid-column-start: 2;
-      padding: 1em;
+      padding: 1.5em;
       justify-self: center;
     }
   }
