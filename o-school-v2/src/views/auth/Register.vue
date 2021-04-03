@@ -83,7 +83,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-// import jwt_decode from 'jwt_decode';
+import jwt_decode from 'jwt-decode';
 import registerApi from '../../api/register.api';
 import LocalStorageHelper from '../../helper/localstorage.service';
 import {
@@ -148,23 +148,30 @@ export default class Register extends Vue {
       localStorage.setItem('JWT_ACCESS', response);
       localStorage.setItem('IS_SIGNED', 'true');
 
-      this.signinSuccess(response);
+      this.signupSuccessful(response, data);
     } catch (err) {
-      this.signinFailed();
+      this.signupFailed(err);
     }
   }
 
-  public signinSuccess(response: IAuthResponse) {
-    console.log('signinSuccess');
-    LocalStorageHelper.set(CSRF, response.csrf);
-    LocalStorageHelper.set(IS_SIGNED, 'true');
-    LocalStorageHelper.set(JWT_ACCESS, response.jwt_access);
-
-    // const data = jwt_decode(response.jwt_access);
-
+  public async signupSuccessful(response: IAuthResponse, formData: FormData) {
+    LocalStorageHelper.set(CSRF, response.csrf)
+    LocalStorageHelper.set(IS_SIGNED, 'true')
+    LocalStorageHelper.set(JWT_ACCESS, response.jwt_access)
+    const data = jwt_decode<IPayload>(response.jwt_access)
     // this.$store.commit('toggleLoader')
-
-    return this.$router.replace('/login');
+    return this.$router.replace('/login')
+  }
+  public signupFailed(error: string) {
+    console.log(error)
+    // this.$store.commit('toggleLoader')
+    // this.$store.commit('alert', {
+    //   message: error,
+    //   type: ALERT_TYPE.error,
+    //   display: true
+    // })
+    LocalStorageHelper.delete(CSRF)
+    LocalStorageHelper.delete(IS_SIGNED)
   }
 
   // logout
