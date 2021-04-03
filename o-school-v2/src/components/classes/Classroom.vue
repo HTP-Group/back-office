@@ -19,6 +19,7 @@
         </div>
         <!-- <div class="header-edit"></div> -->
       </div>
+      <!-- Il faut créér un composant Children à réutiliser dans Marks -->
       <div class="classroom-infos-student-content">
         <div class="student">
           <div class="student-lastname">
@@ -116,6 +117,7 @@ export default class Classroom extends Vue {
       .header-lastname {
         display: grid;
         .lastname {
+          color: #262a3e;
           font-weight: 700;
           justify-self: flex-start;
         }
@@ -123,6 +125,7 @@ export default class Classroom extends Vue {
       .header-firstname {
         display: grid;
         .firstname {
+          color: #262a3e;
           font-weight: 700;
           align-self: center;
           justify-self: center;
@@ -131,6 +134,7 @@ export default class Classroom extends Vue {
       .header-mark {
         display: grid;
         .mark {
+          color: #262a3e;
           font-weight: 700;
           align-self: center;
           justify-self: center;
@@ -139,6 +143,7 @@ export default class Classroom extends Vue {
       .header-comments {
         display: grid;
         .comments {
+          color: #262a3e;
           font-weight: 700;
           align-self: center;
           justify-self: center;
@@ -147,6 +152,7 @@ export default class Classroom extends Vue {
       .header-suggestions {
         display: grid;
         .suggestions {
+          color: #262a3e;
           font-weight: 700;
           align-self: center;
           justify-self: center;

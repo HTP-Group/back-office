@@ -10,6 +10,7 @@ import Trombinoscope from '../components/Trombinoscope.vue';
 import Home from '../views/Home.vue';
 import SchoolLife from '../components/SchoolLife.vue';
 import TeacherDashboard from '../components/dashboard/TeacherDashboard.vue';
+import ParentDashboard from '../components/dashboard/ParentDashboard.vue';
 import TeacherSchedule from '../components/scheduled/TeacherScheduled.vue';
 
 Vue.use(VueRouter);
@@ -40,8 +41,13 @@ const routes: Array<RouteConfig> = [
     name: 'StudentProfile',
     component: StudentProfile,
   },
+  // {
+  //   path: '/parent-profile/:id/children/:id',
+  //   name: 'ChildrenProfile',
+  //   component: ChildrenProfile,
+  // },
   {
-    path: '/parent-profile/:id/children/:id',
+    path: '/children-profile',
     name: 'ChildrenProfile',
     component: ChildrenProfile,
   },
@@ -51,9 +57,14 @@ const routes: Array<RouteConfig> = [
     component: TeacherProfile,
   },
   {
-    path: '/dashboard',
+    path: '/teacher-dashboard',
     name: 'Dashboard',
     component: TeacherDashboard,
+  },
+  {
+    path: '/parent-dashboard',
+    name: 'Dashboard',
+    component: ParentDashboard,
   },
   {
     path: '/school-life',
@@ -66,15 +77,15 @@ const routes: Array<RouteConfig> = [
     component: Trombinoscope,
   },
   {
-    path: '/children-profile',
-    name: 'ChildrenProfile',
-    component: ChildrenProfile,
-  },
-  {
     path: '/teacher-schedule',
     name: 'TeacherSchedule',
     component: TeacherSchedule,
   },
+  // {
+  //   path: '/parent-schedule',
+  //   name: 'ParentSchedule',
+  //   component: ParentSchedule,
+  // },
 ];
 
 const router = new VueRouter({

@@ -1,17 +1,11 @@
 <template>
   <div class="profile-page">
-    <div class="profile-page-title">
-      <h2 class="profile-page-title-h2">
-        {{userBis.children[1].firstname}}
-        {{userBis.children[1].lastname}}
-      </h2>
-    </div>
     <div class="profile-left-bloc">
       <div class="avatar">
         <v-avatar
           class="profile"
           color="grey"
-          size="164"
+          size="64"
           tile
         >
         <v-img src="" alt="photo"></v-img>
@@ -25,13 +19,16 @@
             </h2>
           </v-list-item-title>
           <v-list-item-subtitle>
-            <v-label>Birthday: </v-label>{{userBis.children[1].birthday}}
+            <v-label>Birthday: </v-label>
+            {{userBis.children[1].birthday}}
           </v-list-item-subtitle>
           <v-list-item-subtitle>
-            <v-label>Level: </v-label>{{userBis.children[1].level}}
+            <v-label>Level: </v-label>
+            {{userBis.children[1].level}}
           </v-list-item-subtitle>
           <v-list-item-subtitle>
-            <v-label>Health: </v-label>{{userBis.children[1].healthIndications}}
+            <v-label>Health: </v-label>
+            {{userBis.children[1].healthIndications}}
           </v-list-item-subtitle>
           <v-list-item-subtitle>
             <v-label>Parents: </v-label>
@@ -68,7 +65,8 @@
         style="font-size: medium; color: #434f8d !important">
         fa-exclamation-circle
       </v-icon>
-      <p class="events">Events :</p>
+      <p class="events">Events :
+        <i>Les événements futurs pour cet enfant (évaluations, sorties, etc)</i></p>
       </div>
       <div class="dashbord-student">
         <div class="disciplines">
@@ -79,19 +77,16 @@
             ></v-select>
         </div>
         <div class="sections">
-          <div class="marks-bloc bloc">
+          <div class="marks-bloc bloc" @click="changeDisplay()">
             <v-btn class="sub-section">Marks</v-btn>
           </div>
-          <div class="comments-bloc bloc">
-            <v-btn class="sub-section">Comments</v-btn>
-          </div>
-          <div class="graphs-bloc bloc">
+          <div class="graphs-bloc bloc" @click="changeDisplay()">
             <v-btn class="sub-section">Graph</v-btn>
           </div>
         </div>
       </div>
       <div class="components">
-        <Marks />
+        <Marks v-if="!MarkBtnIsSelected"/>
       </div>
     </div>
   </div>
@@ -106,8 +101,9 @@ import Marks from './childrenProfile/Marks.vue';
     Marks,
   },
 })
-export default class Profile extends Vue {
-  // renommé le typage de l'objet avec le nom de l'interface créé IUser
+export default class ChildrenProfile extends Vue {
+  public MarkBtnIsSelected = false;
+
   public userBis: object = {
     firstname: 'Marc',
     lastname: 'Obrien',
@@ -175,13 +171,9 @@ export default class Profile extends Vue {
     },
   ]
 
-  public newPassword = '';
-
-  public confirmNewPassword = '';
-
-  public showPassword = false;
-
-  public showConfirmPassword = false;
+  changeDisplay() {
+    this.MarkBtnIsSelected = !this.MarkBtnIsSelected;
+  }
 }
 </script>
 

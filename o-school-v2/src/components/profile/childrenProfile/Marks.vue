@@ -1,10 +1,21 @@
 <template>
-  <v-data-table
-    :headers="headers"
-    :items="evaluations"
-    :items-per-page="6"
-    class="elevation-1 header"
-  ></v-data-table>
+<!-- add headers reprendre le template de classroom-->
+  <div class="card-page" @click="$emit('open-test')">
+    <div class="card-date">
+      <span>02/15/21</span>
+    </div>
+    <div class="card-disciplines">
+      <p class="card-disciplines-name">Maths</p>
+    </div>
+    <div class="card-title">
+      <h4 class="card-title-h2">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industrys
+      </h4>
+    </div>
+    <div class="icons" @click="edit()">
+      <v-icon>fa-pen</v-icon>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

@@ -5,8 +5,8 @@
     </div>
     <div v-if="!testOpen" class="list-test">
       <Card @open-test="openTest()"/>
-      <Card />
-      <Card />
+      <Card @open-test="openTest()"/>
+      <Card @open-test="openTest()"/>
     </div>
     <div v-else class="testOpened">
       <Test />

@@ -9,6 +9,7 @@
     </div>
     <div v-if="!isSigned">
       <NavBar />
+      <!-- home -->
       <router-view />
     </div>
     <!-- <Trombinoscope /> -->

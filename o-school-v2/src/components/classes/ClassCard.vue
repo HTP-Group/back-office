@@ -14,7 +14,7 @@
       </p>
       <v-card-text>
         <router-link to="/trombinoscope/:id" class="b-link">Trombinoscope</router-link>
-    </v-card-text>
+      </v-card-text>
     </div>
     </div>
     <div class="class-settings">

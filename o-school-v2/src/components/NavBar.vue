@@ -24,12 +24,12 @@
           </v-tab>
           <!-- a conditionner si login / log out -->
           <v-tab>
-            <router-link class="route" to="/dashboard">
+            <router-link class="route" to="/parent-dashboard">
               {{sections[2]}}
             </router-link>
           </v-tab>
           <v-tab>
-            <router-link class="route" to="/scheduled">
+            <router-link class="route" to="/parent-scheduled">
               {{sections[3]}}
             </router-link>
           </v-tab>
@@ -49,12 +49,12 @@
           </v-tab>
           <!-- a conditionner si login / log out -->
           <v-tab>
-            <router-link class="route" to="/dashboard">
+            <router-link class="route" to="/teacher-dashboard">
               {{sections[2]}}
             </router-link>
           </v-tab>
           <v-tab>
-            <router-link class="route" to="/scheduled">
+            <router-link class="route" to="/teacher-scheduled">
               {{sections[3]}}
             </router-link>
           </v-tab>
@@ -98,9 +98,15 @@
           </v-list-item>
           <v-list-item>
             <v-list-item-icon>
-              <v-icon size="small">fa-power-off</v-icon>
+              <v-icon size="small">fa-calendar</v-icon>
             </v-list-item-icon>
             <v-list-item-title>{{sections[3]}}</v-list-item-title>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon size="small">fa-power-off</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>{{sections[4]}}</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -115,8 +121,6 @@ import { Vue, Component } from 'vue-property-decorator';
   components: {},
 })
 export default class NavBar extends Vue {
-  // @Prop() public openParentProfil!: boolean;
-
   public drawer = false;
 
   public sections = [
@@ -127,10 +131,8 @@ export default class NavBar extends Vue {
     'Logout',
   ]
 
-  // parent Case; isParent = true
-  // teacherCase
   public currentUser = {
-    isParent: false,
+    isParent: true,
   }
 }
 </script>
