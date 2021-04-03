@@ -132,7 +132,7 @@ export default class NavBar extends Vue {
   ]
 
   public currentUser = {
-    isParent: true,
+    isParent: false,
   }
 }
 </script>

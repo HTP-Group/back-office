@@ -5,23 +5,23 @@
     </div>
     <div class="events">
       <div class="sooner-events">
-        <Event />
+        <EventCard />
       </div>
       <div class="others-events">
-        <Event />
-        <Event />
-        <Event />
+        <EventCard />
+        <EventCard />
+        <EventCard />
       </div>
     </div>
   </div>
 </template>
 <script>
 import { Vue, Component } from 'vue-property-decorator';
-import Event from './events/Event.vue';
+import EventCard from './events/EventCard.vue';
 // import
 @Component({
   components: {
-    Event,
+    EventCard,
   },
 })
 export default class SchoolLife extends Vue {
@@ -32,10 +32,11 @@ export default class SchoolLife extends Vue {
 <style lang="scss">
 .school-life-page {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 10% 1fr 10%;
   grid-template-rows: 20% auto;
+  border: 3px solid orange;
   .school-life-title {
-     width: 80%;
+    width: 80%;
     display: grid;
     grid-column-start: 1;
     grid-column-end: 3;
@@ -50,21 +51,27 @@ export default class SchoolLife extends Vue {
     }
   }
   .events {
+     width: 80%;
     display: grid;
     grid-column-start: 1;
     grid-column-end: 3;
-    grid-row-start: 2;
-    margin: 1.5em;
+    border: 3px solid pink;
+    justify-self: center;
     .sooner-events {
+      border: 3px solid red;
       display: grid;
-      grid-template-columns: auto;
+      width: 10%;
+      grid-template-columns: 1fr;
+      justify-self: flex-start;
       padding: 2em 0;
       border-bottom: 2px solid #6f68ed;
     }
     .others-events {
       display: grid;
+      justify-self: center;
       margin-top: 2em;
-      grid-template-columns:repeat(auto-fill, minmax(500px, 1fr));
+      grid-gap: 2em;
+      grid-template-columns:repeat(auto-fill, minmax(400px, 1fr));
     }
   }
 }
