@@ -96,6 +96,10 @@ export class UserModel {
     const user = await User.findOne({ email: email })
     return user
   }
+  async findUserById(id) {
+    const user = await User.findOne({id: id})
+    return user;
+  }
   validateSignIn(req) {
     const schema = Joi.object({
       email: Joi.string().min(8).max(150).required().email(),

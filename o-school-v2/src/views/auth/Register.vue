@@ -83,15 +83,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import jwt_decode from 'jwt-decode';
 import registerApi from '../../api/register.api';
-import LocalStorageHelper from '../../helper/localstorage.service';
+// import LocalStorageHelper from '../../helper/localstorage.service';
 import {
-  CSRF,
   IS_SIGNED,
   JWT_ACCESS,
 } from '../../constants';
-import { IAuthResponse } from '../../Interfaces/auth/IAuthResponse.interface';
 
 @Component({
   components: {},
@@ -145,35 +142,20 @@ export default class Register extends Vue {
   private async submit() {
     try {
       const response = await registerApi.register(this.userBis);
-      localStorage.setItem('JWT_ACCESS', response);
-      localStorage.setItem('IS_SIGNED', 'true');
+      // 1/ token csrf renvoyé => le log de response
+      console.log('response', response);
+      // le payload va nous permettre de récupérer les infos du user
+      // on stock le token dans le localStorage pour communiquer avec l'app.
+      localStorage.setItem(`${JWT_ACCESS}`, response);
+      // pour récupérer IS_SIGNED avec localStorage.getItem('IS_SIGNED')
+      localStorage.setItem(`${IS_SIGNED}`, 'true');
 
-      this.signupSuccessful(response, data);
+      this.$router.replace('/profile');
+      //
     } catch (err) {
-      this.signupFailed(err);
+      console.error(err);
     }
   }
-
-  public async signupSuccessful(response: IAuthResponse, formData: FormData) {
-    LocalStorageHelper.set(CSRF, response.csrf)
-    LocalStorageHelper.set(IS_SIGNED, 'true')
-    LocalStorageHelper.set(JWT_ACCESS, response.jwt_access)
-    const data = jwt_decode<IPayload>(response.jwt_access)
-    // this.$store.commit('toggleLoader')
-    return this.$router.replace('/login')
-  }
-  public signupFailed(error: string) {
-    console.log(error)
-    // this.$store.commit('toggleLoader')
-    // this.$store.commit('alert', {
-    //   message: error,
-    //   type: ALERT_TYPE.error,
-    //   display: true
-    // })
-    LocalStorageHelper.delete(CSRF)
-    LocalStorageHelper.delete(IS_SIGNED)
-  }
-
   // logout
   // dans le router, beforeEnter, grâce IS_SIGNED je vas pouvoir savoir s'il faut être connecté
   // (ex: profile) sur tel ou tel page à l'inverse login pas besoin.

@@ -1,4 +1,4 @@
-export interface IAuthResponse {
+export interface AuthResponse {
   csrf: string;
   error: string;
   jwt_access: string;

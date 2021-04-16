@@ -62,7 +62,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { IChildren } from '@/Interfaces/user/parent/IChildren.interface';
+// import { Children } from './Interfaces/user/parent/IChildren.interface';
+import { Children } from '../../Interfaces/user/parent/Children.interface';
 
 @Component({
   components: {},
@@ -73,7 +74,7 @@ export default class Classroom extends Vue {
 
   public edit = false;
 
-  public students: IChildren[] = [
+  public students: Children[] = [
     {
       id: 0,
       lastname: 'Thib',

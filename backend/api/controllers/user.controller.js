@@ -2,6 +2,7 @@ import { UserModel } from '../models/user.js';
 import bcrypt from 'bcrypt';
 import _ from 'lodash';
 import jwt from 'jsonwebtoken';
+import sessionHelper from '../helper/sessionHelper.js';
 
 const USER = new UserModel()
 
@@ -41,6 +42,12 @@ async function signIn(req, res) {
   return res.send(token);
 }
 
+async function me(req, res) {
+  const payload = sessionHelper.payload(req)
+  let user = await USER.findUserById(payload.user_id)
+  return res.send(user)
+}
+
 function generateAuthToken(user){
   const token = jwt.sign({user_id: user.id }, process.env.JWT_SECRET_KEY, { algorithm: 'HS256'});
   return token
@@ -48,6 +55,7 @@ function generateAuthToken(user){
 
 const userController = {
   register,
-  signIn
+  signIn,
+  me
 }
 export default userController

@@ -1,4 +1,4 @@
-export interface IMarks {
+export interface Marks {
   dates: string;
   subject: string[];
   marks: number[];

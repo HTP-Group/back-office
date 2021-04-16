@@ -1,10 +1,10 @@
-import { IDiscipline } from './IDiscipline.interface.ts';
+import { Discipline } from './Discipline.interface';
 
-export interface ITest {
+export interface Test {
   id: number;
   name: string;
   date: Date;
-  discipline: IDiscipline[];
+  discipline: Discipline[];
   created?: string;
   updated?: string;
   // the students did

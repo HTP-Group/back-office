@@ -13,6 +13,8 @@ import ParentProfile from '../../components/profile/ParentProfile.vue';
 import TeacherProfile from '../../components/profile/TeacherProfile.vue';
 import ChildreProfile from '../../components/profile/ChildrenProfile.vue';
 import StudentProfile from '../../components/profile/StudentProfile.vue';
+import registerApi from '../../api/register.api';
+// import { User } from '../../Interfaces/user/User';
 
 @Component({
   components: {
@@ -29,9 +31,17 @@ export default class Profile extends Vue {
     isParent: false,
   }
 
+  public currentUserBis = {};
+
   public showChildrenProfile = false;
 
   public showStudentProfil = false;
+
+  public async mounted() {
+    this.currentUserBis = await registerApi.getMe();
+    console.log(this.currentUserBis);
+    // call api get_me()
+  }
 }
 </script>
 
