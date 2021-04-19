@@ -104,7 +104,6 @@ export class UserModel {
     const schema = Joi.object({
       email: Joi.string().min(8).max(150).required().email(),
       password: Joi.string().min(3).max(1050).required(),
-      isParent: Joi.boolean().required()
     })
     
     return schema.validate(req);

@@ -7,6 +7,13 @@ async function register(data: User): Promise<string> {
   );
   return response.data;
 }
+async function login(data: { email: string; password: string }): Promise<string> {
+  const response = await Axios.post(
+    'user/signIn', data,
+  );
+
+  return response.data;
+}
 
 async function getMe(): Promise<User> {
   const response = await Axios.get<User>(
@@ -15,8 +22,10 @@ async function getMe(): Promise<User> {
 
   return response.data;
 }
-const registerApi = {
+
+const authApi = {
   register,
   getMe,
+  login,
 };
-export default registerApi;
+export default authApi;

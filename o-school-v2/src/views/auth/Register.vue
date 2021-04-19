@@ -83,7 +83,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import registerApi from '../../api/register.api';
+import authApi from '../../api/auth.api';
 // import LocalStorageHelper from '../../helper/localstorage.service';
 import {
   IS_SIGNED,
@@ -141,7 +141,7 @@ export default class Register extends Vue {
 
   private async submit() {
     try {
-      const response = await registerApi.register(this.userBis);
+      const response = await authApi.register(this.userBis);
       // 1/ token csrf renvoyé => le log de response
       console.log('response', response);
       // le payload va nous permettre de récupérer les infos du user

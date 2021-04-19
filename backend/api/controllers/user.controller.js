@@ -32,7 +32,7 @@ async function register(req, res) {
 }
 
 async function signIn(req, res) {
-  const { error } = await USER.validateSignIn(req.body); 
+  const { error } = await USER.validateSignIn(req.body);
   if (error) return res.status(400).send(error.details[0].message);
   
   let user =  await USER.findUserByEmail(req.body.email);
@@ -40,7 +40,7 @@ async function signIn(req, res) {
   
   const validPassword = await bcrypt.compare(req.body.password, user.password);
   if (!validPassword) return res.status(400).send('Invalid email or password')
-  
+
   const token = generateAuthToken(user);
 
   return res.send(token);

@@ -13,7 +13,7 @@ import ParentProfile from '../../components/profile/ParentProfile.vue';
 import TeacherProfile from '../../components/profile/TeacherProfile.vue';
 import ChildreProfile from '../../components/profile/ChildrenProfile.vue';
 import StudentProfile from '../../components/profile/StudentProfile.vue';
-import registerApi from '../../api/register.api';
+import authApi from '../../api/auth.api';
 // import { User } from '../../Interfaces/user/User';
 import {
   // IS_SIGNED,
@@ -48,7 +48,7 @@ export default class Profile extends Vue {
     console.log('getItem local storage', localStorage.getItem(`${JWT_ACCESS}`));
 
     // call api get_me()
-    const response = await registerApi.getMe();
+    const response = await authApi.getMe();
     this.currentUserBis = { ...response };
     console.log(this.currentUserBis);
     console.log(response);

@@ -33,6 +33,7 @@
         <v-btn
           class="btn-submit"
           :disabled="!inputChanged"
+          @click="submit()"
         >Login</v-btn>
       </div>
     </div>
@@ -41,6 +42,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import authApi from '../../api/auth.api';
 
 @Component({
   components: {},
@@ -60,6 +62,17 @@ export default class Login extends Vue {
   get inputChanged(): boolean {
     // const email = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
     return (this.email.length >= 8 && this.password.length >= 8);
+  }
+
+  public async submit() {
+    console.log('test');
+    const response = await authApi.login({
+      email: this.email,
+      password: this.password,
+    });
+    console.log(response, 'success');
+
+    this.$router.replace('/profile');
   }
   // public async loging(): void {
   // }
