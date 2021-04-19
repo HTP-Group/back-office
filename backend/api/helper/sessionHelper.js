@@ -1,8 +1,8 @@
 import jwt from 'jsonwebtoken';
 
-// to import to protect the routes
+// to return the payload
 function payload(req) {
-  const token = req.header('x-auth-token');
+  const token = req.headers['authorization'];
   try {
     return jwt.verify(token, process.env.JWT_SECRET_KEY);
   }

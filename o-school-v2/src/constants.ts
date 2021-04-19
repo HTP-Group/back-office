@@ -2,7 +2,7 @@ const CSRF = 'csrf';
 const IS_SIGNED = 'isSigned';
 const X_CSRF_TOKEN = 'X-CSRF-Token';
 const X_REFRESH_TOKEN = 'X-Refresh-Token';
-const JWT_ACCESS = 'jwt_access';
+const JWT_ACCESS = 'JWT_ACCESS';
 const REFRESH_TOKEN = 'refresh_token';
 const AUTHORIZATION = 'Authorization';
 

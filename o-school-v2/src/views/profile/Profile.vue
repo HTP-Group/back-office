@@ -15,6 +15,10 @@ import ChildreProfile from '../../components/profile/ChildrenProfile.vue';
 import StudentProfile from '../../components/profile/StudentProfile.vue';
 import registerApi from '../../api/register.api';
 // import { User } from '../../Interfaces/user/User';
+import {
+  // IS_SIGNED,
+  JWT_ACCESS,
+} from '../../constants';
 
 @Component({
   components: {
@@ -38,9 +42,16 @@ export default class Profile extends Vue {
   public showStudentProfil = false;
 
   public async mounted() {
-    this.currentUserBis = await registerApi.getMe();
-    console.log(this.currentUserBis);
+    console.log('test before GetMe');
+    // récupère le token
+    localStorage.getItem(`${JWT_ACCESS}`);
+    console.log('getItem local storage', localStorage.getItem(`${JWT_ACCESS}`));
+
     // call api get_me()
+    const response = await registerApi.getMe();
+    this.currentUserBis = { ...response };
+    console.log(this.currentUserBis);
+    console.log(response);
   }
 }
 </script>

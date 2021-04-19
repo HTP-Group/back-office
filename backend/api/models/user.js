@@ -97,7 +97,7 @@ export class UserModel {
     return user
   }
   async findUserById(id) {
-    const user = await User.findOne({id: id})
+    const user = await User.findOne({_id: id})
     return user;
   }
   validateSignIn(req) {
