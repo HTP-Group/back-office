@@ -43,6 +43,10 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import authApi from '../../api/auth.api';
+import {
+  IS_SIGNED,
+  JWT_ACCESS,
+} from '../../constants';
 
 @Component({
   components: {},
@@ -70,6 +74,11 @@ export default class Login extends Vue {
       email: this.email,
       password: this.password,
     });
+    // on stock le token dans le localStorage pour communiquer avec l'app.
+    localStorage.setItem(`${JWT_ACCESS}`, response);
+    // pour récupérer IS_SIGNED avec localStorage.getItem('IS_SIGNED')
+    localStorage.setItem(`${IS_SIGNED}`, 'true');
+
     console.log(response, 'success');
 
     this.$router.replace('/profile');
