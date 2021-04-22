@@ -59,70 +59,70 @@
         </div>
         <div class="user-inputs">
           <v-text-field
-          v-model="parentInfos.firstname"
-          label="First name"
-          prepend-icon='fa-user'
-          append-icon="fa-pen"
+            v-model="userBis.firstname"
+            label="First name"
+            prepend-icon='fa-user'
+            append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="parentInfos.lastname"
-          label="Last name"
-          prepend-icon='fa-user'
-          append-icon="fa-pen"
+            v-model="userBis.lastname"
+            label="Last name"
+            prepend-icon='fa-user'
+            append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="parentInfos.job"
-          label="Job"
-          prepend-icon='fa-user-tie'
-          append-icon="fa-pen"
+            v-model="userBis.job"
+            label="Job"
+            prepend-icon='fa-user-tie'
+            append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="parentInfos.email"
-          label="Email"
-          prepend-icon='fa-envelope'
-          append-icon="fa-pen"
+            v-model="userBis.email"
+            label="Email"
+            prepend-icon='fa-envelope'
+            append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="parentInfos.childrenNumber"
-          label="Number of Children"
-          prepend-icon='fa-users'
-          append-icon="fa-pen"
+            v-model="userBis.childrenNumber"
+            label="Number of Children"
+            prepend-icon='fa-users'
+            append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="parentInfos.statut"
-          label="Statut"
-          prepend-icon='fa-users'
-          append-icon="fa-pen"
+            v-model="userBis.statut"
+            label="Statut"
+            prepend-icon='fa-users'
+            append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="parentInfos.adress"
-          label="Address"
-          prepend-icon='fa-map-marker-alt'
-          append-icon="fa-pen"
+            v-model="userBis.adress"
+            label="Address"
+            prepend-icon='fa-map-marker-alt'
+            append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="parentInfos.city"
-          label="City"
-          prepend-icon='fa-map-marker-alt'
-          append-icon="fa-pen"
+            v-model="userBis.city"
+            label="City"
+            prepend-icon='fa-map-marker-alt'
+            append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="parentInfos.state"
-          label="State"
-          prepend-icon='fa-map-marker-alt'
-          append-icon="fa-pen"
+            v-model="userBis.state"
+            label="State"
+            prepend-icon='fa-map-marker-alt'
+            append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="parentInfos.zipcode"
-          label="Zip code"
-          prepend-icon='fa-map-marker-alt'
-          append-icon="fa-pen"
+            v-model="userBis.zipcode"
+            label="Zip code"
+            prepend-icon='fa-map-marker-alt'
+            append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="parentInfos.phone"
-          label="Phone"
-          prepend-icon='fa-mobile'
-          append-icon="fa-pen"
+            v-model="userBis.phone"
+            label="Phone"
+            prepend-icon='fa-mobile'
+            append-icon="fa-pen"
           ></v-text-field>
         </div>
          <div class="btn-user-infos">
@@ -181,34 +181,31 @@ import { Parent } from '../../Interfaces/user/parent/Parent.interface';
 export default class Profile extends Vue {
   @Prop() parentInfos!: Parent;
 
-  // public userBis = {
-  //   firstname: 'Marc',
-  //   lastname: 'Obrien',
-  //   job: 'Farmer',
-  //   email: 'j.obrien@outlook.com',
-  //   childrenNumber: 2,
-  //   children: [
-  //     {
-  //       firstname: 'Karl',
-  //       lastname: 'Obrien',
-  //       level: '8',
-  //       healthIndications: '',
-  //     },
-  //     {
-  //       firstname: 'Betty',
-  //       lastname: 'Obrien',
-  //       level: '10',
-  //       healthIndications: 'do not drink milk',
-  //     },
-  //   ],
-  //   statut: 'Married',
-  //   adress: '25 Avenue Victor Hugo',
-  //   city: 'Paris',
-  //   state: 'France',
-  //   zipcode: '75116',
-  //   phone: '+63344556677',
-  //   password: '123456789',
-  // }
+  public userBis = {
+    job: '',
+    childrenNumber: 0,
+    children: [
+      // {
+      //   firstname: 'Karl',
+      //   lastname: 'Obrien',
+      //   level: '8',
+      //   healthIndications: '',
+      // },
+      // {
+      //   firstname: 'Betty',
+      //   lastname: 'Obrien',
+      //   level: '10',
+      //   healthIndications: 'do not drink milk',
+      // },
+    ],
+    statut: '',
+    adress: '',
+    city: '',
+    state: '',
+    zipcode: '',
+    phone: '',
+    password: '',
+  }
 
   public newPassword = '';
 
