@@ -2,7 +2,7 @@
   <div class="profile-page">
     <div class="profile-page-title">
       <h2 class="profile-page-title-h2">
-        {{ userBis.firstname }} - {{ userBis.lastname }}</h2>
+        {{ teacherInfos.firstname }} - {{ teacherInfos.lastname }}</h2>
     </div>
     <div class="profile-left-bloc">
       <div class="avatar">
@@ -18,25 +18,25 @@
       <v-list-item-content class="teacher-infos">
         <v-list-item-title class="title">
           <h2 class="name">
-          {{ userBis.firstname }} - {{ userBis.lastname }}
+          {{ teacherInfos.firstname }} - {{ teacherInfos.lastname }}
           </h2>
         </v-list-item-title>
         <v-list-item-subtitle>
           <v-label>Job: </v-label>
-          {{userBis.job}}
+          {{teacherInfos.job}}
         </v-list-item-subtitle>
         <v-list-item-subtitle>
           <v-label>Level: </v-label>
-          {{userBis.class.level}}
+          {{teacherInfos.level}}
         </v-list-item-subtitle>
         <v-list-item-subtitle>
           <v-label>Class name: </v-label>
-          {{userBis.class.name}}
+          <!-- {{teacherInfos.class.name}} -->
         </v-list-item-subtitle>
-        <v-list-item-subtitle>
+        <!-- <v-list-item-subtitle>
           <v-label>Number of Children: </v-label>
-          {{userBis.class.childrenNumber}}
-        </v-list-item-subtitle>
+          {{teacherInfos.class.students.length}}
+        </v-list-item-subtitle> -->
           <v-list-item-subtitle>
           <v-label>Children: </v-label>
             <router-link to="/trombinoscope/" class="b-link">
@@ -45,10 +45,10 @@
         </v-list-item-subtitle>
         <v-list-item-subtitle>
           <v-label>Adress: </v-label>
-        {{ userBis.city }} - {{ userBis.zipcode }}
+        {{ teacherInfos.city }} - {{ teacherInfos.zipcode }}
         </v-list-item-subtitle>
         <v-list-item-subtitle>
-          <v-label>Email: </v-label>{{ userBis.email }}
+          <v-label>Email: </v-label>{{ teacherInfos.email }}
         </v-list-item-subtitle>
       </v-list-item-content>
     </div>
@@ -59,67 +59,67 @@
         </div>
         <div class="user-inputs">
           <v-text-field
-          v-model="userBis.firstname"
+          v-model="teacherInfos.firstname"
           label="First name"
           prepend-icon='fa-user'
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="userBis.lastname"
+          v-model="teacherInfos.lastname"
           label="Last name"
           prepend-icon='fa-user'
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="userBis.level"
+          v-model="teacherInfos.level"
           label="Job"
           prepend-icon='fa-user-tie'
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="userBis.email"
+          v-model="teacherInfos.email"
           label="Email"
           prepend-icon='fa-envelope'
           append-icon="fa-pen"
           ></v-text-field>
-          <v-text-field
-          v-model="userBis.class.childrenNumber"
+          <!-- <v-text-field
+          v-model="teacherInfos.class.students.length"
           label="Number of Children"
           prepend-icon='fa-users'
           append-icon="fa-pen"
-          ></v-text-field>
-          <v-text-field
-          v-model="userBis.class.name"
+          ></v-text-field> -->
+          <!-- <v-text-field
+          v-model="teacherInfos.class.name"
           label="Class name"
           prepend-icon='fa-users'
           append-icon="fa-pen"
-          ></v-text-field>
+          ></v-text-field> -->
           <v-text-field
-          v-model="userBis.adress"
+          v-model="teacherInfos.adress"
           label="Address"
           prepend-icon='fa-map-marker-alt'
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="userBis.city"
+          v-model="teacherInfos.city"
           label="City"
           prepend-icon='fa-map-marker-alt'
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="userBis.state"
+          v-model="teacherInfos.state"
           label="State"
           prepend-icon='fa-map-marker-alt'
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="userBis.zipcode"
+          v-model="teacherInfos.zipcode"
           label="Zip code"
           prepend-icon='fa-map-marker-alt'
           append-icon="fa-pen"
           ></v-text-field>
           <v-text-field
-          v-model="userBis.phone"
+          v-model="teacherInfos.phone"
           label="Phone"
           prepend-icon='fa-mobile'
           append-icon="fa-pen"
@@ -136,7 +136,7 @@
         </div>
         <div class="user-password">
         <v-text-field
-            v-model="userBis.password"
+            v-model="teacherInfos.password"
             label="current password"
             :append-icon="hideCurrentPassword ? 'fa-eye-slash' : 'fa-eye-slash'"
             prepend-icon="fa-key"
@@ -173,12 +173,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
+import { Teacher } from '../../Interfaces/user/teacher/Teacher.interface';
 
 @Component({
   components: {},
 })
 export default class TeacherProfil extends Vue {
+  @Prop() teacherInfos!: Teacher;
+
   public userBis = {
     firstname: 'katy',
     lastname: 'Smith',
@@ -224,6 +227,10 @@ export default class TeacherProfil extends Vue {
   public hidePassword = true;
 
   public hideConfirmPassword = true;
+
+  mounted() {
+    console.log('teacher-profile', this.teacherInfos);
+  }
 }
 </script>
 

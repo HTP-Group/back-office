@@ -1,7 +1,7 @@
 import { Partner } from './Partner.interface';
 import { Children } from './Children.interface';
 
-export interface User {
+export interface Parent {
   firstname: string;
   lastname: string;
   job?: string;

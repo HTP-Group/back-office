@@ -1,9 +1,9 @@
 <template>
   <div class="profile">
-    <ParentProfile v-if="currentUser.isParent"/>
-    <TeacherProfile v-if="!currentUser.isParent"/>
-    <ChildreProfile v-if="showChildrenProfile" />
-    <StudentProfile v-if="showStudentProfil"/>
+    <ParentProfile v-if="currentUser.isParent" :parent-infos="this.currentUserBis"/>
+    <TeacherProfile v-else :teacher-infos="this.currentUserBis"/>
+    <!-- <ChildreProfile v-if="showChildrenProfile" />
+    <StudentProfile v-if="showStudentProfil"/> -->
   </div>
 </template>
 

@@ -11,7 +11,7 @@
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
       <v-toolbar-title>O'school</v-toolbar-title>
       <!-- ParentCase connexion -->
-      <v-tabs v-if="currentUser.isParent === true" align-with-title>
+      <v-tabs v-if="!currentUserBis.isParent" align-with-title>
           <v-tab>
             <router-link class="route" to="/school-life">
               {{sections[0]}}
@@ -36,7 +36,7 @@
           <v-tab><router-link class="route" to="/logout">{{sections[4]}}</router-link></v-tab>
         </v-tabs>
       <!-- teacherCase connexion -->
-      <v-tabs v-if="currentUser.isParent === false" align-with-title>
+      <v-tabs v-else align-with-title>
           <v-tab>
             <router-link class="route" to="/school-life">
               {{sections[0]}}
@@ -116,7 +116,13 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import authApi from '../api/auth.api';
 // import
+import {
+  // IS_SIGNED,
+  JWT_ACCESS,
+} from '../constants';
+
 @Component({
   components: {},
 })
@@ -131,8 +137,25 @@ export default class NavBar extends Vue {
     'Logout',
   ]
 
-  public currentUser = {
+  public currentUserBis = {
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
     isParent: false,
+  }
+
+  public async mounted() {
+    console.log('test before GetMe');
+    // récupère le token
+    localStorage.getItem(`${JWT_ACCESS}`);
+    console.log('getItem local storage', localStorage.getItem(`${JWT_ACCESS}`));
+
+    // call api get_me()
+    const response = await authApi.getMe();
+    this.currentUserBis = { ...response };
+    console.log(this.currentUserBis);
+    console.log(response);
   }
 }
 </script>
