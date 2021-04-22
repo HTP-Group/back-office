@@ -15,17 +15,8 @@ async function login(data: { email: string; password: string }): Promise<string>
   return response.data;
 }
 
-async function getMe(): Promise<User> {
-  const response = await Axios.get<User>(
-    '/user/profile',
-  );
-
-  return response.data;
-}
-
 const authApi = {
   register,
-  getMe,
   login,
 };
 export default authApi;

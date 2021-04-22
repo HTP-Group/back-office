@@ -116,7 +116,7 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import authApi from '../api/auth.api';
+import profileApi from '../api/profile.api';
 // import
 import {
   // IS_SIGNED,
@@ -152,7 +152,7 @@ export default class NavBar extends Vue {
     console.log('getItem local storage', localStorage.getItem(`${JWT_ACCESS}`));
 
     // call api get_me()
-    const response = await authApi.getMe();
+    const response = await profileApi.getMe();
     this.currentUserBis = { ...response };
     console.log(this.currentUserBis);
     console.log(response);
