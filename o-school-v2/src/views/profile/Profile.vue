@@ -1,8 +1,16 @@
 <template>
   <div class="profile">
-    <ParentProfile v-if="currentUser.isParent" :parent-infos="this.currentUserBis"/>
-    <TeacherProfile v-else :teacher-infos="this.currentUserBis"/>
-    <!-- <ChildreProfile v-if="showChildrenProfile" />
+    <div v-if="currentUser.isParent" class="parent-profile">
+      <router-link to="/parent-profile">
+        <ParentProfile :parent-infos="this.currentUserBis"/>
+    </router-link>
+    </div>
+    <div v-else class="teacher-profile">
+      <router-link to="/teacher-profile">
+        <TeacherProfile  :teacher-infos="this.currentUserBis"/>
+      </router-link>
+    </div>
+    <!-- <ChildrenProfile v-if="showChildrenProfile" />
     <StudentProfile v-if="showStudentProfil"/> -->
   </div>
 </template>
@@ -11,7 +19,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import ParentProfile from '../../components/profile/ParentProfile.vue';
 import TeacherProfile from '../../components/profile/TeacherProfile.vue';
-import ChildreProfile from '../../components/profile/ChildrenProfile.vue';
+import ChildrenProfile from '../../components/profile/ChildrenProfile.vue';
 import StudentProfile from '../../components/profile/StudentProfile.vue';
 import authApi from '../../api/auth.api';
 // import { User } from '../../Interfaces/user/User';
@@ -24,7 +32,7 @@ import {
   components: {
     ParentProfile,
     TeacherProfile,
-    ChildreProfile,
+    ChildrenProfile,
     StudentProfile,
   },
 })

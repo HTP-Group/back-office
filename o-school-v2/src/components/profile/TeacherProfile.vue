@@ -126,15 +126,15 @@
           ></v-text-field>
         </div>
          <div class="btn-user-infos">
-          <v-btn class="btn btn-cancel">cancel</v-btn>
-          <v-btn class="btn btn-submit save-btn">Save</v-btn>
+          <v-btn class="btn btn-cancel" @click="cancel()">cancel</v-btn>
+          <v-btn class="btn btn-submit save-btn" @click="save()">Save</v-btn>
         </div>
       </div>
        <div class="password-infos">
         <div class="password-title">
           <h2 class="password-title-h2">Password settings</h2>
         </div>
-        <div class="user-password">
+        <div class="user-password" v-if="updatePassword">
         <v-text-field
             v-model="teacherInfos.password"
             label="current password"
@@ -163,8 +163,15 @@
             @keyup.enter="logIn"
           ></v-text-field>
           <div class="btn-user-infos-password">
-            <v-btn class="btn-cancel">cancel</v-btn>
-            <v-btn class="btn-submit save-btn">Save</v-btn>
+            <v-btn
+              class="btn-cancel"
+              @click="cancel()">cancel
+            </v-btn>
+            <v-btn
+              class="btn-submit save-btn"
+              :disabled="!passwordHasChanged"
+              @click="savePassword()">Save
+            </v-btn>
           </div>
         </div>
       </div>
@@ -183,44 +190,27 @@ export default class TeacherProfil extends Vue {
   @Prop() teacherInfos!: Teacher;
 
   public userBis = {
-    firstname: 'katy',
-    lastname: 'Smith',
-    job: 'Teacher',
-    email: 'k.smith@outlook.com',
-    class: {
-      level: '3rd grade',
-      name: '3rd grade A',
-      childrenNumber: 25,
-      children: [
-        {
-          firstname: 'Karl',
-          lastname: 'Obrien',
-          level: '8',
-          healthIndications: '',
-        },
-        {
-          firstname: 'Betty',
-          lastname: 'Obrien',
-          level: '10',
-          healthIndications: 'do not drink milk',
-        },
-      ],
-    },
-    adress: '25 Avenue Victor Hugo',
-    city: 'Paris',
-    state: 'France',
-    zipcode: '75116',
-    phone: '+63344556677',
-    password: '123456789',
-    hobbies: [
-      'Diving',
-      'Hiking',
-    ],
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
+    isParent: false,
+    adress: '',
+    class: [],
+    city: '',
+    discipline: '',
+    job: '',
+    level: '',
+    phone: '',
+    state: '',
+    zipcode: '',
   }
 
   public newPassword = '';
 
   public confirmPassword = '';
+
+  public currentPassword = '';
 
   public hideCurrentPassword = true;
 
@@ -228,9 +218,59 @@ export default class TeacherProfil extends Vue {
 
   public hideConfirmPassword = true;
 
-  mounted() {
+  public editPassword = false;
+
+  get passwordHasChanged(): boolean {
+    return (this.currentPassword !== ''
+      && this.currentPassword !== this.confirmPassword
+      && this.newPassword === this.confirmPassword
+      && this.confirmPassword.length >= 8);
+  }
+
+  public mounted() {
     console.log('teacher-profile', this.teacherInfos);
   }
+
+  // public async save() {
+  //   //  update_me
+  //   console.log('save');
+  // }
+
+  // password bloc
+  public async savePassword() {
+    const data = {
+      id: this.teacherInfos.id,
+      password: this.confirmPassword,
+      currentPassword: this.currentPassword,
+    };
+
+    if (this.newPassword === this.confirmPassword
+    && this.teacherInfos.password !== this.newPassword) {
+      this.userBis.password = this.newPassword;
+    }
+    // try {} catch (err) {
+    //   console.error(err);
+    // }
+    // call api update_password()
+    console.log('save_password');
+  }
+
+  // public async init() {}
+
+  public reset() {
+    this.currentPassword = '';
+    this.newPassword = '';
+    this.confirmPassword = '';
+  }
+
+  public updatePassword() {
+    this.editPassword = !this.editPassword;
+  }
+
+  // generic function
+  // public cancel() {
+  //   console.log('cancel');
+  // }
 }
 </script>
 

@@ -14,7 +14,7 @@
           size="164"
           tile
         >
-        <v-img src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"></v-img>
+        <v-img src=""></v-img>
         </v-avatar>
       </div>
         <v-list-item-content class="parent-infos">
@@ -126,8 +126,8 @@
           ></v-text-field>
         </div>
          <div class="btn-user-infos">
-          <v-btn class="btn btn-cancel">cancel</v-btn>
-          <v-btn class="btn btn-submit save-btn">Save</v-btn>
+          <v-btn class="btn btn-cancel" @click="cancel()">cancel</v-btn>
+          <v-btn class="btn btn-submit save-btn" @click="save()">Save</v-btn>
         </div>
       </div>
       <div class="password-infos">
@@ -162,8 +162,8 @@
             @keyup.enter="logIn"
           ></v-text-field>
           <div class="btn-user-infos-password">
-            <v-btn class="btn-cancel">cancel</v-btn>
-            <v-btn class="btn-submit save-btn">Save</v-btn>
+            <v-btn class="btn-cancel" @click="cancel()">cancel</v-btn>
+            <v-btn class="btn-submit save-btn" @click="savePassword()">Save</v-btn>
           </div>
         </div>
       </div>
@@ -182,29 +182,20 @@ export default class Profile extends Vue {
   @Prop() parentInfos!: Parent;
 
   public userBis = {
-    job: '',
-    childrenNumber: 0,
-    children: [
-      // {
-      //   firstname: 'Karl',
-      //   lastname: 'Obrien',
-      //   level: '8',
-      //   healthIndications: '',
-      // },
-      // {
-      //   firstname: 'Betty',
-      //   lastname: 'Obrien',
-      //   level: '10',
-      //   healthIndications: 'do not drink milk',
-      // },
-    ],
-    statut: '',
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
+    isPranet: false,
     adress: '',
+    children: [],
+    childrenNumber: 0,
     city: '',
+    job: '',
+    partner: {},
+    phone: '',
     state: '',
     zipcode: '',
-    phone: '',
-    password: '',
   }
 
   public newPassword = '';
@@ -220,6 +211,22 @@ export default class Profile extends Vue {
   mounted() {
     console.log('parent-profile', this.parentInfos);
   }
+
+  // public async save() {
+  //   //  update_me
+  //   console.log('save');
+  // }
+
+  // password bloc
+  // public async savePassword() {
+  //   // call api update_password()
+  //   console.log('savePassword');
+  // }
+
+  // generic function
+  // public cancel() {
+  //   console.log('cancel');
+  // }
 }
 </script>
 
