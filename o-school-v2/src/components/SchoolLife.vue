@@ -5,23 +5,23 @@
     </div>
     <div class="events">
       <div class="sooner-events">
-        <EventCard />
+        <!-- <EventCard /> -->
       </div>
       <div class="others-events">
+        <!-- <EventCard />
         <EventCard />
-        <EventCard />
-        <EventCard />
+        <EventCard /> -->
       </div>
     </div>
   </div>
 </template>
 <script>
 import { Vue, Component } from 'vue-property-decorator';
-import EventCard from './events/EventCard.vue';
+// import EventCard from './events/EventCard.vue';
 // import
 @Component({
   components: {
-    EventCard,
+    // EventCard,
   },
 })
 export default class SchoolLife extends Vue {

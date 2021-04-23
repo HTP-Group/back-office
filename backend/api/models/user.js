@@ -71,6 +71,30 @@ const User = mongoose.model('User', new mongoose.Schema({
   isParent: {
     type: Boolean,
     required: true,
+  },
+  adress: {
+    type: String
+  },
+  city: {
+    type: String
+  },
+  class: {
+    type: Array,
+  },
+  discipline:{
+    type: Object,
+  },
+  job: {
+    type: String
+  },
+  phone: {
+    type: String
+  },
+  state: {
+    type: String
+  },
+  zipcode: {
+    type: String
   }
 }));
 
@@ -107,5 +131,37 @@ export class UserModel {
     })
     
     return schema.validate(req);
+  }
+  async update(user) {
+    const updateDoc = {
+      $set: { ...user }
+    };
+    const result = await User.updateOne({_id: user.id }, updateDoc, { upsert: false })
+    return result;
+  }
+  async addChildren(children) {
+    const createChildren = {
+      firstname: '',
+    }
+    // User.push(createChildren)
+  }
+  validate_parent_profile(parent) {
+    const schema = Joi.object({
+      firstname: Joi.string().min(3).max(50).required(),
+      lastname: Joi.string().min(3).max(50).required(),
+      email: Joi.string().min(8).max(150).required().email(),
+      password: Joi.string().min(3).max(1050).required(),
+      confirmPassword: Joi.string().min(3).max(1050).required(),
+      isParent: Joi.boolean().required(),
+      adress: Joi.string().min(3).max(150),
+      children: Joi.array(),
+      childrenNumber: Joi.number().min(1),
+      city: Joi.string().min(3).max(150),
+      job: Joi.string().min(3).max(150),
+      phone: Joi.string().min(10).max(11),
+      state: Joi.string().min(3).max(20),
+      zipcode: Joi.string().min(4).max(7)
+    })
+    return schema.validate(parent);
   }
 }

@@ -1,14 +1,10 @@
 <template>
   <div class="profile">
-    <div v-if="currentUser.isParent" class="parent-profile">
-      <router-link to="/parent-profile">
-        <ParentProfile :parent-infos="this.currentUserBis"/>
-    </router-link>
+    <div v-if="currentUserBis.isParent" class="parent-profile">
+        <ParentProfile :parent-infos="this.currentUserBis" @refresh-profile="getMe()" />
     </div>
     <div v-else class="teacher-profile">
-      <router-link to="/teacher-profile">
-        <TeacherProfile  :teacher-infos="this.currentUserBis"/>
-      </router-link>
+        <TeacherProfile :teacher-infos="this.currentUserBis"/>
     </div>
     <!-- <ChildrenProfile v-if="showChildrenProfile" />
     <StudentProfile v-if="showStudentProfil"/> -->
@@ -39,10 +35,6 @@ import {
 export default class Profile extends Vue {
   // récupérer en props le boolean isParent pour conditionner l'affichage du profile
   // @Prop public isParent!: boolean
-  public currentUser = {
-    isParent: false,
-  }
-
   public currentUserBis = {};
 
   public showChildrenProfile = false;
@@ -55,6 +47,10 @@ export default class Profile extends Vue {
     localStorage.getItem(`${JWT_ACCESS}`);
     console.log('getItem local storage', localStorage.getItem(`${JWT_ACCESS}`));
 
+    this.getMe();
+  }
+
+  public async getMe() {
     // call api get_me()
     const response = await profileApi.getMe();
     this.currentUserBis = { ...response };

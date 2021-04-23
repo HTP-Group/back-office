@@ -11,14 +11,14 @@
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
       <v-toolbar-title>O'school</v-toolbar-title>
       <!-- ParentCase connexion -->
-      <v-tabs v-if="!currentUserBis.isParent" align-with-title>
+      <v-tabs v-if="currentUserBis.isParent" align-with-title>
           <v-tab>
             <router-link class="route" to="/school-life">
               {{sections[0]}}
             </router-link>
           </v-tab>
           <v-tab>
-            <router-link class="route" to="/parent-profile">
+            <router-link class="route" to="/profile">
               {{sections[1]}}
             </router-link>
           </v-tab>
@@ -43,7 +43,7 @@
             </router-link>
           </v-tab>
           <v-tab>
-            <router-link class="route" to="/teacher-profile">
+            <router-link class="route" to="/profile">
               {{sections[1]}}
             </router-link>
           </v-tab>

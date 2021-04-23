@@ -51,13 +51,56 @@ async function me(req, res) {
     const payload = payload_user(req)
     console.log('payload', payload)
     let user = await USER.findUserById(payload.user_id)
+    if (!user) return;
+
     console.log('user', user)
     return res.send(user)
   }
   catch (err) {
-    console.error('me',err)
+    console.error('**get-me**',err)
   }
 }
+// update de la session qui est en cours
+async function update_me(req, res) {
+  try {
+    const payload = payload_user(req)
+    let parent = await USER.findUserById(payload.user_id)
+    if (!parent) res.status(400).send('Invalid update'); 
+
+    const result = await USER.update({
+      id: payload.user_id,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      email: req.body.email,
+      password: req.body.password,
+      confirmPassword: req.body.confirmPassword,
+      isParent: req.body.isParent,
+      adress: req.body.adress,
+      children: req.body.children,
+      childrenNumber: req.body.childrenNumber,
+      city: req.body.city,
+      job: req.body.job,
+      phone: req.body.phone,
+      state: req.body.state,
+      zipcode: req.body.zipcode,
+    });
+    
+    res.send(result);
+  }
+  catch (err) {
+    console.error('**update_parent**', err)
+  }
+}
+// async function get_children() {
+  //  const payload = payload_user(req)
+  //  let children = await CHILDREN.findChildrenByParentId(id)
+// }
+
+// async function removeChildren(id) {
+// const result = await deleteOne({_id: id }) // or deleteMany({_id: id})
+// findByIdAndRemove(id)
+// }
+
 
 function generateAuthToken(user) {
   const token = jwt.sign({user_id: user.id }, process.env.JWT_SECRET_KEY, { algorithm: 'HS256'});
@@ -67,6 +110,7 @@ function generateAuthToken(user) {
 const userController = {
   register,
   signIn,
-  me
+  me, 
+  update_me
 }
 export default userController

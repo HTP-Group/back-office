@@ -84,6 +84,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import authApi from '../../api/auth.api';
+import { User } from '../../Interfaces/user/User';
 // import LocalStorageHelper from '../../helper/localstorage.service';
 import {
   IS_SIGNED,
@@ -95,14 +96,9 @@ import {
 })
 
 export default class Register extends Vue {
-  public userBis = {
-    firstname: '',
-    lastname: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    isParent: false,
-  }
+  public userBis: User | null = null
+
+  public confirmPassword = ''
 
   public hideNewPassword = false
 
@@ -112,15 +108,20 @@ export default class Register extends Vue {
 
   public roles = ['Parent', 'Teacher'];
 
-  public isParent = true;
+  public isParent = 'Parent';
 
   get inputHasChanged(): boolean {
     let data = false;
+
+    if (!this.userBis) {
+      return false;
+    }
+
     if (this.userBis.firstname !== ''
         && this.userBis.lastname !== ''
         && this.userBis.email !== ''
         && this.userBis.password !== ''
-        && this.userBis.confirmPassword !== ''
+        && this.confirmPassword !== ''
         && this.userBis.isParent !== false
     ) {
       data = true;
@@ -129,18 +130,28 @@ export default class Register extends Vue {
   }
 
   cancel() {
+    if (!this.userBis) {
+      return;
+    }
+
     this.userBis = {
+      _id: '',
       firstname: '',
       lastname: '',
       email: '',
       password: '',
-      confirmPassword: '',
       isParent: false,
     };
+    this.confirmPassword = '';
   }
 
   private async submit() {
+    if (!this.userBis) {
+      return;
+    }
     try {
+      this.userBis.isParent = this.isParent === 'Parent';
+
       const response = await authApi.register(this.userBis);
       // 1/ token csrf renvoyé => le log de response
       console.log('response', response);

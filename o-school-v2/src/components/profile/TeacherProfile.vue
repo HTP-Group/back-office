@@ -231,10 +231,10 @@ export default class TeacherProfil extends Vue {
     console.log('teacher-profile', this.teacherInfos);
   }
 
-  // public async save() {
-  //   //  update_me
-  //   console.log('save');
-  // }
+  public async save() {
+    //  update_me
+    console.log('save');
+  }
 
   // password bloc
   public async savePassword() {

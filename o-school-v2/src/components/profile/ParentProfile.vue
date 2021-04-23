@@ -1,5 +1,5 @@
 <template>
-  <div class="profile-page">
+  <div v-if="parentInfos && userBis" class="profile-page">
     <div class="profile-page-title">
       <h2 class="profile-page-title-h2">
         {{parentInfos.firstname}}
@@ -38,9 +38,6 @@
              <router-link to="/profile/:id" class="b-link">
                {{parentInfos.children[1].firstname}} {{parentInfos.children[1].lastname}}
              </router-link> -->
-          </v-list-item-subtitle>
-           <v-list-item-subtitle>
-            <v-label>Statut: </v-label>{{parentInfos.statut}}
           </v-list-item-subtitle>
           <v-list-item-subtitle>
             <v-label>Adress: </v-label>
@@ -85,12 +82,6 @@
           <v-text-field
             v-model="userBis.childrenNumber"
             label="Number of Children"
-            prepend-icon='fa-users'
-            append-icon="fa-pen"
-          ></v-text-field>
-          <v-text-field
-            v-model="userBis.statut"
-            label="Statut"
             prepend-icon='fa-users'
             append-icon="fa-pen"
           ></v-text-field>
@@ -172,31 +163,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator';
-import { Parent } from '../../Interfaces/user/parent/Parent.interface';
+import {
+  Component, Vue, Prop, Watch,
+} from 'vue-property-decorator';
+import { User } from '../../Interfaces/user/User';
+import profileApi from '../../api/profile.api';
 
 @Component({
   components: {},
 })
 export default class Profile extends Vue {
-  @Prop() parentInfos!: Parent;
+  @Prop() parentInfos!: User;
 
-  public userBis = {
-    firstname: '',
-    lastname: '',
-    email: '',
-    password: '',
-    isPranet: false,
-    adress: '',
-    children: [],
-    childrenNumber: 0,
-    city: '',
-    job: '',
-    partner: {},
-    phone: '',
-    state: '',
-    zipcode: '',
-  }
+  public userBis: User | null = null;
 
   public newPassword = '';
 
@@ -210,12 +189,27 @@ export default class Profile extends Vue {
 
   mounted() {
     console.log('parent-profile', this.parentInfos);
+    this.userBis = { ...this.parentInfos };
+    //
   }
 
-  // public async save() {
-  //   //  update_me
-  //   console.log('save');
-  // }
+  public async save() {
+    if (!this.userBis) {
+      return;
+    }
+    //  update_me
+    console.log('save');
+    this.userBis._id = this.parentInfos._id;
+
+    await profileApi.updateMe(this.userBis);
+    this.$emit('refresh-profile');
+  }
+
+  @Watch('parentInfos')
+  onParentInfosChange() {
+    console.log('watch');
+    this.userBis = { ...this.parentInfos };
+  }
 
   // password bloc
   // public async savePassword() {
