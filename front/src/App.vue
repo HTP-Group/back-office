@@ -27,21 +27,21 @@ import NavBar from './components/NavBar.vue';
 import Profile from './views/profile/Profile.vue';
 
 @Component({
-  components: {
-    Profile,
-    NavBar,
-    // Register,
-    // Trombinoscope,
-    // Login,
-  },
+	components: {
+		Profile,
+		NavBar,
+		// Register,
+		// Trombinoscope,
+		// Login,
+	},
 })
 export default class App extends Vue {
   public isSigned = false;
 
-  // private async created() {
-  // conditions
-  //  this.isSigned = LocalStorageService.get(IS_SIGNED) === 'true'
-  // }
+	// private async created() {
+	// conditions
+	//  this.isSigned = LocalStorageService.get(IS_SIGNED) === 'true'
+	// }
 }
 </script>
 <style scoped>

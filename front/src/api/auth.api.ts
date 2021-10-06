@@ -1,22 +1,15 @@
 import Axios from './index';
-import { User } from '../Interfaces/user/User';
+// import { User } from '../Interfaces/user/User';
 
-async function register(data: User): Promise<string> {
-  const response = await Axios.post(
-    '/user/register', data,
-  );
-  return response.data;
-}
 async function login(data: { email: string; password: string }): Promise<string> {
-  const response = await Axios.post(
-    'user/signIn', data,
-  );
+	const response = await Axios.post(
+		'user/signIn', data,
+	);
 
-  return response.data;
+	return response.data;
 }
 
 const authApi = {
-  register,
-  login,
+	login,
 };
 export default authApi;

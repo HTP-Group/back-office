@@ -44,12 +44,12 @@
 import { Component, Vue } from 'vue-property-decorator';
 import authApi from '../../api/auth.api';
 import {
-  IS_SIGNED,
-  JWT_ACCESS,
+	IS_SIGNED,
+	JWT_ACCESS,
 } from '../../constants';
 
 @Component({
-  components: {},
+	components: {},
 })
 export default class Login extends Vue {
   public email = '';
@@ -59,29 +59,29 @@ export default class Login extends Vue {
   public showPassword = false
 
   public cancel(): void {
-    this.email = '';
-    this.password = '';
+  	this.email = '';
+  	this.password = '';
   }
 
   get inputChanged(): boolean {
-    // const email = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
-    return (this.email.length >= 8 && this.password.length >= 8);
+  	// const email = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
+  	return (this.email.length >= 8 && this.password.length >= 8);
   }
 
   public async submit() {
-    console.log('test');
-    const response = await authApi.login({
-      email: this.email,
-      password: this.password,
-    });
-    // on stock le token dans le localStorage pour communiquer avec l'app.
-    localStorage.setItem(`${JWT_ACCESS}`, response);
-    // pour récupérer IS_SIGNED avec localStorage.getItem('IS_SIGNED')
-    localStorage.setItem(`${IS_SIGNED}`, 'true');
+  	console.log('test');
+  	const response = await authApi.login({
+  		email: this.email,
+  		password: this.password,
+  	});
+  	// on stock le token dans le localStorage pour communiquer avec l'app.
+  	localStorage.setItem(`${JWT_ACCESS}`, response);
+  	// pour récupérer IS_SIGNED avec localStorage.getItem('IS_SIGNED')
+  	localStorage.setItem(`${IS_SIGNED}`, 'true');
 
-    console.log(response, 'success');
+  	console.log(response, 'success');
 
-    this.$router.replace('/profile');
+  	this.$router.replace('/profile');
   }
   // public async loging(): void {
   // }

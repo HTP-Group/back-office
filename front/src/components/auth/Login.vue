@@ -38,7 +38,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component({
-  components: {},
+	components: {},
 })
 export default class Login extends Vue {
   public email = '';
@@ -48,13 +48,13 @@ export default class Login extends Vue {
   public showPassword = false
 
   public cancel(): void {
-    this.email = '';
-    this.password = '';
+  	this.email = '';
+  	this.password = '';
   }
 
   get inputChanged(): boolean {
-    // const email = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
-    return (this.email.length >= 8 && this.password.length >= 8);
+  	// const email = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
+  	return (this.email.length >= 8 && this.password.length >= 8);
   }
   // public async loging(): void {
   // }

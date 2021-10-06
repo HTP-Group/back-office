@@ -1,5 +1,4 @@
 import userController from '../controllers/user.controller.js';
-// import profileController from '../controllers/profile.controller.js';
 import express from 'express';
 import auth from '../middleware/user.js'
 const router = express.Router();
@@ -15,20 +14,9 @@ router.get('/profile', async (req, res) => {
   auth(req, res)
   userController.me(req, res)
 })
-router.put('/update_parent/:id', async(req, res) => {
-  auth(req, res)
-  userController.update_parent(req, res)
-})
-// router.put('/update_teacher/:id', async(req, res) => {
+// router.put('/update_parent/:id', async(req, res) => {
 //   auth(req, res)
-//   userController.update_teacher(req, res)
+//   userController.update_parent(req, res)
 // })
-// router.put('/update_password_parent/:id', async(req, res) => {
-//   auth(req, res)
-//   userController.update_parent_password(req, res)
-// })
-// router.put('/update_teacher_password/:id', async(req, res) => {
-//   auth(req, res)
-//   userController.update_teacher_password(req, res)
-// })
+
 export default router;

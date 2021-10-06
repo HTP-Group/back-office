@@ -1,26 +1,25 @@
 import mongoose from 'mongoose';
 
-const Classe = mongoose.model('Classe', new mongoose.Schema({
-  teacher_id: {
+const Price = mongoose.model('Pricing', new mongoose.Schema({
+  id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'teacher_id' 
   },
-  teacher_name: {
+  name: {
     type: mongoose.Schema.Types.String,
     ref: 'teacher_name' 
   },
-  students: [ String ],
-  courses: [ String ]
+  comments: mongoose.Schema.Types.String,
 }))
 
-async function createClasse(teacher_id, teacher_name) {
-  const classe = new Classe({
+async function createPrice(teacher_id, teacher_name) {
+  const price = new Price({
     teacher_id,
     teacher_name,
     students: ['Jeremy', 'alicia'],
     courses: ['maths, histoire']
   })
-  const result = await classe.save()
+  const result = await price.save()
   console.log(result)
 }
-createClasse()
+createPrice()

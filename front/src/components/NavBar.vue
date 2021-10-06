@@ -9,58 +9,96 @@
       class="bar"
     >
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-      <v-toolbar-title>O'school</v-toolbar-title>
-      <!-- ParentCase connexion -->
-      <v-tabs v-if="currentUserBis.isParent" align-with-title>
+      <v-toolbar-title>HTP</v-toolbar-title>
+      <!-- Admin connexion -->
+      <v-tabs v-if="currentUserBis.isAdmin" align-with-title>
           <v-tab>
-            <router-link class="route" to="/school-life">
-              {{sections[0]}}
+            <router-link class="route" to="/process-admin">
+              {{sectionsAdmin[0]}}
             </router-link>
           </v-tab>
           <v-tab>
-            <router-link class="route" to="/profile">
-              {{sections[1]}}
-            </router-link>
-          </v-tab>
-          <!-- a conditionner si login / log out -->
-          <v-tab>
-            <router-link class="route" to="/parent-dashboard">
-              {{sections[2]}}
+            <router-link class="route" to="/wiki-admin">
+              {{sectionsAdmin[1]}}
             </router-link>
           </v-tab>
           <v-tab>
-            <router-link class="route" to="/parent-scheduled">
-              {{sections[3]}}
-            </router-link>
-          </v-tab>
-          <v-tab><router-link class="route" to="/logout">{{sections[4]}}</router-link></v-tab>
-        </v-tabs>
-      <!-- teacherCase connexion -->
-      <v-tabs v-else align-with-title>
-          <v-tab>
-            <router-link class="route" to="/school-life">
-              {{sections[0]}}
+            <router-link class="route" to="/toolkit-admin">
+              {{sectionsAdmin[2]}}
             </router-link>
           </v-tab>
           <v-tab>
-            <router-link class="route" to="/profile">
-              {{sections[1]}}
-            </router-link>
-          </v-tab>
-          <!-- a conditionner si login / log out -->
-          <v-tab>
-            <router-link class="route" to="/teacher-dashboard">
-              {{sections[2]}}
+            <router-link class="route" to="/pricing-admin">
+              {{sectionsAdmin[3]}}
             </router-link>
           </v-tab>
           <v-tab>
-            <router-link class="route" to="/teacher-scheduled">
-              {{sections[3]}}
+            <router-link class="route" to="/values-admin">
+              {{sectionsAdmin[4]}}
+            </router-link>
+          </v-tab>
+          <v-tab>
+            <router-link class="route" to="/procedural-admin">
+              {{sectionsAdmin[5]}}
+            </router-link>
+          </v-tab>
+          <v-tab>
+            <router-link class="route" to="/trainings-admin">
+              {{sectionsAdmin[6]}}
+            </router-link>
+          </v-tab>
+          <v-tab>
+            <router-link class="route" to="/users-admin">
+              {{sectionsAdmin[7]}}
             </router-link>
           </v-tab>
           <v-tab>
             <router-link class="route" to="/logout">
+              {{sectionsAdmin[8]}}
+            </router-link>
+          </v-tab>
+        </v-tabs>
+      <!-- collabs connexion -->
+      <v-tabs v-else align-with-title>
+          <v-tab>
+            <router-link class="route" to="/process">
+              {{sections[0]}}
+            </router-link>
+          </v-tab>
+          <v-tab>
+            <router-link class="route" to="/wiki">
+              {{sections[1]}}
+            </router-link>
+          </v-tab>
+          <!-- a conditionner si login / log out -->
+          <v-tab>
+            <router-link class="route" to="/toolkit">
+              {{sections[2]}}
+            </router-link>
+          </v-tab>
+          <v-tab>
+            <router-link class="route" to="/pricing">
+              {{sections[3]}}
+            </router-link>
+          </v-tab>
+          <v-tab>
+             <router-link class="route" to="/values">
               {{sections[4]}}
+            </router-link>
+          </v-tab>
+          <v-tab>
+            <router-link class="route" to="/procedural">
+              {{sections[5]}}
+            </router-link>
+          </v-tab>
+          <v-tab>
+            <router-link class="route" to="/trainings">
+              {{sections[6]}}
+            </router-link>
+          </v-tab>
+          <v-tab>
+            <router-link class="route" to="/logout">
+              {{sections[7]}}
             </router-link>
           </v-tab>
         </v-tabs>
@@ -82,31 +120,43 @@
             <v-list-item-icon>
               <!-- <v-icon size="small">mdi-home</v-icon> -->
             </v-list-item-icon>
-            <v-list-item-title>{{sections[0]}}</v-list-item-title>
+            <v-list-item-title>{{isAdmin ? sectionsAdmin[0] : sections[0]}}</v-list-item-title>
           </v-list-item>
         <v-list-item>
             <v-list-item-icon>
               <v-icon size="small">mdi-account</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>{{sections[1]}}</v-list-item-title>
+            <v-list-item-title>{{isAdmin ? sectionsAdmin[0] : sections[1]}}</v-list-item-title>
           </v-list-item>
           <v-list-item>
             <v-list-item-icon>
               <v-icon size="small">fa-chart-line</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>{{sections[2]}}</v-list-item-title>
+            <v-list-item-title>{{isAdmin ? sectionsAdmin[0] : sections[2]}}</v-list-item-title>
           </v-list-item>
           <v-list-item>
             <v-list-item-icon>
               <v-icon size="small">fa-calendar</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>{{sections[3]}}</v-list-item-title>
+            <v-list-item-title>{{isAdmin ? sectionsAdmin[0] : sections[3]}}</v-list-item-title>
           </v-list-item>
           <v-list-item>
             <v-list-item-icon>
               <v-icon size="small">fa-power-off</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>{{sections[4]}}</v-list-item-title>
+            <v-list-item-title>{{isAdmin ? sectionsAdmin[0] : sections[4]}}</v-list-item-title>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon size="small">fa-power-off</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>{{isAdmin ? sectionsAdmin[0] : sections[5]}}</v-list-item-title>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon size="small">fa-power-off</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>{{isAdmin ? sectionsAdmin[0] : sections[6]}}</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -116,46 +166,59 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import profileApi from '../api/profile.api';
 // import
 import {
-  // IS_SIGNED,
-  JWT_ACCESS,
+	// IS_SIGNED,
+	JWT_ACCESS,
 } from '../constants';
 
 @Component({
-  components: {},
+	components: {},
 })
 export default class NavBar extends Vue {
   public drawer = false;
 
+  public sectionsAdmin = [
+  	'Process-admin',
+  	'wiki-admin',
+  	'toolkit-admin',
+  	'pricing-admin',
+  	'values-admin',
+  	'procedural-admin',
+  	'trainings-admin',
+  	'users-admin',
+  	'logout',
+  ]
+
   public sections = [
-    'School life',
-    'Profile',
-    'Dashboard',
-    'Scheduled',
-    'Logout',
+  	'Process',
+  	'wiki',
+  	'toolkit',
+  	'pricing',
+  	'values',
+  	'procedural',
+  	'trainings',
+  	'logout',
   ]
 
   public currentUserBis = {
-    firstname: '',
-    lastname: '',
-    email: '',
-    password: '',
-    isParent: false,
+  	firstname: '',
+  	lastname: '',
+  	email: '',
+  	password: '',
+  	isParent: false,
   }
 
   public async mounted() {
-    console.log('test before GetMe');
-    // récupère le token
-    localStorage.getItem(`${JWT_ACCESS}`);
-    console.log('getItem local storage', localStorage.getItem(`${JWT_ACCESS}`));
-
-    // call api get_me()
-    const response = await profileApi.getMe();
-    this.currentUserBis = { ...response };
-    console.log(this.currentUserBis);
-    console.log(response);
+  	console.log('test before GetMe');
+  	// récupère le token
+  	localStorage.getItem(`${JWT_ACCESS}`);
+  	console.log('getItem local storage', localStorage.getItem(`${JWT_ACCESS}`));
+  	// call api get_me()
+  	// const response = await profileApi.getMe();
+  	// this.currentUserBis = { ...response };
+  	// console.log(this.currentUserBis);
+  	// console.log(response);
   }
 }
 </script>

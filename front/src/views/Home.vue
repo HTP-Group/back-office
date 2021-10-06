@@ -9,9 +9,9 @@ import Vue from 'vue';
 import Home from '../components/Home.vue';
 
 export default Vue.extend({
-  name: 'Home',
-  components: {
-    Home,
-  },
+	name: 'Home',
+	components: {
+		Home,
+	},
 });
 </script>

@@ -4,10 +4,11 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 dotenv.config();
+import userController from './api/controllers/user.controller.js';
 
 const app = express()
 
-mongoose.connect('mongodb://localhost/o-school', { 
+mongoose.connect('mongodb://localhost/back-office', { 
     useNewUrlParser: true, 
     useUnifiedTopology: true 
 } )
@@ -16,7 +17,7 @@ mongoose.connect('mongodb://localhost/o-school', {
 
 app.use(express.json())
 app.use(cors());
-app.use('/api/user', user)
+app.use('/api', user)
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3005;
 app.listen(port, () => console.log(`Listening on port ${port}`))

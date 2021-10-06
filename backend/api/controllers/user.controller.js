@@ -7,28 +7,33 @@ import payload_user from '../helper/sessionHelper.js';
 const USER = new UserModel()
 
 async function register(req, res) {
-  const { error } = USER.validateUser(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
- 
-  let user = await USER.findUserByEmail(req.body.email);
+  try {
+    const { error } = USER.validateUser(req.body);
+    if (error) return res.status(400).send(error.details[0].message);
   
-  if (user) return res.status(400).send('user already registered')
-  
-  user = await USER.newUser(req.body);
+    let user = await USER.findUserByEmail(req.body.email);
+    
+    if (user) return res.status(400).send('user already registered')
+    
+    user = await USER.newUser(req.body);
 
-  const salt = await bcrypt.genSalt(10);
-  user.password = await bcrypt.hash(user.password, salt)
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(user.password, salt)
 
-  console.log('**** NEW USER: ****\n',user)
-  user.save();
-  // console.log('key',process.env.JWT_SECRET_KEY)
-  
-  const token = generateAuthToken(user);
-  console.log('********', user)
-  console.log('token register controller', token )
-  console.log('********')
+    console.log('**** NEW USER: ****\n',user)
+    user.save();
+    // console.log('key',process.env.JWT_SECRET_KEY)
+    
+    const token = generateAuthToken(user);
+    console.log('********', user)
+    console.log('token register controller', token )
+    console.log('********')
 
-  return res.send(token);
+    return res.send(token);
+  }
+  catch(err) {
+    console.error('**register**',err)
+  }
 }
 
 async function signIn(req, res) {
@@ -56,7 +61,7 @@ async function me(req, res) {
     console.log('user', user)
     return res.send(user)
   }
-  catch (err) {
+  catch(err) {
     console.error('**get-me**',err)
   }
 }
@@ -74,15 +79,10 @@ async function update_me(req, res) {
       email: req.body.email,
       password: req.body.password,
       confirmPassword: req.body.confirmPassword,
-      isParent: req.body.isParent,
-      adress: req.body.adress,
-      children: req.body.children,
-      childrenNumber: req.body.childrenNumber,
+      isAdmin: req.body.isAdmin,
       city: req.body.city,
       job: req.body.job,
-      phone: req.body.phone,
-      state: req.body.state,
-      zipcode: req.body.zipcode,
+
     });
     
     res.send(result);

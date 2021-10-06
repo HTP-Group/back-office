@@ -1,101 +1,89 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import Register from '../views/auth/Register.vue';
+// Auth Pages
+// import Register from '../views/auth/Register.vue';
 import Login from '../views/auth/Login.vue';
-import ParentProfile from '../components/profile/ParentProfile.vue';
-import ChildrenProfile from '../components/profile/ChildrenProfile.vue';
-import TeacherProfile from '../components/profile/TeacherProfile.vue';
-import StudentProfile from '../components/profile/StudentProfile.vue';
-import Trombinoscope from '../components/Trombinoscope.vue';
+
 import Home from '../views/Home.vue';
-import SchoolLife from '../components/SchoolLife.vue';
-import TeacherDashboard from '../components/dashboard/TeacherDashboard.vue';
-import ParentDashboard from '../components/dashboard/ParentDashboard.vue';
+// Admin Pages
+import PricingAdmin from '../components/admin/Pricing-admin.vue';
+import ProceduralAdmin from '../components/admin/Procedural-admin.vue';
+import ProcessAdmin from '../components/admin/Process-admin.vue';
+import ToolkitAdmin from '../components/admin/Toolkit-admin.vue';
+import TrainingsAdmin from '../components/admin/Trainings-admin.vue';
+import ValuesAdmin from '../components/admin/Values-admin.vue';
+import WikiAdmin from '../components/admin/Wiki-admin.vue';
 import Profile from '../views/profile/Profile.vue';
-// import TeacherSchedule from '../components/scheduled/TeacherScheduled.vue';
+import UsersAdmin from '../components/admin/Users-admin.vue';
+import UsersListAdmin from '../components/admin/UsersList-admin.vue';
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
-  {
-    path: '/home',
-    name: 'Home',
-    component: Home,
-  },
-  {
-    path: '/register',
-    name: 'Register',
-    component: Register,
-  },
-  {
-    path: '/',
-    name: 'Login',
-    component: Login,
-  },
-  {
-    path: '/parent-profile',
-    name: 'ParentProfile',
-    component: ParentProfile,
-  },
-  {
-    path: '/student-profile',
-    name: 'StudentProfile',
-    component: StudentProfile,
-  },
-  // {
-  //   path: '/parent-profile/:id/children/:id',
-  //   name: 'ChildrenProfile',
-  //   component: ChildrenProfile,
-  // },
-  {
-    path: '/children-profile',
-    name: 'ChildrenProfile',
-    component: ChildrenProfile,
-  },
-  {
-    path: '/teacher-profile',
-    name: 'TeacherProfile',
-    component: TeacherProfile,
-  },
-  {
-    path: '/teacher-dashboard',
-    name: 'Dashboard',
-    component: TeacherDashboard,
-  },
-  {
-    path: '/parent-dashboard',
-    name: 'Dashboard',
-    component: ParentDashboard,
-  },
-  {
-    path: '/school-life',
-    name: 'SchoolLife',
-    component: SchoolLife,
-  },
-  {
-    path: '/trombinoscope',
-    name: 'Trombinoscope',
-    component: Trombinoscope,
-  },
-  {
-    path: '/profile',
-    name: 'Profile',
-    component: Profile,
-  },
-  // {
-  //   path: '/teacher-schedule',
-  //   name: 'TeacherSchedule',
-  //   component: TeacherSchedule,
-  // },
-  // {
-  //   path: '/parent-schedule',
-  //   name: 'ParentSchedule',
-  //   component: ParentSchedule,
-  // },
+	{
+		path: '/home',
+		name: 'Home',
+		component: Home,
+	},
+	{
+	  path: '/users-admin',
+	  name: 'UsersAdmin',
+	  component: UsersAdmin,
+	},
+	{
+	  path: '/usersList-admin',
+	  name: 'UsersListAdmin',
+	  component: UsersListAdmin,
+	},
+	{
+		path: '/',
+		name: 'Login',
+		component: Login,
+	},
+	{
+		path: '/pricing-admin',
+		name: 'PricingAdmin',
+		component: PricingAdmin,
+	},
+	{
+		path: '/procedural-admin',
+		name: 'ProceduralAdmin',
+		component: ProceduralAdmin,
+	},
+	{
+		path: '/process-admin',
+		name: 'ProcessAdmin',
+		component: ProcessAdmin,
+	},
+	{
+		path: '/toolkit-admin',
+		name: 'ToolkitAdmin',
+		component: ToolkitAdmin,
+	},
+	{
+		path: '/trainings-admin',
+		name: 'TrainingsAdmin',
+		component: TrainingsAdmin,
+	},
+	{
+		path: '/values-admin',
+		name: 'ValuesAdmin',
+		component: ValuesAdmin,
+	},
+	{
+		path: '/wiki-admin',
+		name: 'WikiAdmin',
+		component: WikiAdmin,
+	},
+	{
+		path: '/profile',
+		name: 'Profile',
+		component: Profile,
+	},
 ];
 
 const router = new VueRouter({
-  routes,
+	routes,
 });
 
 export default router;

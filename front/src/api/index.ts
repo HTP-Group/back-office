@@ -1,27 +1,27 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
 const Axios = axios.create({
-  // baseURL: process.env.VUE_APP_API_URL || '/api',
-  baseURL: 'http://localhost:3000/api',
-  headers: {
-    'Content-Type': 'application/json',
-  },
+	// baseURL: process.env.VUE_APP_API_URL || '/api',
+	baseURL: 'http://localhost:3000/api',
+	headers: {
+		'Content-Type': 'application/json',
+	},
 });
 
 Axios.interceptors.request.use((config: AxiosRequestConfig) => {
-  if (!config.method) {
-    return config;
-  }
-  const method = config.method.toUpperCase();
+	if (!config.method) {
+		return config;
+	}
+	const method = config.method.toUpperCase();
 
-  if (method !== 'OPTIONS') {
-    config.headers = {
-      ...config.headers,
-      AUTHORIZATION: localStorage.getItem('JWT_ACCESS'),
-    };
-  }
+	if (method !== 'OPTIONS') {
+		config.headers = {
+			...config.headers,
+			AUTHORIZATION: localStorage.getItem('JWT_ACCESS'),
+		};
+	}
 
-  return config;
+	return config;
 });
 
 export default Axios;

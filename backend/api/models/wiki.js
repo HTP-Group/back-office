@@ -1,32 +1,32 @@
 import mongoose from 'mongoose';
 
-  const schoolSchema = new mongoose.Schema({
+  const wikiSchema = new mongoose.Schema({
     name: String, 
     teachers: [ String ], 
     events: [ String ],
     students: [ String ],
     isOpen: Boolean
   })
-  const School = mongoose.model('School', schoolSchema);
+  const Wiki = mongoose.model('Wiki', wikiSchema);
 
   // Create A school
-  async function createSchool() {
-    const school = new School({
+  async function createWiki() {
+    const wiki = new Wiki({
       name: 'Commerson School',
       teachers: ['Martin', 'grisonet'],
       events: ['Annual party'],
       students: ['Thibault, Ramazan'],
       isOpen: true
     }); 
-    const result = await school.save();
+    const result = await wiki.save();
     console.log(result)
   }
 
-  async function getSchool() {
-    const schools = await School.find({
+  async function getContent() {
+    const wikis = await Wiki.find({
       // filters
     });
-    console.log(schools)
+    console.log(wikis)
   }
 
 // getSchool()
