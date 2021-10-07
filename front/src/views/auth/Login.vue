@@ -80,6 +80,7 @@ export default class Login extends Vue {
   	localStorage.setItem(`${IS_SIGNED}`, 'true');
 
   	const user = await authApi.user();
+  	console.log(user);
 
   	if (user.isAdmin) {
   		this.$router.replace('/usersList-admin');

@@ -12,7 +12,14 @@
           <h3>Prénom</h3>
         </div>
         <div class="column-content">
-          <p>Loremp ipsos</p>
+          <v-text-field
+            v-if="UserUpdateForm"
+            v-model="userBis.firstname"
+            label="firstname"
+            append-icon="fa-pen"
+            class="user-input"
+          ></v-text-field>
+          <p v-if="!UserUpdateForm">{{user.firstname}}</p>
         </div>
       </div>
       <div class="column lastname">
@@ -20,7 +27,14 @@
           <h3>Nom</h3>
         </div>
         <div class="column-content">
-          <p>Loremp ipsos</p>
+          <v-text-field
+          v-if="UserUpdateForm"
+            v-model="userBis.lastname"
+            label="lastname"
+            append-icon="fa-pen"
+            class="user-input"
+          ></v-text-field>
+          <p v-if="!UserUpdateForm">{{user.lastname}}</p>
         </div>
       </div>
       <div class="column email">
@@ -28,7 +42,15 @@
           <h3>Email</h3>
         </div>
         <div class="column-content">
-          <p>Loremp ipsos</p>
+          <v-text-field
+            v-if="UserUpdateForm"
+            v-model="userBis.email"
+            type="email"
+            label="email"
+            append-icon="fa-pen"
+            class="user-input"
+          ></v-text-field>
+          <p v-if="!UserUpdateForm">{{user.email}}</p>
         </div>
       </div>
       <div class="column password">
@@ -36,7 +58,17 @@
           <h3>Mot de pass</h3>
         </div>
         <div class="column-content">
-          <p>Loremp ipsos</p>
+          <v-text-field
+            v-if="UserUpdateForm"
+            v-model="userBis.password"
+            :type="hideNewPassword ? 'password' : 'type'"
+            label="password"
+            hint="At least 8 characters"
+            class="user-input"
+            :append-icon="hideNewPassword ? 'fa-eye-slash' : 'fa-eye'"
+            @click:append="hideNewPassword = !hideNewPassword"
+          ></v-text-field>
+          <p v-if="!UserUpdateForm"></p>
         </div>
       </div>
       <div class="column isAdmin">
@@ -44,7 +76,15 @@
           <h3>Role</h3>
         </div>
         <div class="column-content">
-          <p>Loremp ipsos</p>
+         <v-text-field
+          v-if="UserUpdateForm"
+          v-model="userBis.isAdmin"
+          label="role"
+          append-icon='fa-pen'
+          @click:append="hideNewConfirmPassword = !hideNewConfirmPassword"
+          class="user-input"
+        ></v-text-field>
+        <p v-if="!UserUpdateForm">{{user.isAdmin}}</p>
         </div>
       </div>
       <div class="column city">
@@ -52,7 +92,14 @@
           <h3>Cabinet</h3>
         </div>
         <div class="column-content">
-          <p>Loremp ipsos</p>
+          <v-text-field
+            v-if="UserUpdateForm"
+            v-model="userBis.city"
+            label="city"
+            append-icon="fa-pen"
+            class="user-input"
+          ></v-text-field>
+          <p v-if="!UserUpdateForm">{{user.city}}</p>
         </div>
       </div>
       <div class="column job">
@@ -60,7 +107,14 @@
           <h3>Poste</h3>
         </div>
         <div class="column-content">
-          <p>Loremp ipsos</p>
+          <v-text-field
+            v-if="UserUpdateForm"
+            v-model="userBis.job"
+            label="job"
+            append-icon="fa-pen"
+            class="user-input"
+          ></v-text-field>
+          <p v-if="!UserUpdateForm">{{user.job}}</p>
         </div>
       </div>
       <div class="column actions">
@@ -69,23 +123,26 @@
         </div>
         <div class="content">
           <div class="column-content">
-            <button class="btn update" type="submit">Modifier</button>
+            <button
+              v-if="!UserUpdateForm"
+              class="btn update"
+              type="submit"
+              @click="displayUserUpdateForm">
+              Modifier
+            </button>
+            <button
+              v-if="UserUpdateForm"
+              class="btn validate"
+              type="submit"
+              @click="updatedUser">
+              Valider
+            </button>
           </div>
           <div class="column-content">
             <button class="btn delete" type="submit">Supprimer</button>
           </div>
         </div>
       </div>
-    </div>
-    <div class="addCollab">
-      <button
-      v-if="!addCollabForm"
-        class="btn add"
-        type="submit"
-        @click="displayAddCollabForm()"
-      >
-      Ajouter un collab
-      </button>
     </div>
     <div v-if="addCollabForm" class="addCollabForm">
       <v-icon class="icon" @click="cancelDisplayForm">fa-times</v-icon>
@@ -112,6 +169,7 @@
         v-model="userBis.password"
         :type="hideNewPassword ? 'password' : 'type'"
         label="password"
+        hint="At least 8 characters"
         :append-icon="hideNewPassword ? 'fa-eye-slash' : 'fa-eye'"
         class="user-input"
         @click:append="hideNewPassword = !hideNewPassword"
@@ -139,6 +197,18 @@
       <button v-if="addCollabForm" type="submit" class="btn" @click="cancel">Annuler</button>
       <button v-if="addCollabForm" class="add btn" type="submit" @click="addCollab">Ajouter</button>
     </div>
+    <div class="addCollab">
+        <button
+          v-if="!addCollabForm"
+            class="btn add"
+            type="submit"
+            @click="displayAddCollabForm()"
+          >
+          Ajouter un collab
+        </button>
+      </div>
+      <div v-if="UserUpdateForm" class="user-update">
+      </div>
   </div>
 </template>
 
@@ -149,7 +219,7 @@ import {
 	// Watch,
 	// Prop
 } from 'vue-property-decorator';
-import resgisterApi from '../../api/auth.api';
+import UserApi from '../../api/auth.api';
 import { User } from '../../Interfaces/user/User';
 // import componentNameImported from '';
 
@@ -161,6 +231,19 @@ export default class UsersListAdmin extends Vue {
 	// @Prop() public propsName!: boolean;
 
   public addCollabForm = false;
+
+  public UserUpdateForm = false;
+
+  public user: User = {
+  	firstname: '',
+  	lastname: '',
+  	email: '',
+  	password: '',
+  	confirmPassword: '',
+  	isAdmin: false,
+  	city: '',
+  	job: '',
+  }
 
   public userBis: User = {
   	firstname: '',
@@ -219,13 +302,32 @@ export default class UsersListAdmin extends Vue {
   	this.addCollabForm = !this.addCollabForm;
   }
 
+  public displayUserUpdateForm() {
+  	console.log('testUpdate');
+  	this.UserUpdateForm = !this.UserUpdateForm;
+  }
+
+  public async updatedUser() {
+  	this.UserUpdateForm = false;
+  	const response = await UserApi.userUpdate(this.userBis);
+
+  	console.log(response);
+  }
+
   public cancelDisplayForm() {
   	this.addCollabForm = false;
   }
 
   public async addCollab() {
-  	await resgisterApi.register(this.userBis);
+  	await UserApi.register(this.userBis);
   	// await dispatch(vuex module)
+  }
+
+  public async mounted() {
+  	const userFetched = await UserApi.user();
+  	this.user = userFetched;
+  	console.log(userFetched);
+  	console.log(this.user);
   }
 }
 </script>
@@ -278,6 +380,9 @@ export default class UsersListAdmin extends Vue {
     .update {
       background-color: #fd958d;
     }
+    .validate {
+      background-color: #00dffc;
+    }
     .delete {
       background-color: #e21726;
       color: #fff;
@@ -290,6 +395,9 @@ export default class UsersListAdmin extends Vue {
     .icon {
       left: 15em;
       margin: .5em;
+    }
+    .user-input {
+      width: 80%;
     }
   }
 </style>

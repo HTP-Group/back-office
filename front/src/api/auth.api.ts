@@ -17,9 +17,17 @@ async function signIn(data: { email: string; password: string }): Promise<string
 	return response.data;
 }
 
+// permet de récupérer les informations de l'utilisateur qui tente de se connecter
 async function user(): Promise<User> {
 	const response = await Axios.get<User>(
 		'/user',
+	);
+
+	return response.data;
+}
+async function userUpdate(data: User): Promise<User> {
+	const response = await Axios.put<User>(
+		'/user_update', data,
 	);
 
 	return response.data;
@@ -29,5 +37,6 @@ const authApi = {
 	signIn,
 	register,
 	user,
+	userUpdate,
 };
 export default authApi;
