@@ -69,8 +69,8 @@ async function me(req, res) {
 async function userUpdate(req, res) {
   try {
     const payload = payload_user(req)
-    let parent = await USER.findUserById(payload.user_id)
-    if (!parent) res.status(400).send('Invalid update'); 
+    let admin = await USER.findUserById(payload.user_id)
+    if (!admin) res.status(400).send('Invalid update'); 
 
     const result = await USER.update({
       id: payload.user_id,
@@ -88,7 +88,18 @@ async function userUpdate(req, res) {
     res.send(result);
   }
   catch (err) {
-    console.error('**update_parent**', err)
+    console.error('**update_user**', err)
+  }
+}
+
+async function users(req, res) {
+  try {
+    const payload = payload_user(req)
+    let admin = await USER.findUserById(payload.user_id)
+    if (!admin) res.status(400).send('Invalid request'); 
+  }
+  catch(err) {
+    console.error(err)
   }
 }
 // async function get_children() {
@@ -111,6 +122,7 @@ const userController = {
   register,
   signIn,
   me,
-  userUpdate
+  userUpdate,
+  users
 }
 export default userController
