@@ -14,9 +14,9 @@ router.get('/user', async (req, res) => {
   auth(req, res)
   userController.me(req, res)
 })
-// router.put('/update_parent/:id', async(req, res) => {
-//   auth(req, res)
-//   userController.update_parent(req, res)
-// })
+router.put('/user_update/:id', async(req, res) => {
+  auth(req, res)
+  userController.userUpdate(req, res)
+})
 
 export default router;

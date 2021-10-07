@@ -12,7 +12,7 @@
         <img src="./../assets/images/logo-HTP.svg" alt="logo HTP" class="img"/>
       </v-toolbar-title>
       <!-- Admin connexion -->
-      <v-tabs v-if="currentUserBis.isAdmin" align-with-title>
+      <v-tabs v-if="currentUserBis.isAdmin && isSignIn" align-with-title>
                   <v-tab>
             <router-link class="route" to="/usersList-admin">
               {{sectionsAdmin[0]}}
@@ -60,7 +60,7 @@
           </v-tab>
         </v-tabs>
       <!-- collabs connexion -->
-      <v-tabs v-else align-with-title>
+      <v-tabs v-else-if="!currentUserBis.isAdmin || !isSignIn" align-with-title>
           <v-tab>
             <router-link class="route" to="/process">
               {{sections[0]}}
@@ -122,6 +122,8 @@ import {
 export default class NavBar extends Vue {
   public drawer = false;
 
+  public isSignIn = false;
+
   public sectionsAdmin = [
   	'users-admin',
   	'Process-admin',
@@ -159,10 +161,11 @@ export default class NavBar extends Vue {
   public async mounted() {
   	// récupère le token
   	localStorage.getItem(`${JWT_ACCESS}`);
-  	console.log('getItem local storage', localStorage.getItem(`${JWT_ACCESS}`));
+
   	const user = await authApi.user();
   	if (user.isAdmin && localStorage.getItem(IS_SIGNED)) {
   		this.currentUserBis.isAdmin = true;
+  		this.isSignIn = true;
   	} else {
   		this.currentUserBis.isAdmin = false;
   	}
@@ -179,6 +182,7 @@ export default class NavBar extends Vue {
   		console.error(err);
   	}
   	this.currentUserBis.isAdmin = false;
+  	this.isSignIn = false;
   	return window.location.replace('/');
   }
 }

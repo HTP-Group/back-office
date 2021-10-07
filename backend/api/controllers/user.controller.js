@@ -66,7 +66,7 @@ async function me(req, res) {
   }
 }
 // update de la session qui est en cours
-async function update_me(req, res) {
+async function userUpdate(req, res) {
   try {
     const payload = payload_user(req)
     let parent = await USER.findUserById(payload.user_id)
@@ -110,7 +110,7 @@ function generateAuthToken(user) {
 const userController = {
   register,
   signIn,
-  me, 
-  update_me
+  me,
+  userUpdate
 }
 export default userController
