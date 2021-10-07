@@ -9,7 +9,7 @@ router.post('/register', async (req, res) => {
 router.post('/signIn', async (req, res) => {
   userController.signIn(req, res)
 })
-router.get('/profile', async (req, res) => {
+router.get('/user', async (req, res) => {
   // execution du guard / auth !!! a chaque call sauf les register et login
   auth(req, res)
   userController.me(req, res)

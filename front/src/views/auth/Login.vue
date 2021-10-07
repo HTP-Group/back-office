@@ -69,22 +69,24 @@ export default class Login extends Vue {
   }
 
   public async submit() {
-  	console.log('test');
-  	const response = await authApi.login({
+  	const response = await authApi.signIn({
   		email: this.email,
   		password: this.password,
   	});
   	// on stock le token dans le localStorage pour communiquer avec l'app.
   	localStorage.setItem(`${JWT_ACCESS}`, response);
+
   	// pour récupérer IS_SIGNED avec localStorage.getItem('IS_SIGNED')
   	localStorage.setItem(`${IS_SIGNED}`, 'true');
 
-  	console.log(response, 'success');
+  	const user = await authApi.user();
 
-  	this.$router.replace('/profile');
+  	if (user.isAdmin) {
+  		this.$router.replace('/usersList-admin');
+  	} else {
+  		this.$router.replace('/values');
+  	}
   }
-  // public async loging(): void {
-  // }
 }
 </script>
 

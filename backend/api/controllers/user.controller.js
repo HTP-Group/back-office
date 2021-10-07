@@ -47,8 +47,8 @@ async function signIn(req, res) {
   if (!validPassword) return res.status(400).send('Invalid email or password')
 
   const token = generateAuthToken(user);
-
-  return res.send(token);
+  console.log('success')
+  return res.status(200).send(token);
 }
 
 async function me(req, res) {

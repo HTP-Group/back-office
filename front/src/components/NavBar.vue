@@ -12,47 +12,47 @@
       <v-toolbar-title>HTP</v-toolbar-title>
       <!-- Admin connexion -->
       <v-tabs v-if="currentUserBis.isAdmin" align-with-title>
-          <v-tab>
-            <router-link class="route" to="/process-admin">
+                  <v-tab>
+            <router-link class="route" to="/usersList-admin">
               {{sectionsAdmin[0]}}
             </router-link>
           </v-tab>
           <v-tab>
-            <router-link class="route" to="/wiki-admin">
+            <router-link class="route" to="/process-admin">
               {{sectionsAdmin[1]}}
             </router-link>
           </v-tab>
           <v-tab>
-            <router-link class="route" to="/toolkit-admin">
+            <router-link class="route" to="/wiki-admin">
               {{sectionsAdmin[2]}}
             </router-link>
           </v-tab>
           <v-tab>
-            <router-link class="route" to="/pricing-admin">
+            <router-link class="route" to="/toolkit-admin">
               {{sectionsAdmin[3]}}
             </router-link>
           </v-tab>
           <v-tab>
-            <router-link class="route" to="/values-admin">
+            <router-link class="route" to="/pricing-admin">
               {{sectionsAdmin[4]}}
             </router-link>
           </v-tab>
           <v-tab>
-            <router-link class="route" to="/procedural-admin">
+            <router-link class="route" to="/values-admin">
               {{sectionsAdmin[5]}}
             </router-link>
           </v-tab>
           <v-tab>
-            <router-link class="route" to="/trainings-admin">
+            <router-link class="route" to="/procedural-admin">
               {{sectionsAdmin[6]}}
             </router-link>
           </v-tab>
           <v-tab>
-            <router-link class="route" to="/users-admin">
+            <router-link class="route" to="/trainings-admin">
               {{sectionsAdmin[7]}}
             </router-link>
           </v-tab>
-          <v-tab>
+          <v-tab @click="logout()">
             <router-link class="route" to="/logout">
               {{sectionsAdmin[8]}}
             </router-link>
@@ -96,7 +96,7 @@
               {{sections[6]}}
             </router-link>
           </v-tab>
-          <v-tab>
+          <v-tab @click="logout()">
             <router-link class="route" to="/logout">
               {{sections[7]}}
             </router-link>
@@ -180,9 +180,10 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import authApi from '../api/auth.api';
 // import
 import {
-	// IS_SIGNED,
+	IS_SIGNED,
 	JWT_ACCESS,
 } from '../constants';
 
@@ -193,6 +194,7 @@ export default class NavBar extends Vue {
   public drawer = false;
 
   public sectionsAdmin = [
+  	'users-admin',
   	'Process-admin',
   	'wiki-admin',
   	'toolkit-admin',
@@ -200,7 +202,6 @@ export default class NavBar extends Vue {
   	'values-admin',
   	'procedural-admin',
   	'trainings-admin',
-  	'users-admin',
   	'logout',
   ]
 
@@ -227,15 +228,34 @@ export default class NavBar extends Vue {
   }
 
   public async mounted() {
-  	console.log('test before GetMe');
   	// récupère le token
   	localStorage.getItem(`${JWT_ACCESS}`);
   	console.log('getItem local storage', localStorage.getItem(`${JWT_ACCESS}`));
+  	const user = await authApi.user();
+  	if (user.isAdmin) {
+  		this.currentUserBis.isAdmin = true;
+  	} else {
+  		this.currentUserBis.isAdmin = false;
+  	}
   	// call api get_me()
   	// const response = await profileApi.getMe();
   	// this.currentUserBis = { ...response };
   	// console.log(this.currentUserBis);
   	// console.log(response);
+  }
+
+  public async logout() {
+  	try {
+  		console.log('logout');
+  		localStorage.delete(IS_SIGNED);
+  		localStorage.delete(JWT_ACCESS);
+  		this.$router.replace('/');
+
+  		return window.location.replace('/');
+  	} catch (err) {
+  		console.error(err);
+  	}
+  	return window.location.replace('/');
   }
 }
 </script>

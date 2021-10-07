@@ -16,6 +16,8 @@ import WikiAdmin from '../components/admin/Wiki-admin.vue';
 import Profile from '../views/profile/Profile.vue';
 import UsersAdmin from '../components/admin/Users-admin.vue';
 import UsersListAdmin from '../components/admin/UsersList-admin.vue';
+// collab pages
+import Values from '../components/collab/Values.vue';
 
 Vue.use(VueRouter);
 
@@ -74,6 +76,11 @@ const routes: Array<RouteConfig> = [
 		path: '/wiki-admin',
 		name: 'WikiAdmin',
 		component: WikiAdmin,
+	},
+	{
+		path: '/values',
+		name: 'Values',
+		component: Values,
 	},
 	{
 		path: '/profile',
