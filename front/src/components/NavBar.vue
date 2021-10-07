@@ -249,7 +249,6 @@ export default class NavBar extends Vue {
   		console.log('logout');
   		localStorage.delete(IS_SIGNED);
   		localStorage.delete(JWT_ACCESS);
-  		this.$router.replace('/');
 
   		return window.location.replace('/');
   	} catch (err) {

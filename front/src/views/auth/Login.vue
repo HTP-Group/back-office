@@ -82,9 +82,9 @@ export default class Login extends Vue {
   	const user = await authApi.user();
 
   	if (user.isAdmin) {
-  		this.$router.replace('/usersList-admin');
+  		window.location.replace('/usersList-admin');
   	} else {
-  		this.$router.replace('/values');
+  		window.location.replace('/values');
   	}
   }
 }

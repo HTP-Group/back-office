@@ -224,10 +224,7 @@ export default class UsersListAdmin extends Vue {
   }
 
   public async addCollab() {
-  	console.log('test 1234');
-  	const collab = await resgisterApi.register(this.userBis);
-  	/* eslint-disable */
-    console.log(collab, 'test addcollab');
+  	await resgisterApi.register(this.userBis);
   	// await dispatch(vuex module)
   }
 }
