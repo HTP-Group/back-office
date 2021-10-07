@@ -1,0 +1,10 @@
+export interface User {
+    firstname: string;
+    lastname: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+    isAdmin: boolean;
+    city: string;
+    job: string;
+}

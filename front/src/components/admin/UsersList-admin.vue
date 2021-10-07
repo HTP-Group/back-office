@@ -78,47 +78,66 @@
       </div>
     </div>
     <div class="addCollab">
-      <button class="btn add" type="submit" @click="addCollab()">Ajouter un collab</button>
+      <button
+      v-if="!addCollabForm"
+        class="btn add"
+        type="submit"
+        @click="displayAddCollabForm()"
+      >
+      Ajouter un collab
+      </button>
     </div>
     <div v-if="addCollabForm" class="addCollabForm">
+      <v-icon class="icon" @click="cancelDisplayForm">fa-times</v-icon>
       <v-text-field
-        label="first name"
+        v-model="userBis.firstname"
+        label="firstname"
         append-icon="fa-pen"
         class="user-input"
       ></v-text-field>
       <v-text-field
-        label="last name"
+        v-model="userBis.lastname"
+        label="lastname"
         append-icon="fa-pen"
         class="user-input"
       ></v-text-field>
       <v-text-field
+        v-model="userBis.email"
         type="email"
         label="email"
         append-icon="fa-pen"
         class="user-input"
       ></v-text-field>
       <v-text-field
+        v-model="userBis.password"
         :type="hideNewPassword ? 'password' : 'type'"
         label="password"
         :append-icon="hideNewPassword ? 'fa-eye-slash' : 'fa-eye'"
         class="user-input"
+        @click:append="hideNewPassword = !hideNewPassword"
       ></v-text-field>
       <v-text-field
+        v-model="userBis.confirmPassword"
         :type="hideNewConfirmPassword ? 'password' : 'type'"
         label="confirmation"
         :append-icon="hideNewConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"
+        @click:append="hideNewConfirmPassword = !hideNewConfirmPassword"
         class="user-input"
       ></v-text-field>
       <v-text-field
+        v-model="userBis.city"
         label="city"
         append-icon="fa-pen"
         class="user-input"
       ></v-text-field>
       <v-text-field
+        v-model="userBis.job"
         label="job"
         append-icon="fa-pen"
         class="user-input"
       ></v-text-field>
+      <button v-if="addCollabForm" type="submit" class="btn" @click="cancel">Annuler</button>
+      <button v-if="addCollabForm" class="add btn" type="submit" @click="addCollab">Ajouter</button>
     </div>
   </div>
 </template>
@@ -130,6 +149,8 @@ import {
 	// Watch,
 	// Prop
 } from 'vue-property-decorator';
+import resgisterApi from '../../api/auth.api';
+import { User } from '../../Interfaces/user/User';
 // import componentNameImported from '';
 
 @Component({
@@ -141,8 +162,73 @@ export default class UsersListAdmin extends Vue {
 
   public addCollabForm = false;
 
-  public addCollab() {
+  public userBis: User = {
+  	firstname: '',
+  	lastname: '',
+  	email: '',
+  	password: '',
+  	confirmPassword: '',
+  	isAdmin: false,
+  	city: '',
+  	job: '',
+  }
+
+  public confirmPassword = ''
+
+  public hideNewPassword = false
+
+  public hideNewConfirmPassword = false
+
+  get inputHasChanged(): boolean {
+  	let data = false;
+  	if (!this.userBis) {
+  		return false;
+  	}
+  	if (this.userBis.firstname !== ''
+        && this.userBis.lastname !== ''
+        && this.userBis.email !== ''
+        && this.userBis.password !== ''
+        && this.confirmPassword !== ''
+        && this.userBis.isAdmin !== false
+        && this.userBis.city !== ''
+        && this.userBis.job !== ''
+  	) {
+  		data = true;
+  	}
+  	return data;
+  }
+
+  cancel() {
+  	if (!this.userBis) {
+  		return;
+  	}
+  	this.userBis = {
+  		firstname: '',
+  		lastname: '',
+  		email: '',
+  		password: '',
+  		confirmPassword: '',
+  		isAdmin: false,
+  		city: '',
+  		job: '',
+  	};
+  	this.confirmPassword = '';
+  }
+
+  public displayAddCollabForm() {
   	this.addCollabForm = !this.addCollabForm;
+  }
+
+  public cancelDisplayForm() {
+  	this.addCollabForm = false;
+  }
+
+  public async addCollab() {
+  	console.log('test 1234');
+  	const collab = await resgisterApi.register(this.userBis);
+  	/* eslint-disable */
+    console.log(collab, 'test addcollab');
+  	// await dispatch(vuex module)
   }
 }
 </script>
@@ -203,6 +289,10 @@ export default class UsersListAdmin extends Vue {
       margin: .5em;
       width: 30%;
       justify-self: center;
+    }
+    .icon {
+      left: 15em;
+      margin: .5em;
     }
   }
 </style>

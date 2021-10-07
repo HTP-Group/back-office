@@ -4,7 +4,6 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 dotenv.config();
-import userController from './api/controllers/user.controller.js';
 
 const app = express()
 

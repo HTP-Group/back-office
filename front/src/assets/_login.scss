@@ -1,13 +1,13 @@
 .login-page {
   display: grid; 
-  grid-template-columns: 35% auto 35%;
-  background-color: #6f68ed;
+  grid-template-columns: 33% auto 33%;
+  background-color: #fff;
   height: 100vh;
 }
 .login-bloc {
   margin-top: 7em;
   grid-column-start: 2;
-  border: 1px solid #6f68ed;
+  border: 1px solid #00dffc;
   border-radius: 10px;
   padding: 2em;
   background-color: #fff;
@@ -18,8 +18,8 @@
 }
 .login-title {
   display: grid;
-  color: #262a3e;
-  border-bottom :1px solid #6f68ed;
+  color: #00dffc;
+  border-bottom :1px solid #00dffc;
   grid-row-start: 1;
   align-self: flex-start;
 }
@@ -39,15 +39,17 @@
   .register-redirect {
     .b-link {
       font-size: small;
-      color: rgb(111, 104, 237, 0.7);
+      color: #00dffc;
       margin-top: 5em;
+      font-weight: bold;
     }
   }
   .reset-password {
     .b-link {
       font-size: small;
-      color: rgb(111, 104, 237, 0.7);
+      color: #00dffc;
       margin-top: 5em;
+      font-weight: bold;
     }
   }
 }
@@ -61,11 +63,11 @@
   grid-row-start: 4;
 }
 .v-btn {
- color: #6f68ed !important;
+ color: #00dffc !important;
 }
 
 .v-btn:hover {
-  background-color: #6f68ed !important;
+  background-color: #00dffc !important;
   color: #fff !important;
 }
 .btn-cancel {

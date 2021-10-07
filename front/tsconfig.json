@@ -23,6 +23,7 @@
     },
     "lib": [
       "esnext",
+      "ES6","DOM",
       "dom",
       "dom.iterable",
       "scripthost"
