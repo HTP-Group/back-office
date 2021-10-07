@@ -78,7 +78,7 @@
             </router-link>
           </v-tab>
           <v-tab>
-            <router-link class="route" to="/pricing">
+            <router-link class="route" to="/pricing-admin">
               {{sections[3]}}
             </router-link>
           </v-tab>

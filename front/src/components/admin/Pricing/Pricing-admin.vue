@@ -4,73 +4,31 @@
       <h2>Nos prestations de services</h2>
     </div>
     <div class="btns">
-       <router-link
-        class="btn accountability"
-        to="/pricing/accountability">
-        Comptabilite</router-link>
-      <router-link class="btn social" to="/pricing/social">Social</router-link>
-      <router-link class="btn fiscal" to="/pricing/fiscal">Fiscal</router-link>
-      <router-link class="btn legal" to="/pricing/legal">Juridique</router-link>
-      <router-link class="btn consulting" to="/pricing/consulting">Conseil</router-link>
+      <router-link class="btn accountability" to="/pricing/accountability">
+        <div class="title-btn">
+          <h3>Comptabilité</h3>
+        </div>
+      </router-link>
+      <router-link class="btn social" to="/social-pricing-admin">
+        <div class="title-btn">
+          <h3>Social</h3>
+        </div>
+      </router-link>
+      <router-link class="btn fiscal" to="/pricing/fiscal">
+        <div class="title-btn">
+          <h3>Fiscal</h3>
+        </div></router-link>
+      <router-link class="btn legal" to="/pricing/legal">
+        <div class="title-btn">
+          <h3>Juridique</h3>
+        </div>
+      </router-link>
+      <router-link class="btn consulting" to="/pricing/consulting">
+        <div class="title-btn">
+          <h3>Conseil</h3>
+        </div>
+      </router-link>
     </div>
-    <table class="table-one">
-      <tr class="tr">
-        <th class="nature nature-tr">Nature de la mission</th>
-        <th class="label label-tr">Intitulé de la prestation</th>
-        <th class="price price-tr">Prix - €</th>
-        <th class="comments comments-tr">Commentaires</th>
-      </tr>
-      <table class="table-two">
-                <td class="td">
-                    <th class="nature">Social</th>
-                    <th class="label">paramétrage des variables sociales</th>
-                    <th class="price">50 </th>
-                    <th class="comments">Attention de bien....</th>
-                </td>
-                <td class="td">
-                    <th class="nature">Social</th>
-                    <th class="label">paramétrage des variables sociales</th>
-                    <th class="price">50 </th>
-                    <th class="comments">Attention de bien....</th>
-                </td>
-                <td class="td">
-                    <th class="nature">Social</th>
-                    <th class="label">paramétrage des variables sociales</th>
-                    <th class="price">50 </th>
-                    <th class="comments">Attention de bien....</th>
-                </td>
-                <td class="td">
-                    <th class="nature">Social</th>
-                    <th class="label">paramétrage des variables sociales</th>
-                    <th class="price">50 </th>
-                    <th class="comments">Attention de bien....</th>
-                </td>
-                <td class="td">
-                    <th class="nature">Social</th>
-                    <th class="label">paramétrage des variables sociales</th>
-                    <th class="price">50 </th>
-                    <th class="comments">Attention de bien....</th>
-                </td>
-                <td class="td">
-                    <th class="nature">Social</th>
-                    <th class="label">paramétrage des variables sociales</th>
-                    <th class="price">50 </th>
-                    <th class="comments">Attention de bien....</th>
-                </td>
-                <td class="td">
-                    <th class="nature">Social</th>
-                    <th class="label">paramétrage des variables sociales</th>
-                    <th class="price">50 </th>
-                    <th class="comments">Attention de bien....</th>
-                </td>
-                <td class="td">
-                    <th class="nature">Social</th>
-                    <th class="label">paramétrage des variables sociales</th>
-                    <th class="price">50 </th>
-                    <th class="comments">Attention de bien....</th>
-                </td>
-            </table>
-    </table>
   </div>
 </template>
 
@@ -106,9 +64,10 @@ export default class PricingAdmin extends Vue {
     */
 	.pricing {
 		display: grid;
-		grid-template-rows: 5% 5% 80%;
+		grid-template-rows: 3em 2fr;
 		grid-gap: 2em;
 		margin: .5em;
+    height: 69vh;
 		.title {
 			margin: 1em;
 			grid-row-start: 1;
@@ -120,13 +79,17 @@ a {
   color: black;
   padding: 1em;
   font-weight: 600;
+  text-align: center;
+  justify-self: center;
 }
 .btns {
   display: grid;
   grid-gap: 1em;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   margin: 0 1em;
 	text-align: center;
+  height: 100%;
+  width: 100%;
   .social {
     background-color: #f8c3d0;
   }
@@ -146,13 +109,21 @@ a {
 }
 .btn {
 	justify-self: center;
+  text-align: center;
   border-radius: 18px;
   background-color: #f8c3d0;
-  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.28),
+  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.68),
   -4px -2px 16px #ffffff;
+  display: grid;
+  .title-btn {
+    display: grid;
+    h3 {
+      align-self: center;
+    }
+  }
 }
 .btn:hover {
-  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.68),
+  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.98),
   -4px -2px 16px #ffffff;
 }
 .table-one {
@@ -192,7 +163,7 @@ a {
 .table-two {
   display: grid;
   overflow-y: scroll;
-  max-height: 55vh;
+  /* max-height: 55vh; */
   grid-gap: .5em;
   .td {
     padding: 0 1em 1em 1em;

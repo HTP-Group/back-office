@@ -6,7 +6,12 @@ import Login from '../views/auth/Login.vue';
 
 import Home from '../views/Home.vue';
 // Admin Pages
+
+// Pricing Admin Pages
 import PricingAdmin from '../components/admin/Pricing/Pricing-admin.vue';
+import SocialPricingAdmin from '../components/admin/Pricing/SocialPricingAdmin.vue';
+
+// Procedural Admin Pages
 import ProceduralAdmin from '../components/admin/Procedural/Procedural-admin.vue';
 import ProcessAdmin from '../components/admin/Process/Process-admin.vue';
 import ToolkitAdmin from '../components/admin/Toolkit/Toolkit-admin.vue';
@@ -86,6 +91,11 @@ const routes: Array<RouteConfig> = [
 		path: '/profile',
 		name: 'Profile',
 		component: Profile,
+	},
+	{
+		path: '/social-pricing-admin',
+		name: 'SocialPricingAdmin',
+		component: SocialPricingAdmin,
 	},
 ];
 
