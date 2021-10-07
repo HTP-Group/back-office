@@ -2,14 +2,15 @@
  <!-- A conditionner selon si l'utilisateur est un prof ou un parent -->
   <v-card
     class="mx-auto"
-    height="180"
+    height="70"
   >
     <v-app-bar
       dark
       class="bar"
     >
-      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-      <v-toolbar-title>HTP</v-toolbar-title>
+      <v-toolbar-title>
+        <img src="./../assets/images/logo-HTP.svg" alt="logo HTP" class="img"/>
+      </v-toolbar-title>
       <!-- Admin connexion -->
       <v-tabs v-if="currentUserBis.isAdmin" align-with-title>
                   <v-tab>
@@ -103,78 +104,6 @@
           </v-tab>
         </v-tabs>
       </v-app-bar>
-    <v-navigation-drawer
-      v-model="drawer"
-      absolute
-      temporary
-    >
-      <v-list
-        nav
-        dense
-      >
-        <v-list-item-group
-          v-model="sections"
-          active-class="deep-purple--text text--accent-4"
-        >
-        <v-list-item>
-            <v-list-item-icon>
-              <!-- <v-icon size="small">mdi-home</v-icon> -->
-            </v-list-item-icon>
-            <v-list-item-title>
-              {{currentUserBis.isAdmin ? sectionsAdmin[0] : sections[0]}}
-            </v-list-item-title>
-          </v-list-item>
-        <v-list-item>
-            <v-list-item-icon>
-              <v-icon size="small">mdi-account</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>
-              {{currentUserBis.isAdmin ? sectionsAdmin[0] : sections[1]}}
-            </v-list-item-title>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon size="small">fa-chart-line</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>
-              {{currentUserBis.isAdmin ? sectionsAdmin[0] : sections[2]}}
-            </v-list-item-title>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon size="small">fa-calendar</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>
-              {{currentUserBis.isAdmin ? sectionsAdmin[0] : sections[3]}}
-            </v-list-item-title>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon size="small">fa-power-off</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>
-              {{currentUserBis.isAdmin ? sectionsAdmin[0] : sections[4]}}
-            </v-list-item-title>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon size="small">fa-power-off</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>
-              {{currentUserBis.isAdmin ? sectionsAdmin[0] : sections[5]}}
-            </v-list-item-title>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon size="small">fa-power-off</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>
-              {{currentUserBis.isAdmin ? sectionsAdmin[0] : sections[6]}}
-            </v-list-item-title>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
-    </v-navigation-drawer>
   </v-card>
 </template>
 
@@ -232,16 +161,11 @@ export default class NavBar extends Vue {
   	localStorage.getItem(`${JWT_ACCESS}`);
   	console.log('getItem local storage', localStorage.getItem(`${JWT_ACCESS}`));
   	const user = await authApi.user();
-  	if (user.isAdmin) {
+  	if (user.isAdmin && localStorage.getItem(IS_SIGNED)) {
   		this.currentUserBis.isAdmin = true;
   	} else {
   		this.currentUserBis.isAdmin = false;
   	}
-  	// call api get_me()
-  	// const response = await profileApi.getMe();
-  	// this.currentUserBis = { ...response };
-  	// console.log(this.currentUserBis);
-  	// console.log(response);
   }
 
   public async logout() {
@@ -254,6 +178,7 @@ export default class NavBar extends Vue {
   	} catch (err) {
   		console.error(err);
   	}
+  	this.currentUserBis.isAdmin = false;
   	return window.location.replace('/');
   }
 }

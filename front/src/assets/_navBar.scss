@@ -1,19 +1,28 @@
 .bar {
   background-color: #00dffc !important;
-  height: 170px !important;
+  height: 72px !important;
+  display: grid;
 }
 
 .v-tab {
-  margin-left: 2em;
+  margin-left: 1em;
 }
 
 .v-toolbar__title {
   text-overflow: visible;
-  margin-right: 3em;
-  padding-right: 3em;
+  // margin-right: 3em;
+  // padding-right: 3em;
   width: 40%;
+}
+.v-toolbar__content {
+  display: grid !important;
+  grid-template-columns: 10% 90% !important;
 }
 .route {
   text-decoration: none;
   color: #fff;
+}
+.img {
+  width: 4em;
+  height: 3em;
 }
