@@ -219,8 +219,8 @@ import {
 	// Watch,
 	// Prop
 } from 'vue-property-decorator';
-import UserApi from '../../api/auth.api';
-import { User } from '../../Interfaces/user/User';
+import UserApi from '../../../api/auth.api';
+import { User } from '../../../Interfaces/user/User';
 // import componentNameImported from '';
 
 @Component({

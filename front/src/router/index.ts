@@ -6,16 +6,16 @@ import Login from '../views/auth/Login.vue';
 
 import Home from '../views/Home.vue';
 // Admin Pages
-import PricingAdmin from '../components/admin/Pricing-admin.vue';
-import ProceduralAdmin from '../components/admin/Procedural-admin.vue';
-import ProcessAdmin from '../components/admin/Process-admin.vue';
-import ToolkitAdmin from '../components/admin/Toolkit-admin.vue';
-import TrainingsAdmin from '../components/admin/Trainings-admin.vue';
-import ValuesAdmin from '../components/admin/Values-admin.vue';
-import WikiAdmin from '../components/admin/Wiki-admin.vue';
+import PricingAdmin from '../components/admin/Pricing/Pricing-admin.vue';
+import ProceduralAdmin from '../components/admin/Procedural/Procedural-admin.vue';
+import ProcessAdmin from '../components/admin/Process/Process-admin.vue';
+import ToolkitAdmin from '../components/admin/Toolkit/Toolkit-admin.vue';
+import TrainingsAdmin from '../components/admin/Trainings/Trainings-admin.vue';
+import ValuesAdmin from '../components/admin/Values/Values-admin.vue';
+import WikiAdmin from '../components/admin/Wiki/Wiki-admin.vue';
 import Profile from '../views/profile/Profile.vue';
 import UsersAdmin from '../components/admin/Users-admin.vue';
-import UsersListAdmin from '../components/admin/UsersList-admin.vue';
+import UsersListAdmin from '../components/admin/Users/UsersList-admin.vue';
 // collab pages
 import Values from '../components/collab/Values.vue';
 
