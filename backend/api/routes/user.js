@@ -19,7 +19,7 @@ router.put('/user_update/:id', async(req, res) => {
   userController.userUpdate(req, res)
 })
 router.get('/users', async (req, res) => {
-  // auth(req, res)
+  auth(req, res)
   userController.users(req, res)
 })
 

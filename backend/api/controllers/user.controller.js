@@ -95,8 +95,10 @@ async function userUpdate(req, res) {
 async function users(req, res) {
   try {
     const payload = payload_user(req)
-    let admin = await USER.findUserById(payload.user_id)
+    let admin = await USER.getUsers({})
+    console.log(admin, 'test admin')
     if (!admin) res.status(400).send('Invalid request'); 
+    return res.send(admin)
   }
   catch(err) {
     console.error(err)
