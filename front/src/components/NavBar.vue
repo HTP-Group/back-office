@@ -137,14 +137,14 @@ export default class NavBar extends Vue {
   ]
 
   public sections = [
-  	'Process',
-  	'wiki',
-  	'toolkit',
-  	'pricing',
-  	'values',
-  	'procedural',
-  	'trainings',
-  	'logout',
+  	'Nos Process',
+  	'Notre wiki',
+  	'Notre toolkit',
+  	'Nos prestations',
+  	'Nos valeurs',
+  	'Notre procedure cab',
+  	'Nos formations',
+  	'Se Déconnecter',
   ]
 
   public currentUserBis = {
