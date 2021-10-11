@@ -1,19 +1,24 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 // Auth Pages
-// import Register from '../views/auth/Register.vue';
 import Login from '../views/auth/Login.vue';
 
 import Home from '../views/Home.vue';
 // Admin Pages
-import PricingAdmin from '../components/admin/Pricing-admin.vue';
+// Pricing admin
+import PricingAdmin from '../components/admin/Pricing/Pricing-admin.vue';
+import AccountabilityAdmin from '../components/admin/Pricing/Accountability.vue';
+import SocialPricingAdmin from '../components/admin/Pricing/SocialPricingAdmin.vue';
+import LegalPricingAdmin from '../components/admin/Pricing/Legal.vue';
+import FiscalPricingAdmin from '../components/admin/Pricing/Fiscal.vue';
+import ConsultingPricingAdmin from '../components/admin/Pricing/Consulting.vue';
+
 import ProceduralAdmin from '../components/admin/Procedural-admin.vue';
 import ProcessAdmin from '../components/admin/Process-admin.vue';
 import ToolkitAdmin from '../components/admin/Toolkit-admin.vue';
 import TrainingsAdmin from '../components/admin/Trainings-admin.vue';
 import ValuesAdmin from '../components/admin/Values-admin.vue';
 import WikiAdmin from '../components/admin/Wiki-admin.vue';
-import Profile from '../views/profile/Profile.vue';
 import UsersAdmin from '../components/admin/Users-admin.vue';
 import UsersListAdmin from '../components/admin/UsersList-admin.vue';
 // collab pages
@@ -83,9 +88,29 @@ const routes: Array<RouteConfig> = [
 		component: Values,
 	},
 	{
-		path: '/profile',
-		name: 'Profile',
-		component: Profile,
+		path: '/comptabilite-pricing-admin',
+		name: 'AccountabilityAdmin',
+		component: AccountabilityAdmin,
+	},
+	{
+		path: '/social-pricing-admin',
+		name: 'SocialPricingAdmin',
+		component: SocialPricingAdmin,
+	},
+	{
+		path: '/fiscal-pricing-admin',
+		name: 'FiscalPricingAdmin',
+		component: FiscalPricingAdmin,
+	},
+	{
+		path: '/legal-pricing-admin',
+		name: 'LegalPricingAdmin',
+		component: LegalPricingAdmin,
+	},
+	{
+		path: '/consulting-pricing-admin',
+		name: 'ConsultingPricingAdmin',
+		component: ConsultingPricingAdmin,
 	},
 ];
 
