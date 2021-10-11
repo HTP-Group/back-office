@@ -84,7 +84,7 @@ export class UserModel {
     const result = await User.updateOne({_id: user.id }, updateDoc, { upsert: false })
     return result;
   }
-  async addColab(collab) {
+  async addColab() {
     const createCollab = {
       firstname: '',
       lastname: '',
@@ -96,5 +96,9 @@ export class UserModel {
       job: '',
     }
     await User.push(createCollab)
+  }
+  async getUsers() {
+    const users = await User.find({})
+    return users;
   }
 }
