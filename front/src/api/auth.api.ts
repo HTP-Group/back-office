@@ -1,5 +1,5 @@
 import Axios from './index';
-import { User } from '../Interfaces/user/User';
+import { User } from '../Interfaces/user/User.interface';
 
 async function register(data: User): Promise<string> {
 	const response = await Axios.post(
@@ -32,11 +32,19 @@ async function userUpdate(data: User): Promise<User> {
 
 	return response.data;
 }
+async function users(): Promise<User> {
+	const response = await Axios.get<User>(
+		'/users',
+	);
+
+	return response.data;
+}
 
 const authApi = {
 	signIn,
 	register,
 	user,
 	userUpdate,
+	users,
 };
 export default authApi;

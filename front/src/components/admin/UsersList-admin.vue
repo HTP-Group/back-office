@@ -3,10 +3,12 @@
     <div class="title-page">
       <h1>Users List Admin</h1>
     </div>
-    <div class="main-admin-page">
+    <div
+      v-for="(user, index) in usersList"
+      :key="index"
+	  class="main-admin-page"
+	>
       <!-- v-for -->
-      <!-- <v-table>
-      </v-table> -->
       <div class="column firstname">
         <div class="column-title">
           <h3>Prénom</h3>
@@ -220,7 +222,8 @@ import {
 	// Prop
 } from 'vue-property-decorator';
 import UserApi from '../../api/auth.api';
-import { User } from '../../Interfaces/user/User';
+import { User } from '../../Interfaces/user/User.interface';
+import { Users } from '../../Interfaces/user/Users.interface';
 // import componentNameImported from '';
 
 @Component({
@@ -255,6 +258,8 @@ export default class UsersListAdmin extends Vue {
   	city: '',
   	job: '',
   }
+
+  public users: Users[] = [];
 
   public confirmPassword = ''
 
@@ -308,10 +313,9 @@ export default class UsersListAdmin extends Vue {
   }
 
   public async updatedUser() {
+  	await UserApi.userUpdate(this.userBis);
   	this.UserUpdateForm = false;
-  	const response = await UserApi.userUpdate(this.userBis);
-
-  	console.log(response);
+  	this.init();
   }
 
   public cancelDisplayForm() {
@@ -320,14 +324,29 @@ export default class UsersListAdmin extends Vue {
 
   public async addCollab() {
   	await UserApi.register(this.userBis);
-  	// await dispatch(vuex module)
+  	this.addCollabForm = false;
+  	this.init();
   }
 
-  public async mounted() {
-  	const userFetched = await UserApi.user();
-  	this.user = userFetched;
-  	console.log(userFetched);
-  	console.log(this.user);
+  public async beforeMount() {
+  	// console.log('test 0 - users', this.users);
+  	this.init();
+  	// console.log('test 1 - users', this.users);
+  }
+
+  get usersList(): Users[] {
+  	if (this.users === undefined) {
+  		return this.users;
+  	}
+
+  	return this.users;
+  }
+
+  public async init() {
+  	console.log('users', this.users, typeof this.users);
+  	this.users = await UserApi.users();
+  	// console.log('je récupère les données et les stocks dans la variable users');
+  	// console.log(this.users, 'test users');
   }
 }
 </script>
