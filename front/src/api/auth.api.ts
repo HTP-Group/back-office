@@ -39,6 +39,11 @@ async function users(): Promise<User> {
 
 	return response.data;
 }
+async function signOut(): Promise<void> {
+	await Axios.delete<void>(
+		'/sign_out',
+	);
+}
 
 const authApi = {
 	signIn,
@@ -46,5 +51,6 @@ const authApi = {
 	user,
 	userUpdate,
 	users,
+	signOut,
 };
 export default authApi;

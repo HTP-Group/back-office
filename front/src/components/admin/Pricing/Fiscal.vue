@@ -213,8 +213,6 @@ export default class FiscalPricingAdmin extends Vue {
 	public async mounted() {
 		const userFetched = await UserApi.user();
 		this.user = userFetched;
-		console.log(userFetched);
-		console.log(this.user);
 	}
 }
 </script>

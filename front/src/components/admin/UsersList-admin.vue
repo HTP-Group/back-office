@@ -305,7 +305,6 @@ export default class UsersListAdmin extends Vue {
   }
 
   public displayUserUpdateForm() {
-  	console.log('testUpdate');
   	this.UserUpdateForm = !this.UserUpdateForm;
   }
 
@@ -340,7 +339,6 @@ export default class UsersListAdmin extends Vue {
   }
 
   public async init() {
-  	console.log('users', this.users, typeof this.users);
   	this.users = await UserApi.users();
   	// console.log('je récupère les données et les stocks dans la variable users');
   	// console.log(this.users, 'test users');

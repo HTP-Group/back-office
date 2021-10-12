@@ -173,8 +173,12 @@ export default class NavBar extends Vue {
   }
 
   public async logout() {
+    /*
+    */
   	try {
   		console.log('logout');
+      const response = await authApi.signOut()
+
   		localStorage.delete(IS_SIGNED);
   		localStorage.delete(JWT_ACCESS);
 
@@ -182,9 +186,9 @@ export default class NavBar extends Vue {
   	} catch (err) {
   		console.error(err);
   	}
-  	this.currentUserBis.isAdmin = false;
-  	this.isSignIn = false;
-  	return window.location.replace('/');
+  	// this.currentUserBis.isAdmin = false;
+  	// this.isSignIn = false;
+  	// return window.location.replace('/');
   }
 }
 </script>

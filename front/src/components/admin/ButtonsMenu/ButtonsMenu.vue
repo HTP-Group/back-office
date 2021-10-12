@@ -21,7 +21,6 @@ export default class ButtonsMenu extends Vue {
 	public isAddPriceFormOpen = false;
     
 	public openAddForm() {
-    console.log('test enfant')
 		this.$emit('isAddPriceFormOpen');
 	}
 }

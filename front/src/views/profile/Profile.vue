@@ -35,10 +35,9 @@ export default class Profile extends Vue {
   public showStudentProfil = false;
 
   public async mounted() {
-  	console.log('test before GetMe');
   	// récupère le token
   	localStorage.getItem(`${JWT_ACCESS}`);
-  	console.log('getItem local storage', localStorage.getItem(`${JWT_ACCESS}`));
+  	// console.log('getItem local storage', localStorage.getItem(`${JWT_ACCESS}`));
 
   	// this.getMe();
   }
