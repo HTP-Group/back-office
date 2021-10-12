@@ -20,8 +20,12 @@ import TrainingsAdmin from '../components/admin/Trainings-admin.vue';
 import ValuesAdmin from '../components/admin/Values-admin.vue';
 import WikiAdmin from '../components/admin/Wiki-admin.vue';
 import UsersAdmin from '../components/admin/Users-admin.vue';
-import UsersListAdmin from '../components/admin/UsersList-admin.vue';
-// collab pages
+
+// USERS
+import UsersListAdmin from '../components/admin/Users/UsersList-admin.vue';
+import UsersList from '../components/admin/Users/UsersList.vue';
+
+// Values pages
 import Values from '../components/collab/Values.vue';
 
 Vue.use(VueRouter);
@@ -41,6 +45,11 @@ const routes: Array<RouteConfig> = [
 	  path: '/usersList-admin',
 	  name: 'UsersListAdmin',
 	  component: UsersListAdmin,
+	},
+	{
+		path: '/usersList',
+		name: 'UsersList',
+		component: UsersList,
 	},
 	{
 		path: '/',

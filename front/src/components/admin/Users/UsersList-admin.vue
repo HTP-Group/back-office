@@ -210,7 +210,7 @@
         </button>
       </div>
       <div v-if="UserUpdateForm" class="user-update">
-      </div>
+    </div>
   </div>
 </template>
 
@@ -222,9 +222,9 @@ import {
 	// Prop
 } from 'vue-property-decorator';
 /* eslint-disable */
-import UserApi from '../../api/auth.api';
-import { User } from '../../Interfaces/user/User.interface';
-import { Users } from '../../Interfaces/user/Users.interface';
+import UserApi from '../../../api/auth.api';
+import { User } from '../../../Interfaces/user/User.interface';
+import { Users } from '../../../Interfaces/user/Users.interface';
 
 @Component({
 	components: {},

@@ -14,7 +14,7 @@
       <!-- Admin connexion -->
       <v-tabs v-if="currentUserBis.isAdmin && isSignIn" align-with-title>
                   <v-tab>
-            <router-link class="route" to="/usersList-admin">
+            <router-link class="route" to="/usersList">
               {{sectionsAdmin[0]}}
             </router-link>
           </v-tab>
