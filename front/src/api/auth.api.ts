@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Axios from './index';
 import { User } from '../Interfaces/user/User.interface';
 
