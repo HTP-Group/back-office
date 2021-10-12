@@ -22,5 +22,9 @@ router.get('/users', async (req, res) => {
   auth(req, res)
   userController.users(req, res)
 })
+router.delete('/', async (req, res) => {
+  auth(req, res)
+  userController.logout(req, res)
+})
 
 export default router;
