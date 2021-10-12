@@ -6,16 +6,7 @@
         <v-icon>fa-undo-alt</v-icon>
       </router-link>
     </div>
-    <div class="btns">
-       <router-link
-        class="btn accountability"
-        to="/comptabilite-pricing-admin">
-        Comptabilite</router-link>
-      <router-link class="btn social" to="/social-pricing-admin">Social</router-link>
-      <router-link class="btn fiscal" to="/fiscal-pricing-admin">Fiscal</router-link>
-      <router-link class="btn legal" to="/legal-pricing-admin">Juridique</router-link>
-      <router-link class="btn consulting" to="/consulting-pricing-admin">Conseil</router-link>
-    </div>
+    <FieldMenu />
     <table class="table-one">
       <tr class="tr">
         <th class="nature nature-tr">Nature de la mission</th>
@@ -164,11 +155,8 @@
           </td>
       </table>
     </table>
-    <div v-if="isSignIn || user.isAdmin" class="buttons">
-			<button type="submit" class="btn add">Ajouter</button>
-    	<button type="submit" class="btn update">Modifier</button>
-    	<button type="submit" class="btn delete">Supprimer</button>
-		</div>
+    <Menu v-if="isSignIn || user.isAdmin" @isAddPriceFormOpen="openAddForm"/>
+    <AddForm v-if="isAddPriceFormOpen" @cancelDisplayForm="openAddForm"/>
   </div>
 </template>
 
@@ -180,12 +168,18 @@ import {
 	// Prop
 } from 'vue-property-decorator';
 /* eslint-disable */
-// import componentNameImported from '';
 import UserApi from '../../../api/auth.api';
 import { User } from '../../../Interfaces/user/User.interface';
+import Menu from '../ButtonsMenu/ButtonsMenu.vue';
+import FieldMenu from '../ButtonsMenu/FieldMenu.vue';
+import AddForm from '../../AddForm/AddForm.vue';
 
 @Component({
-	components: {},
+	components: {
+    FieldMenu,
+    Menu,
+    AddForm,
+  },
 })
 export default class FiscalPricingAdmin extends Vue {
 	// public booleanName = false;
@@ -209,6 +203,12 @@ export default class FiscalPricingAdmin extends Vue {
 	}
 
 	public isSignIn = false;
+
+  public isAddPriceFormOpen = false;
+  
+  public openAddForm() {
+    this.isAddPriceFormOpen = !this.isAddPriceFormOpen;
+  }
 
 	public async mounted() {
 		const userFetched = await UserApi.user();

@@ -28,6 +28,27 @@
           <h3>Conseil</h3>
         </div>
       </router-link>
+      <div class=" btn add-price" @click="openAddForm">
+          <v-icon size="68" color="#00dffc">fa-plus</v-icon>
+      </div>
+    </div>
+    <div v-if="isAddPriceFormOpen && isSignInAsAdmin" class="add-price-form">
+        <v-text-field
+            class="user-input"
+            label="nature"
+        ></v-text-field>
+        <v-text-field
+            class="user-input"
+            label="title"
+        ></v-text-field>
+        <v-text-field
+            class="user-input"
+            label="price"
+        ></v-text-field>
+        <v-text-field
+            class="user-input"
+            label="comments"
+        ></v-text-field>
     </div>
   </div>
 </template>
@@ -36,22 +57,56 @@
 import {
 	Component,
 	Vue,
-	// Watch,
-	// Prop
 } from 'vue-property-decorator';
-// import componentNameImported from '';
+/* eslint-disable */
+import {
+	IS_SIGNED,
+	JWT_ACCESS,
+} from '../../../constants';
+import UserApi from '../../../api/auth.api';
+
 @Component({
 	components: {},
 })
 export default class PricingAdmin extends Vue {
-	// public booleanName = false;
-	// @Prop() public propsName!: boolean;
 	public field = [
 		'comptabilité',
 		'Social',
 		'Juridique',
 		'Audit',
 	]
+
+    public currentUserBis = {
+        firstname: '',
+        lastname: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        isAdmin: false,
+        city: '',
+        job: '',
+    }
+
+    public isSignInAsAdmin = false;
+
+    public isAddPriceFormOpen = false;
+
+     public async mounted() {
+        // récupère le token
+        localStorage.getItem(`${JWT_ACCESS}`);
+
+        const user = await UserApi.user();
+        if (user.isAdmin && localStorage.getItem(IS_SIGNED)) {
+            this.currentUserBis.isAdmin = true;
+            this.isSignInAsAdmin = true;
+        } else {
+            this.currentUserBis.isAdmin = false;
+        }
+    }
+
+    public openAddForm() {
+    	this.isAddPriceFormOpen = !this.isAddPriceFormOpen;
+    }
 }
 </script>
 
@@ -65,7 +120,7 @@ export default class PricingAdmin extends Vue {
 		grid-template-rows: 3em 2fr;
 		grid-gap: 2em;
 		margin: .5em;
-    height: 69vh;
+        height: 69vh;
 		.title {
 			margin: 1em;
 			grid-row-start: 1;
@@ -109,7 +164,6 @@ a {
 	justify-self: center;
   text-align: center;
   border-radius: 18px;
-  background-color: #f8c3d0;
   box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.68),
   -4px -2px 16px #ffffff;
   display: grid;
@@ -124,73 +178,17 @@ a {
   box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.98),
   -4px -2px 16px #ffffff;
 }
-.table-one {
-  grid-row-start: 3;
-  background-color: #f8c3d0;
-  display: grid;
-  border-radius: 18px;
-  .tr {
-    padding: 1em 1em 0 1em;
-    border-top-right-radius: 18px;
-    border-top-left-radius: 18px;
+.add-price {
+    display: grid;
+    border: 5px solid #00dffc;
   }
-  .nature {
-    background-color: #fff;
-    padding: 1.5em;
-    width: 470px;
-  }
-  .nature-tr {
-    border-top-left-radius: 18px;
-  }
-  .label {
-    background-color: #fff;
-    width: 470px;
-  }
-  .price {
-    background-color: #fff;
-    width: 450px;
-  }
-  .comments {
-    background-color: #fff;
-    width: 450px;
-  }
-  .comments-tr {
-    border-top-right-radius: 18px;
-  }
+.add-price-form {
+    justify-self: center;
 }
-.table-two {
-  display: grid;
-  overflow-y: scroll;
-  /* max-height: 55vh; */
-  grid-gap: .5em;
-  .td {
-    padding: 0 1em 1em 1em;
-    border-radius: 18px;
-  }
-  .nature {
-    background-color: #fff;
-    padding: 1.5em;
-    width: 470px;
-  }
-  .nature-tr {
-    border-top-left-radius: 18px;
-  }
-  .label {
-    background-color: #fff;
-    width: 470px;
-  }
-  .price {
-    background-color: #fff;
-    width: 450px;
-  }
-  .comments {
-    background-color: #fff;
-    width: 450px;
-  }
-  .comments-tr {
-    border-top-right-radius: 18px;
-  }
+.user-input {
+    width: 80%;
 }
+
 ::-webkit-scrollbar {
   width: 10px;
   padding: 0 0.5em;

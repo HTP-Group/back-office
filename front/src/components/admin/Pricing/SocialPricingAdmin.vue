@@ -6,16 +6,7 @@
         <v-icon>fa-undo-alt</v-icon>
       </router-link>
     </div>
-    <div class="btns">
-       <router-link
-        class="btn accountability"
-        to="/comptabilite-pricing-admin">
-        Comptabilite</router-link>
-      <router-link class="btn social" to="/social-pricing-admin">Social</router-link>
-      <router-link class="btn fiscal" to="/fiscal-pricing-admin">Fiscal</router-link>
-      <router-link class="btn legal" to="/legal-pricing-admin">Juridique</router-link>
-      <router-link class="btn consulting" to="/consulting-pricing-admin">Conseil</router-link>
-    </div>
+    <FieldMenu />
     <table class="table-one">
       <tr class="tr">
         <th class="nature nature-tr">Nature de la mission</th>
@@ -25,7 +16,7 @@
       </tr>
       <table class="table-two">
           <td class="td">
-              <th class="nature">Social</th>
+              <th class="nature">Spéciale</th>
               <th class="label">paramétrage des variables sociales</th>
               <th class="price">50 </th>
               <th class="comments">Attention de bien....</th>
@@ -164,11 +155,8 @@
           </td>
       </table>
     </table>
-    <div v-if="isSignIn || user.isAdmin" class="buttons">
-			<button type="submit" class="btn add">Ajouter</button>
-    	<button type="submit" class="btn update">Modifier</button>
-    	<button type="submit" class="btn delete">Supprimer</button>
-		</div>
+    <Menu v-if="isSignIn || user.isAdmin" @isAddPriceFormOpen="openAddForm"/>
+    <AddForm v-if="isAddPriceFormOpen" @cancelDisplayForm="openAddForm"/>
   </div>
 </template>
 
@@ -176,20 +164,22 @@
 import {
 	Component,
 	Vue,
-	// Watch,
-	// Prop
 } from 'vue-property-decorator';
-// import componentNameImported from '';
 /* eslint-disable */
 import UserApi from '../../../api/auth.api';
 import { User } from '../../../Interfaces/user/User.interface';
+import Menu from '../ButtonsMenu/ButtonsMenu.vue';
+import FieldMenu from '../ButtonsMenu/FieldMenu.vue';
+import AddForm from '../../AddForm/AddForm.vue';
 
 @Component({
-	components: {},
+	components: {
+    FieldMenu,
+    Menu,
+    AddForm,
+  },
 })
 export default class SocialPricingAdmin extends Vue {
-	// public booleanName = false;
-	// @Prop() public propsName!: boolean;
 	public field = [
 		'comptabilité',
 		'Social',
@@ -208,7 +198,13 @@ export default class SocialPricingAdmin extends Vue {
 		job: '',
 	}
 
+  public isAddPriceFormOpen = false;
+
 	public isSignIn = false;
+
+  public openAddForm() {
+    this.isAddPriceFormOpen = !this.isAddPriceFormOpen;
+  }
 
 	public async mounted() {
   	const userFetched = await UserApi.user();
@@ -220,10 +216,6 @@ export default class SocialPricingAdmin extends Vue {
 </script>
 
 <style lang='scss' scoped>
-    /*
-         @import '@/assets/scss/_base.scss';
-         @import '@/assets/scss/layout/_layout.scss';
-    */
 	.pricing {
 		display: grid;
 		grid-template-rows: 3em 3em 80%;
@@ -231,8 +223,8 @@ export default class SocialPricingAdmin extends Vue {
 		margin: .5em;
     height: 69vh;
 		.title {
-            display: grid;
-            grid-template-columns: 98% 2%;
+      display: grid;
+      grid-template-columns: 98% 2%;
 			margin: 1em;
 			grid-row-start: 1;
 			text-align: center;
@@ -315,7 +307,6 @@ a {
 .table-two {
   display: grid;
   overflow-y: scroll;
-  /* max-height: 55vh; */
   grid-gap: .5em;
   .td {
     padding: 0 1em 1em 1em;

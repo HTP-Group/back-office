@@ -221,18 +221,15 @@ import {
 	// Watch,
 	// Prop
 } from 'vue-property-decorator';
+/* eslint-disable */
 import UserApi from '../../api/auth.api';
 import { User } from '../../Interfaces/user/User.interface';
 import { Users } from '../../Interfaces/user/Users.interface';
-// import componentNameImported from '';
 
 @Component({
 	components: {},
 })
 export default class UsersListAdmin extends Vue {
-	// public booleanName = false;
-	// @Prop() public propsName!: boolean;
-
   public addCollabForm = false;
 
   public UserUpdateForm = false;

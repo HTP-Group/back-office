@@ -108,6 +108,7 @@
 </template>
 
 <script lang="ts">
+/* eslint-disable */
 import { Vue, Component } from 'vue-property-decorator';
 import authApi from '../api/auth.api';
 // import
