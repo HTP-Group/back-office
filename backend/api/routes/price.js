@@ -8,4 +8,9 @@ router.post('/addPrice', async (req, res) => {
   priceController.addPrice(req, res)
 })
 
+router.get('/prices', async (req, res) => {
+  auth(req, res)
+  priceController.prices(req, res)
+})
+
 export default router;

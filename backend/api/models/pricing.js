@@ -31,4 +31,8 @@ export class PriceModel {
     const price = await Price.findOne({ label: label })
     return price;
   }
+  async getPrices() {
+    const prices = await Price.find({})
+    return prices;
+  }
 }

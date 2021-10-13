@@ -19,8 +19,24 @@ async function addPrice(req, res) {
   }
 }
 
+async function prices(req, res) {
+  try {
+    const payload = payload_user(req)
+    let prices = await PRICE.getPrices({})
+    console.log(prices, '***prices***')
+
+    if(!prices) res.status(400).send('Invalid request or no prices yet')
+
+    return res.send(prices)
+  }
+  catch(err) {
+    console.error(err);
+  }
+}
+
 const priceController = {
-  addPrice
+  addPrice,
+  prices
 }
 
 export default priceController
