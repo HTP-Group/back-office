@@ -3,6 +3,10 @@ import Joi from 'joi';
 import _ from 'lodash';
 
 const Price = mongoose.model('Pricing', new mongoose.Schema({
+  field: {
+    type: mongoose.Schema.Types.String,
+    ref: 'field' 
+  },
   nature: {
     type: mongoose.Schema.Types.String,
     ref: 'nature' 
@@ -20,7 +24,7 @@ const Price = mongoose.model('Pricing', new mongoose.Schema({
 export class PriceModel {
   constructor() {}
   async createPrice(body) {
-    const price = await new Price(_.pick(body, ['nature', 'label', 'amount', 'comments']));
+    const price = await new Price(_.pick(body, ['field','nature', 'label', 'amount', 'comments']));
     return price;
   }
   async findPriceByLabel(label) {
