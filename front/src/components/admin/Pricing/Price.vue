@@ -23,5 +23,31 @@ export default class Price extends Vue {
 </script>
 
 <style lang='scss' scoped>
-
+ .td {
+    padding: 0 1em 1em 1em;
+    border-radius: 18px;
+  }
+  .nature {
+    background-color: #fff;
+    padding: 1.5em;
+    width: 470px;
+  }
+  .nature-tr {
+    border-top-left-radius: 18px;
+  }
+  .label {
+    background-color: #fff;
+    width: 470px;
+  }
+  .price {
+    background-color: #fff;
+    width: 450px;
+  }
+  .comments {
+    background-color: #fff;
+    width: 450px;
+  }
+  .comments-tr {
+    border-top-right-radius: 18px;
+  }
 </style>

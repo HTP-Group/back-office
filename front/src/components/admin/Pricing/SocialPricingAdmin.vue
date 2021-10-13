@@ -15,16 +15,11 @@
         <th class="comments comments-tr">Commentaires</th>
       </tr>
       <table class="table-two">
-        <td class="td">
-          <th class="nature">Spéciale</th>
-          <th class="label">paramétrage des variables sociales</th>
-          <th class="price">50 </th>
-          <th class="comments">Attention de bien....</th>
-        </td>
+        <Price />
       </table>
     </table>
     <Menu v-if="isSignIn || user.isAdmin" @isAddPriceFormOpen="openAddForm"/>
-    <AddForm v-if="isAddPriceFormOpen" @cancelDisplayForm="openAddForm"/>
+    <AddForm v-if="isAddPriceFormOpen" @cancelDisplayForm="openAddForm" @addPrice="addPrice"/>
   </div>
 </template>
 
@@ -39,12 +34,14 @@ import { User } from '../../../Interfaces/user/User.interface';
 import Menu from '../ButtonsMenu/ButtonsMenu.vue';
 import FieldMenu from '../ButtonsMenu/FieldMenu.vue';
 import AddForm from './AddForm.vue';
+import Price from './Price.vue';
 
 @Component({
 	components: {
     FieldMenu,
     Menu,
     AddForm,
+    Price
   },
 })
 export default class SocialPricingAdmin extends Vue {
@@ -78,6 +75,11 @@ export default class SocialPricingAdmin extends Vue {
   	const userFetched = await UserApi.user();
   	this.user = userFetched;
 	}
+
+  public addPrice() {
+    console.log('test parent')
+    this.isAddPriceFormOpen = false;
+  }
 }
 </script>
 

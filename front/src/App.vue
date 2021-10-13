@@ -2,13 +2,11 @@
   <div>
     <!-- A conditionner selon si l'utilisateur est logIn ou logOut -->
     <div v-if="isSigned">
-      <h1>Log out</h1>
       <NavBar />
       <router-view />
     </div>
     <div v-if="!isSigned">
       <NavBar />
-      <Login />
       <router-view />
     </div>
   </div>

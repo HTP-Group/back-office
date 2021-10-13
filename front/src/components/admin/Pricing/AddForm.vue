@@ -3,40 +3,62 @@
 			<v-icon class="icon" @click="cancelDisplayForm">fa-times</v-icon>
 			<div class="form">
 				<v-text-field
+					v-model="priceBis.field"
 					label="Filière métier"
 					placeholder="ex: comptabilité"
 				></v-text-field>
 				<v-text-field
+					v-model="priceBis.nature"
 					label="nature"
 				></v-text-field>
 				<v-text-field
+					v-model="priceBis.label"
 					label="libellé mission"
 				></v-text-field>
 				<v-text-field
+					v-model="priceBis.amount"
 					label="prix"
+					type="number"
 				></v-text-field>
 				<v-text-field
+					v-model="priceBis.comments"
 					label="commentaires"
 				></v-text-field>
 			</div>
 			<div class="validation-form">
-				<button class="btn" type=submit>Ajouter une prestation</button>
+				<button class="btn" type=submit @click="addPrice">Ajouter une prestation</button>
 			</div>
 		</div>
 </template>
 
 <script lang='ts'>
+/* eslint-disable */
 import {
 	Component,
 	Vue,
 } from 'vue-property-decorator';
+import PriceApi from '../../../api/price.api';
 
 @Component({
 	components: {},
 })
 export default class AddForm extends Vue {
+	public priceBis = {
+		field: '',
+		nature: '',
+		label: '',
+		amount: 50,
+		comments: '',
+	};
+
 	public cancelDisplayForm() {
   	this.$emit('cancelDisplayForm');
+	}
+
+	public async addPrice() {
+		await PriceApi.addPrice(this.priceBis);
+		console.log('test children')
+		this.$emit('addPrice')
 	}
 }
 </script>
