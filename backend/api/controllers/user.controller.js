@@ -105,16 +105,16 @@ async function users(req, res) {
   }
 }
 
-async function logout(req, res) {
-  try {
-    const payload = payload_user(req)
-    let admin = await USER.findUserById(payload.user_id)
-    if (!admin) res.status(400).send('impossible to logout');
-  }
-  catch(err) {
-    console.error(err)
-  }
-}
+// async function logout(req, res) {
+//   try {
+//     const payload = payload_user(req)
+//     let admin = await USER.findUserById(payload.user_id)
+//     if (!admin) res.status(400).send('impossible to logout');
+//   }
+//   catch(err) {
+//     console.error(err)
+//   }
+// }
 // async function get_children() {
   //  const payload = payload_user(req)
   //  let children = await CHILDREN.findChildrenByParentId(id)
@@ -137,6 +137,6 @@ const userController = {
   me,
   userUpdate,
   users,
-  logout
+  // logout
 }
 export default userController
