@@ -15,144 +15,12 @@
         <th class="comments comments-tr">Commentaires</th>
       </tr>
       <table class="table-two">
-          <td class="td">
-              <th class="nature">Spéciale</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
-          <td class="td">
-              <th class="nature">Social</th>
-              <th class="label">paramétrage des variables sociales</th>
-              <th class="price">50 </th>
-              <th class="comments">Attention de bien....</th>
-          </td>
+        <td class="td">
+          <th class="nature">Spéciale</th>
+          <th class="label">paramétrage des variables sociales</th>
+          <th class="price">50 </th>
+          <th class="comments">Attention de bien....</th>
+        </td>
       </table>
     </table>
     <Menu v-if="isSignIn || user.isAdmin" @isAddPriceFormOpen="openAddForm"/>
@@ -170,7 +38,7 @@ import UserApi from '../../../api/auth.api';
 import { User } from '../../../Interfaces/user/User.interface';
 import Menu from '../ButtonsMenu/ButtonsMenu.vue';
 import FieldMenu from '../ButtonsMenu/FieldMenu.vue';
-import AddForm from '../../AddForm/AddForm.vue';
+import AddForm from './AddForm.vue';
 
 @Component({
 	components: {
@@ -272,9 +140,11 @@ a {
   grid-row-start: 3;
   background-color: #f8c3d0;
   display: grid;
+  grid-template-rows: 20% 80%;
   border-radius: 18px;
   .tr {
     padding: 1em 1em 0 1em;
+    max-height: 6em;
     border-top-right-radius: 18px;
     border-top-left-radius: 18px;
   }

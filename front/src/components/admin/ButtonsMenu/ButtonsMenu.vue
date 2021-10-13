@@ -53,6 +53,7 @@ export default class ButtonsMenu extends Vue {
     border-radius: 18px;
     box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.28),
     -4px -2px 16px #ffffff;
+    width: 50%;
   }
   .btn:hover {
     box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.68),

@@ -170,7 +170,7 @@ import UserApi from '../../../api/auth.api';
 import { User } from '../../../Interfaces/user/User.interface';
 import Menu from '../ButtonsMenu/ButtonsMenu.vue';
 import FieldMenu from '../ButtonsMenu/FieldMenu.vue';
-import AddForm from '../../AddForm/AddForm.vue';
+import AddForm from './AddForm.vue';
 
 @Component({
 	components: {

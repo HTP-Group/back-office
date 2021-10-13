@@ -32,24 +32,10 @@
           <v-icon size="68" color="#00dffc">fa-plus</v-icon>
       </div>
     </div>
-    <div v-if="isAddPriceFormOpen && isSignInAsAdmin" class="add-price-form">
-        <v-text-field
-            class="user-input"
-            label="nature"
-        ></v-text-field>
-        <v-text-field
-            class="user-input"
-            label="title"
-        ></v-text-field>
-        <v-text-field
-            class="user-input"
-            label="price"
-        ></v-text-field>
-        <v-text-field
-            class="user-input"
-            label="comments"
-        ></v-text-field>
-    </div>
+    <AddForm
+      v-if="isAddPriceFormOpen && isSignInAsAdmin"
+      @cancelDisplayForm="openAddForm"
+    />
   </div>
 </template>
 
@@ -64,9 +50,12 @@ import {
 	JWT_ACCESS,
 } from '../../../constants';
 import UserApi from '../../../api/auth.api';
+import AddForm from './AddForm.vue';
 
 @Component({
-	components: {},
+	components: {
+    AddForm
+  },
 })
 export default class PricingAdmin extends Vue {
 	public field = [
@@ -76,37 +65,37 @@ export default class PricingAdmin extends Vue {
 		'Audit',
 	]
 
-    public currentUserBis = {
-        firstname: '',
-        lastname: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-        isAdmin: false,
-        city: '',
-        job: '',
+  public currentUserBis = {
+      firstname: '',
+      lastname: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      isAdmin: false,
+      city: '',
+      job: '',
+  }
+
+  public isSignInAsAdmin = false;
+
+  public isAddPriceFormOpen = false;
+
+  public async mounted() {
+    // récupère le token
+    localStorage.getItem(`${JWT_ACCESS}`);
+
+    const user = await UserApi.user();
+    if (user.isAdmin && localStorage.getItem(IS_SIGNED)) {
+        this.currentUserBis.isAdmin = true;
+        this.isSignInAsAdmin = true;
+    } else {
+        this.currentUserBis.isAdmin = false;
     }
+  }
 
-    public isSignInAsAdmin = false;
-
-    public isAddPriceFormOpen = false;
-
-     public async mounted() {
-        // récupère le token
-        localStorage.getItem(`${JWT_ACCESS}`);
-
-        const user = await UserApi.user();
-        if (user.isAdmin && localStorage.getItem(IS_SIGNED)) {
-            this.currentUserBis.isAdmin = true;
-            this.isSignInAsAdmin = true;
-        } else {
-            this.currentUserBis.isAdmin = false;
-        }
-    }
-
-    public openAddForm() {
-    	this.isAddPriceFormOpen = !this.isAddPriceFormOpen;
-    }
+  public openAddForm() {
+    this.isAddPriceFormOpen = !this.isAddPriceFormOpen;
+  }
 }
 </script>
 
@@ -120,7 +109,7 @@ export default class PricingAdmin extends Vue {
 		grid-template-rows: 3em 2fr;
 		grid-gap: 2em;
 		margin: .5em;
-        height: 69vh;
+    height: 69vh;
 		.title {
 			margin: 1em;
 			grid-row-start: 1;
@@ -167,6 +156,7 @@ a {
   box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.68),
   -4px -2px 16px #ffffff;
   display: grid;
+  width: 50%;
   .title-btn {
     display: grid;
     h3 {

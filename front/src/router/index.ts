@@ -2,7 +2,6 @@ import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 // Auth Pages
 import Login from '../views/auth/Login.vue';
-
 import Home from '../views/Home.vue';
 // Admin Pages
 // Pricing admin

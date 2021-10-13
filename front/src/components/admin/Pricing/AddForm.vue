@@ -43,30 +43,48 @@ export default class AddForm extends Vue {
 
 <style lang='scss' scoped>
 .add-form {
-	display: grid;
+	justify-self: center;
+	border: 30px solid #cfe2f3;
+  background-color: #a3d4ff;
+  border-radius: 12px;
+  position: fixed;
+  top: 15em;
+  padding: .5em;
+  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.28),
+		-4px -2px 16px #ffffff;
+	width: 30%;
+	right: 25em;
 }
 .validation-form {
 	justify-self: center;
-	width: 50%;
 	display: grid;
 }
 .form {
 	justify-self: center;
-	width: 50%;
+	width: 80%;
 }
 	.btn {
-		place-self: center;
 		background-color: #cfe2f3;
 		justify-self: center;
 		border-radius: 18px;
-		box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.28),
-		-4px -2px 16px #ffffff;
 		margin-bottom: 1.5em;
 		height: 3em;
+		width: 50%;
 	}
 	.btn:hover {
 		box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.68),
-		-4px -2px 16px #ffffff;
+		-4px -2px 16px #cfe2f3;
+	}
+	.icon {
+		position: fixed;
+		right: 19em;
+		padding: .5em;
+		top: 11em;
+	}
+	.icon:hover {
+		background-color: #ffffff;
+		padding: .5em;
+		border-radius: 50%;
 	}
 ::-webkit-scrollbar {
   width: 10px;

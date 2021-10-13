@@ -12,52 +12,8 @@
         <img src="./../assets/images/logo-HTP.svg" alt="logo HTP" class="img"/>
       </v-toolbar-title>
       <!-- Admin connexion -->
-      <v-tabs v-if="currentUserBis.isAdmin && isSignIn" align-with-title>
-          <v-tab>
-            <router-link class="route" to="/usersList">
-              {{sectionsAdmin[0]}}
-            </router-link>
-          </v-tab>
-          <v-tab>
-            <router-link class="route" to="/process-admin">
-              {{sectionsAdmin[1]}}
-            </router-link>
-          </v-tab>
-          <v-tab>
-            <router-link class="route" to="/wiki-admin">
-              {{sectionsAdmin[2]}}
-            </router-link>
-          </v-tab>
-          <v-tab>
-            <router-link class="route" to="/toolkit-admin">
-              {{sectionsAdmin[3]}}
-            </router-link>
-          </v-tab>
-          <v-tab>
-            <router-link class="route" to="/pricing-admin">
-              {{sectionsAdmin[4]}}
-            </router-link>
-          </v-tab>
-          <v-tab>
-            <router-link class="route" to="/values-admin">
-              {{sectionsAdmin[5]}}
-            </router-link>
-          </v-tab>
-          <v-tab>
-            <router-link class="route" to="/procedural-admin">
-              {{sectionsAdmin[6]}}
-            </router-link>
-          </v-tab>
-          <v-tab>
-            <router-link class="route" to="/trainings-admin">
-              {{sectionsAdmin[7]}}
-            </router-link>
-          </v-tab>
-          <v-tab @click="logout()">
-            <router-link class="route" to="/">
-              {{sectionsAdmin[8]}}
-            </router-link>
-          </v-tab>
+      <v-tabs v-model="sections" v-if="currentUserBis.isAdmin && isSignIn" align-with-title>
+          <v-tab :key="section" to="/usersList" ripple></v-tab>
         </v-tabs>
       <!-- collabs connexion -->
       <v-tabs v-else-if="!currentUserBis.isAdmin || !isSignIn" align-with-title>
