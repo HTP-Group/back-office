@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import user from './api/routes/user.js';
+import price from './api/routes/price.js';
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
@@ -17,6 +18,7 @@ mongoose.connect('mongodb://localhost/back-office', {
 app.use(express.json())
 app.use(cors());
 app.use('/api', user)
+app.use('/api/', price)
 
 const port = process.env.PORT || 3005;
 app.listen(port, () => console.log(`Listening on port ${port}`))

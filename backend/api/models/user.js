@@ -59,11 +59,11 @@ export class UserModel {
   }
   async newUser(body) {
     const user = await new User(_.pick(body, ['firstname', 'lastname', 'email', 'password', 'isAdmin']));
-    return user
+    return user;
   }
   async findUserByEmail(email) {
     const user = await User.findOne({ email: email })
-    return user
+    return user;
   }
   async findUserById(id) {
     const user = await User.findOne({_id: id})
