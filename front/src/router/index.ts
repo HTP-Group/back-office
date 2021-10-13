@@ -19,7 +19,6 @@ import ToolkitAdmin from '../components/admin/Toolkit-admin.vue';
 import TrainingsAdmin from '../components/admin/Trainings-admin.vue';
 import ValuesAdmin from '../components/admin/Values-admin.vue';
 import WikiAdmin from '../components/admin/Wiki-admin.vue';
-import UsersAdmin from '../components/admin/Users-admin.vue';
 
 // USERS
 import UsersListAdmin from '../components/admin/Users/UsersList-admin.vue';
@@ -35,11 +34,6 @@ const routes: Array<RouteConfig> = [
 		path: '/home',
 		name: 'Home',
 		component: Home,
-	},
-	{
-	  path: '/users-admin',
-	  name: 'UsersAdmin',
-	  component: UsersAdmin,
 	},
 	{
 	  path: '/usersList-admin',

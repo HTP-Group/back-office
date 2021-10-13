@@ -98,7 +98,7 @@
             </router-link>
           </v-tab>
           <v-tab @click="logout()">
-            <router-link class="route" to="/logout">
+            <router-link class="route" to="/">
               {{sections[7]}}
             </router-link>
           </v-tab>
@@ -177,7 +177,7 @@ export default class NavBar extends Vue {
     */
   	try {
   		console.log('logout');
-      const response = await authApi.signOut()
+      // const response = await authApi.signOut()
 
   		localStorage.delete(IS_SIGNED);
   		localStorage.delete(JWT_ACCESS);
