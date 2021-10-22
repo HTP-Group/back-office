@@ -8,7 +8,7 @@ dotenv.config();
 
 const app = express()
 
-mongoose.connect('mongodb://localhost/back-office', { 
+mongoose.connect(process.env.DATABASE_URL, { 
     useNewUrlParser: true, 
     useUnifiedTopology: true 
 } )
@@ -19,6 +19,5 @@ app.use(express.json())
 app.use(cors());
 app.use('/api', user)
 app.use('/api/', price)
-
 const port = process.env.PORT || 3005;
 app.listen(port, () => console.log(`Listening on port ${port}`))
