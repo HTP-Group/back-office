@@ -1,4 +1,4 @@
-export interface Service {
+export interface Price {
   field: string;
   nature: string;
   label: string;

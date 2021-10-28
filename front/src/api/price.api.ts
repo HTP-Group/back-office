@@ -1,17 +1,17 @@
 /* eslint-disable */
 import Axios from './index';
-import { Service } from '../Interfaces/price/Service.interface';
+import { Price } from '../Interfaces/price/Price.interface';
 
-async function addPrice(data: Service): Promise<Service> {
-  const response = await Axios.post<Service>(
+async function addPrice(data: Price): Promise<Price> {
+  const response = await Axios.post<Price>(
     '/addPrice', data,
   );
 
   return response.data;
 }
 
-async function prices():Promise<Service> {
-  const response = await Axios.get<Service>(
+async function prices():Promise<Price[]> {
+  const response = await Axios.get<Price[]>(
     '/prices'
   )
 

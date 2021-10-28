@@ -36,7 +36,7 @@ import {
 import UserApi from '../../../api/auth.api';
 import PriceApi from '../../../api/price.api';
 import { User } from '../../../Interfaces/user/User.interface';
-import { Prices } from '../../../Interfaces/price/Prices.interface';
+import { Price } from '../../../Interfaces/price/Price.interface';
 import Menu from '../ButtonsMenu/ButtonsMenu.vue';
 import FieldMenu from '../ButtonsMenu/FieldMenu.vue';
 import AddForm from './AddForm.vue';
@@ -69,7 +69,7 @@ export default class SocialPricingAdmin extends Vue {
 		job: '',
 	}
 
-  public prices: Prices[] = [];
+  public prices: Price[] = [];
 
   public otherPrices = []; 
 
@@ -88,7 +88,7 @@ export default class SocialPricingAdmin extends Vue {
 
 	}
 
-  get pricesList(): Prices[] {
+  get pricesList(): Price[] {
     if (this.prices === undefined) {
   		return this.prices;
   	}

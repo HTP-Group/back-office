@@ -1,6 +1,6 @@
 /* eslint-disable */
-import { Service } from './Service.interface';
+import { Price } from './Price.interface';
 
 export interface Prices {
-  prices: Service[];
+  prices: Price[];
 }

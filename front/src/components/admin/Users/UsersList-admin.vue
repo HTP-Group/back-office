@@ -224,7 +224,6 @@ import {
 /* eslint-disable */
 import UserApi from '../../../api/auth.api';
 import { User } from '../../../Interfaces/user/User.interface';
-import { Users } from '../../../Interfaces/user/Users.interface';
 
 @Component({
 	components: {},
@@ -256,7 +255,7 @@ export default class UsersListAdmin extends Vue {
   	job: '',
   }
 
-  public users: Users[] = [];
+  public users: User[] = [];
 
   public confirmPassword = ''
 
@@ -330,7 +329,7 @@ export default class UsersListAdmin extends Vue {
   	// console.log('test 1 - users', this.users);
   }
 
-  get usersList(): Users[] {
+  get usersList(): User[] {
   	if (this.users === undefined) {
   		return this.users;
   	}
