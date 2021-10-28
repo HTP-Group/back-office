@@ -33,8 +33,8 @@ async function userUpdate(data: User): Promise<User> {
 
 	return response.data;
 }
-async function users(): Promise<User> {
-	const response = await Axios.get<User>(
+async function users(): Promise<User[]> {
+	const response = await Axios.get<User[]>(
 		'/users',
 	);
 

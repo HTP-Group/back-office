@@ -1,9 +1,9 @@
 <template>
   <td class="td">
-    <th class="nature">Spéciale</th>
-    <th class="label">paramétrage des variables sociales</th>
-    <th class="price">50</th>
-    <th class="comments">Attention de bien....</th>
+    <th class="nature">{{price.nature}}</th>
+    <th class="label">{{price.label}}</th>
+    <th class="price">{{price.amount}}</th>
+    <th class="comments">{{price.comments}}</th>
   </td>
 </template>
 
@@ -12,13 +12,15 @@
 import {
   Component,
   Vue,
+  Prop,
 } from 'vue-property-decorator';
+import { Price } from '../../../Interfaces/price/Price.interface';
 
 @Component({
   components: {},
 })
-export default class Price extends Vue {
-
+export default class Service extends Vue {
+@Prop() price!: Price;
 }
 </script>
 

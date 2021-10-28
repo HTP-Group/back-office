@@ -15,7 +15,11 @@
         <th class="comments comments-tr">Commentaires</th>
       </tr>
       <table class="table-two">
-        <Price />
+        <Service
+          v-for="(price, index) in pricesList"
+          :key="index"
+          :price="price"
+        />
       </table>
     </table>
     <Menu v-if="isSignIn || user.isAdmin" @isAddPriceFormOpen="openAddForm"/>
@@ -30,18 +34,20 @@ import {
 } from 'vue-property-decorator';
 /* eslint-disable */
 import UserApi from '../../../api/auth.api';
+import PriceApi from '../../../api/price.api';
 import { User } from '../../../Interfaces/user/User.interface';
+import { Prices } from '../../../Interfaces/price/Prices.interface';
 import Menu from '../ButtonsMenu/ButtonsMenu.vue';
 import FieldMenu from '../ButtonsMenu/FieldMenu.vue';
 import AddForm from './AddForm.vue';
-import Price from './Price.vue';
+import Service from './Service.vue';
 
 @Component({
 	components: {
     FieldMenu,
     Menu,
     AddForm,
-    Price
+    Service
   },
 })
 export default class SocialPricingAdmin extends Vue {
@@ -63,6 +69,10 @@ export default class SocialPricingAdmin extends Vue {
 		job: '',
 	}
 
+  public prices: Prices[] = [];
+
+  public otherPrices = []; 
+
   public isAddPriceFormOpen = false;
 
 	public isSignIn = false;
@@ -74,11 +84,26 @@ export default class SocialPricingAdmin extends Vue {
 	public async mounted() {
   	const userFetched = await UserApi.user();
   	this.user = userFetched;
+    this.init()
+
 	}
 
+  get pricesList(): Prices[] {
+    if (this.prices === undefined) {
+  		return this.prices;
+  	}
+
+  	return this.prices;
+  }
+
   public addPrice() {
-    console.log('test parent')
     this.isAddPriceFormOpen = false;
+  }
+
+  public async init() {
+    const response = await PriceApi.prices();
+    console.log('response', typeof response)
+    this.prices = await PriceApi.prices();
   }
 }
 </script>
