@@ -1,8 +1,8 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
 const Axios = axios.create({
-	// baseURL: process.env.VUE_APP_API_URL || '/api',
-	baseURL: 'http://localhost:3005/api',
+	baseURL: process.env.VUE_APP_API_URL || '/api',
+	// baseURL: 'http://localhost:3005/api',
 	headers: {
 		'Content-Type': 'application/json',
 	},
